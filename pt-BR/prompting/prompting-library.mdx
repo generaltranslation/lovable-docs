@@ -1,0 +1,486 @@
+---
+title: "Biblioteca de Prompts"
+description: "Lista de estratégias e abordagens de prompting."
+icon: "book"
+---
+
+_Bem-vindo à biblioteca de prompts\\\!_ Aqui coletamos um conjunto de padrões de prompt reutilizáveis e exemplos para cenários comuns ao construir com IA. Pense neles como templates ou inspiração que você pode adaptar ao seu próprio projeto. Cada seção cobre um caso de uso específico – desde iniciar um novo projeto até integrar pagamentos – com orientações sobre quando usar e um exemplo de prompt.
+
+Sinta-se à vontade para copiar, modificar os detalhes e usá-los no Lovable ou qualquer construtor de IA. O tom é oficial, mas casual – como conversar com um colega – e cada prompt fornece contexto suficiente para que a IA saiba exatamente o que fazer.
+
+## Iniciando Projetos
+
+<Info>
+  **Quando usar:** No início de um projeto. Este prompt ajuda a IA a entender os requisitos de alto nível e começar a construir a base. Use-o para **iniciar um novo app** especificando o que você está construindo, a stack tecnológica e as funcionalidades principais. É o seu briefing do projeto.
+</Info>
+
+<Info>
+  **Como usar:** Descreva o tipo de aplicação, as tecnologias principais (framework frontend, backend, quaisquer serviços) e as funcionalidades ou páginas primárias. Em seguida, direcione a IA sobre onde começar (frequentemente a página principal ou uma funcionalidade importante). Isso estabelece o escopo do projeto e o foco inicial.
+</Info>
+
+**Exemplo de Prompt – Iniciando um Novo Projeto:**
+
+```
+Preciso de uma aplicação de **gerenciamento de tarefas** com:
+- **Stack Tecnológica:** Frontend Next.js, Tailwind CSS para estilização, Supabase para autenticação e banco de dados.
+- **Funcionalidades Principais:** Criação de projetos e tarefas, atribuição de tarefas a usuários, lembretes de prazo e uma visão geral do dashboard.
+
+Comece construindo a **página principal do dashboard**, contendo:
+- Um cabeçalho com navegação,
+- Uma lista de projetos com seus status,
+- e um botão para criar um novo projeto.
+
+Use dados fictícios por enquanto e garanta que o design seja limpo e responsivo.
+```
+
+```
+Crie um novo componente chamado [ComponentName] com essas funcionalidades: [listar funcionalidades]. Torne-o responsivo e acessível com navegação adequada por teclado. Inclua tipagens TypeScript adequadas para props e use Tailwind para estilização.
+```
+
+```
+Explique como esta função funciona em termos simples, destacando suas entradas, saídas e quaisquer efeitos colaterais: [colar função]. Que casos extremos ela trata ou perde? Como poderia ser melhorada?
+```
+
+Este prompt segue uma estrutura comprovada para novos projetos​. Primeiro declara o tipo de app e a stack tecnológica, depois lista as funcionalidades principais e finalmente diz à IA onde começar (a página principal do dashboard, com especificações). Ao fazer isso, você dá ao Lovable um roteiro claro para iniciar o projeto. _(Dica profissional: Frequentemente é sábio começar com um projeto vazio e construir gradualmente, para que a IA não fique sobrecarregada​.)_
+
+## Design de UI/UX
+
+<Info>
+  **Quando usar:** Sempre que você quiser **refinar a aparência e sensação** do seu app sem alterar sua funcionalidade. Isso pode incluir polir a UI, ajustar layouts ou implementar um estilo de design específico.
+</Info>
+
+<Info>
+  **Como usar:** Especifique claramente o escopo das mudanças de design e enfatize que a funcionalidade deve permanecer intacta. A IA é bastante boa em estilização, mas você deve orientá-la sobre qual "visual" você quer (ex: moderno, minimalista, combinar com um determinado sistema de design). Se você tem múltiplas mudanças, aborde-as uma de cada vez (ex: primeiro layout, depois cores). Sempre mencione se há partes da UI que não devem ser alteradas em termos de lógica.
+</Info>
+
+Lovable tem um gosto bastante bom por padrão, mas um prompt direcionado pode ajudar a alcançar uma melhoria estética ou de UX específica. Por exemplo, você pode querer reestilizar um botão, melhorar o layout de um formulário ou garantir consistência no espaçamento.
+
+**Exemplo de Prompt – Mudanças Apenas na UI:**
+
+```
+A UI do app deve ser melhorada, **sem alterar nenhuma funcionalidade**. 
+
+- Mantenha toda a lógica existente e gerenciamento de estado como está.
+- **Melhorias Visuais:** Atualize a estilização da página do dashboard: use um design de card moderno para cada listagem de projeto, melhore o esquema de cores para melhor contraste e aumente o padding para um layout mais limpo.
+- Garanta que essas mudanças **não quebrem nenhuma funcionalidade ou fluxo de dados**.
+
+*Objetivo:* melhorias puramente cosméticas para uma aparência mais polida, com o app se comportando exatamente como antes.
+```
+
+```
+Melhore o apelo visual deste componente: [cole o componente]. Adicione animações, melhore o espaçamento, crie uma aparência polida mantendo padrões de acessibilidade e comportamento responsivo.
+```
+
+```
+Crie um sistema de design abrangente para minha aplicação com uma paleta de cores, escala tipográfica, sistema de espaçamento e variantes de componentes. Inclua suporte ao modo escuro e garanta que todos os componentes sejam acessíveis (compatível com WCAG AA).
+```
+
+```
+Projete um layout de dashboard responsivo com [descreva métricas/widgets principais]. Deve funcionar bem em mobile, tablet e desktop com mudanças de layout apropriadas. Inclua uma navegação lateral que se recolhe no mobile.
+```
+
+```
+Transforme este componente apenas para desktop em um design mobile-first com breakpoints responsivos: [cole o componente]. Priorize conteúdo e interações para telas pequenas primeiro, depois melhore para telas maiores.
+```
+
+```
+Adicione animações sutis e performáticas a este componente para melhorar a experiência do usuário: [cole o componente]. Inclua animações de entrada/saída, estados de hover e micro-interações que forneçam feedback sem serem distrativas.
+```
+
+```
+Analise e otimize o fluxo do usuário para [descreva tarefa/objetivo]. Mapeie cada etapa da jornada, identifique pontos de atrito e sugira melhorias na UI para criar uma experiência mais intuitiva com menos etapas.
+```
+
+```
+Revise estes componentes para problemas de acessibilidade e sugira melhorias: [cole os componentes]. Verifique navegação adequada por teclado, suporte a leitores de tela, contraste de cor suficiente e atributos ARIA apropriados.
+```
+
+Neste prompt, dizemos explicitamente para fazer apenas melhorias visuais e não afetar como o app funciona. Isso é crucial – diz à IA "não toque na lógica." Listamos especificidades (design de card, contraste de cor, espaçamento) para que a IA saiba quais aspectos da UI ajustar. Este tipo de prompt é perfeito depois que você construiu funcionalidades e quer embelezar a interface.
+
+## Responsividade
+
+<Info>
+  **Quando usar:** Quando o layout do seu app precisa funcionar em diferentes tamanhos de tela (mobile, tablet, desktop). Se você notar que as coisas ficam boas no desktop mas quebram no mobile, é hora de usar um prompt de responsividade. Também é sábio fazer isso como uma passada final em qualquer tarefa com foco em UI.
+</Info>
+
+<Info>
+  **Como usar:** Enfatize uma **abordagem mobile-first** e peça para a IA garantir que o design seja responsivo em todos os breakpoints padrão. Se estiver usando um framework CSS como Tailwind, mencione para usar seu grid/flex e breakpoints integrados. Você também pode instruir a IA a evitar larguras fixas ou qualquer coisa que impeça o redimensionamento fluido. Fornecer um exemplo do que quebra em telas pequenas (se você tiver um) pode ajudar, ou simplesmente dizer "faça tudo se adaptar graciosamente a telas menores."
+</Info>
+
+**Exemplo de Prompt – Responsividade Mobile:**
+
+```
+Nosso app precisa ser **totalmente responsivo** em mobile, tablet e desktop.
+
+- Siga uma estratégia **mobile-first**: priorize o layout para telas pequenas, depois ajuste para telas maiores.
+- Use práticas modernas de UI/UX para design responsivo. (Para Tailwind CSS, use os breakpoints padrão `sm, md, lg, xl` – sem breakpoints customizados a menos que necessário.)
+- Garanta que cada página (especialmente o dashboard e páginas de detalhes do projeto) reflua adequadamente em uma tela pequena: elementos devem empilhar ou redimensionar conforme necessário, texto deve permanecer legível, e nenhum conteúdo deve transbordar para fora da tela.
+- **Não mude o design principal ou funcionalidade**, apenas certifique-se de que se adapte flexivelmente a diferentes tamanhos de tela.
+
+Após fazer as mudanças, por favor verifique novamente o layout nas dimensões do iPhone 12 e uma largura típica de desktop.
+```
+
+Neste prompt, instruímos explicitamente a IA para tornar todos os designs responsivos em cada breakpoint, focando em mobile first. Até referenciamos os breakpoints padrão do Tailwind para guiar a implementação. Esclarecemos que o design e funcionalidade não devem mudar fundamentalmente; devem apenas funcionar bem em telas menores. Isso estabelece uma expectativa clara: o resultado deve parecer o mesmo em termos de design, mas redimensionar e reempilhar fluidamente para responsividade.
+
+<Info>
+  _(Usando o upload de imagem do Lovable? Você poderia anexar uma captura de tela de um layout mobile quebrado e pedir: "Faça ficar assim no mobile." Prompts visuais podem reforçar o que você descreve.)_
+</Info>
+
+## Refatoração
+
+<Info>
+  **Quando usar:** Periodicamente durante o desenvolvimento, especialmente se a IA ou você adicionaram muito código e as coisas estão ficando bagunçadas ou lentas. Refatoração significa limpar o código sem alterar o que ele faz – melhorando estrutura, legibilidade ou performance. O Lovable pode até sugerir refatoração se detectar muitos padrões repetidos ou funções longas.
+</Info>
+
+<Info>
+  **Como usar:** Identifique o escopo: é um único arquivo, uma funcionalidade específica ou toda a base de código? Para um único arquivo ou componente, você pode usar um prompt como "Refatore este arquivo para clareza e eficiência, mas **não altere sua funcionalidade ou saída**." Enfatize que tudo deve se comportar da mesma forma após a refatoração​. Se quiser, especifique no que focar (ex: reduzir duplicação, melhorar nomes de variáveis, simplificar lógica). Para refatoração em maior escala, é sábio pedir à IA para **planejar a refatoração em etapas** (veja a próxima seção sobre Planejamento) ou auditar a estrutura do código primeiro.
+</Info>
+
+**Exemplo de Prompt – Refatoração Segura de Arquivo:**
+
+```
+Refatore o **arquivo do componente ProjectList**, mas **mantenha seu comportamento e UI exatamente iguais**. 
+
+Objetivos:
+- Melhorar a estrutura do código e legibilidade (simplificar funções complexas, dividir em menores se necessário).
+- Remover quaisquer variáveis ou imports não utilizados.
+- Garantir que o arquivo siga as melhores práticas e esteja bem documentado.
+
+**Não** introduza novas funcionalidades ou mude como o componente funciona para o usuário – isso é puramente uma limpeza de código para manutenibilidade. Se alguma parte do código não estiver clara, adicione um breve comentário para esclarecimento.
+```
+
+```
+Revise este código e sugira melhorias para legibilidade, performance e manutenibilidade: [cole o código]. Foque nas melhores práticas do TypeScript, tratamento adequado de erros e aderência aos padrões do React.
+```
+
+```
+Sugira uma estrutura de pastas para uma aplicação [tipo] com estas funcionalidades: [liste as funcionalidades]. Inclua diretrizes para organizar componentes, hooks, utilitários e tipos com separação adequada de responsabilidades.
+```
+
+```
+Estou recebendo este erro: [cole o erro]. Aqui está o código relevante: [cole o código]. Você pode me ajudar a entender o que está causando isso e como corrigir? Por favor, explique por que a solução funciona.
+```
+
+Este prompt declara claramente o componente a ser refatorado e as restrições (nenhuma mudança funcional permitida). Ele prioriza estrutura e manutenibilidade​. A IA passará pelo arquivo, talvez reordenando funções, renomeando coisas para clareza, comentando partes complicadas, etc., mas a saída da aplicação deve permanecer idêntica. Isso ajuda a prevenir o cenário temido de uma "refatoração" acidentalmente quebrar algo.
+
+Para esforços de refatoração maiores (como muitos arquivos ou um projeto inteiro), considere fazer a IA **analisar a base de código primeiro**. Você pode usar um prompt para obter um relatório sobre o que poderia ser melhorado e onde (veja o prompt _Revisão Completa do Sistema_ na seção de Debugging para uma ideia). Então, aplique mudanças incrementalmente. Refatore em pequenos pedaços e teste conforme avança, ao invés de uma reformulação massiva.
+
+## Tipos de Aplicação
+
+```
+Crie uma loja de e-commerce inicial com listagem de produtos, busca, filtragem, funcionalidade de carrinho e processo de checkout. Inclua contas de usuário, histórico de pedidos e gerenciamento básico de produtos. Foque em uma UI limpa e orientada para conversão.
+```
+
+```
+Construa um CMS básico para gerenciar posts de blog ou artigos com um painel administrativo. Inclua recursos para criar, editar e publicar conteúdo com formatação de texto rico, upload de imagens e gerenciamento básico de SEO.
+```
+
+```
+Crie um aplicativo de gerenciamento de projetos com quadros de tarefas, listas e cartões. Inclua recursos para atribuição de tarefas, prazos, etiquetas, comentários e acompanhamento de progresso. Implemente funcionalidade de arrastar e soltar e colaboração entre usuários.
+```
+
+```
+Construa um componente de feed de mídia social com posts, comentários, curtidas e funcionalidade de compartilhamento. Inclua perfis de usuário, mecânicas de seguir/deixar de seguir e um sistema de notificações. Garanta que o design seja responsivo e suporte rolagem infinita.
+```
+
+```
+Crie um painel de analytics com múltiplos tipos de gráficos (barras, linhas, pizza), opções de filtragem de dados, seleção de intervalo de datas e relatórios exportáveis. Inclua design responsivo e estados de carregamento skeleton para busca de dados.
+```
+
+```
+Construa um starter de aplicação SaaS com autenticação de usuário, gerenciamento de assinaturas, uma página de configurações e um painel básico. Inclua controle de acesso baseado em funções, gerenciamento de contas e uma arquitetura bem estruturada para expansão futura.
+```
+
+```
+Crie uma interface de chat com um assistente de IA que ajuda usuários com [descreva tarefa/propósito]. Inclua histórico de conversas, indicadores de digitação, threading de mensagens e a capacidade de fornecer feedback sobre respostas da IA.
+```
+
+```
+Construa uma ferramenta que usa IA para gerar [descreva tipo de conteúdo] baseado em entradas e parâmetros do usuário. Inclua opções para refinar o conteúdo gerado, salvar favoritos e exportar em diferentes formatos.
+```
+
+```
+Implemente um componente de recomendação para [descreva itens] baseado no comportamento e preferências do usuário. Inclua a capacidade de fornecer feedback sobre recomendações, ver por que itens foram recomendados e descobrir novas opções.
+```
+
+```
+Aprimore a experiência de busca para [descreva conteúdo] com recursos alimentados por IA como compreensão de linguagem natural, busca semântica e classificação inteligente de resultados. Inclua sugestões de busca e auto-completar.
+```
+
+```
+Crie um painel que usa IA para analisar [descreva dados] e apresentar insights de forma acessível. Inclua visualizações, explicações em linguagem simples de tendências e a capacidade de fazer perguntas sobre os dados.
+```
+
+```
+Implemente um sistema para personalizar a experiência do usuário baseado no comportamento e preferências. Inclua elementos de UI customizáveis, recomendações de conteúdo e configurações que permitam aos usuários controlar sua personalização.
+```
+
+## Desenvolvimento React
+
+```
+Crie um hook React customizado chamado use[Nome] que lida com [funcionalidade]. Ele deve lidar com inicialização adequada de estado, limpeza, memoização de valores e tipagem TypeScript. Inclua exemplo de uso e tratamento de erros.
+```
+
+```
+Refatore este componente para usar React Context ao invés de prop drilling: [cole o componente]. Crie um provider de contexto adequado com estado e ações tipados, e separe a lógica de negócio da renderização da UI.
+```
+
+```
+Otimize este componente React para prevenir re-renderizações desnecessárias: [cole o componente]. Use memo, useMemo e useCallback onde apropriado. Adicione comentários explicativos sobre por que cada otimização é necessária.
+```
+
+```
+Crie um formulário com validação para [descreva os campos do formulário e regras de validação]. Use react-hook-form com validação de schema zod, tratamento adequado de erros e manipulação de submissão que inclui estados de carregamento.
+```
+
+```
+Implemente um padrão de busca de dados para [descreva os dados] usando React Query. Inclua estados de carregamento adequados, tratamento de erros, atualizações otimistas e estratégias de sincronização de dados.
+```
+
+```
+Crie uma animação de transição suave para [descreva o elemento] quando ele [descreva a ação]. Use transições CSS ou Framer Motion, garantindo que a animação funcione bem em todos os dispositivos e não prejudique a performance.
+```
+
+## Bloqueando Arquivos / Limitando Escopo
+
+<Info>
+  **Quando usar:** Às vezes você quer que a IA se concentre em partes específicas do projeto e deixe todo o resto intocado – essencialmente "bloquear" certos arquivos ou áreas para que não sejam modificados. Isso é útil se você escreveu manualmente algum código ou tem um componente estável que não quer que seja alterado enquanto a IA trabalha em outra coisa. Como o Lovable ainda não tem um recurso literal de bloqueio de arquivos, usar o prompt para restringir o escopo é a melhor alternativa.
+</Info>
+
+<Info>
+  **Como usar:** No seu prompt, **instrua explicitamente a IA para não alterar** certos arquivos ou componentes. Você pode dizer, "Não edite os arquivos de autenticação," ou "Mantenha o componente HomePage inalterado." Além disso, seja claro sobre onde a IA _deve_ focar as mudanças. Esta diretiva deve ser incluída cada vez que você fizer um prompt durante esse período sensível, para lembrar a IA do limite.
+</Info>
+
+**Exemplo de Prompt – Limitar Escopo de Mudanças:**
+
+```
+Por favor, **foque apenas na página Dashboard** para esta mudança.
+
+- **Não modifique** os arquivos `LoginPage.tsx` ou `AuthProvider.tsx` de forma alguma (a autenticação está funcionando bem, e queremos mantê-la intacta).
+- Concentre suas edições de código em `Dashboard.tsx` e componentes relacionados ao dashboard **apenas**.
+
+Tarefa: Adicione uma nova seção ao Dashboard que mostre "Tarefas com vencimento nesta semana". Certifique-se de buscar as tarefas relevantes do banco de dados.
+
+*(Novamente, nenhuma mudança nos arquivos de login ou auth – eles estão fora dos limites.)*
+```
+
+Aqui incluímos uma restrição muito direta: _"abstenha-se de alterar páginas X ou Y e foque as mudanças apenas na página Z."_. Ao repetir isso no prompt, direcionamos a atenção da IA. A tarefa em si (adicionar uma seção ao dashboard) é dada, mas a envolvemos com instruções sobre escopo. Isso reduz muito a chance do Lovable mexer no seu sistema de login enquanto tenta adicionar um recurso ao dashboard.
+
+Outro cenário é ao atualizar um recurso muito delicado. Em tais casos, você pode combinar limitação de escopo com um tom cauteloso. Por exemplo: ****_____"Esta atualização é sensível; proceda com muito cuidado e evite tocar em qualquer coisa não relacionada"_____****. Isso foi demonstrado em um prompt como: _"Esta atualização é bastante delicada... Evite atalhos ou suposições — tire um momento para buscar esclarecimentos se não tiver certeza. Precisão é crucial."_. Incluir uma linha assim define a "mentalidade" da IA para ser extra cautelosa.
+
+## Planejamento
+
+<Info>
+  **Quando usar:** Antes de mergulhar em uma implementação complexa ou de múltiplas etapas, ou quando você tem uma funcionalidade grande que pode ser dividida em subtarefas. Prompts de planejamento também são úteis se você quiser que a IA esboce uma abordagem antes de escrever código, para que você possa verificar o plano (e ajustá-lo) sem gastar créditos de geração de código em um caminho errado. Essencialmente, use isso quando a _estratégia_ não for direta e você gostaria da ajuda da IA para pensar sobre ela.
+</Info>
+
+<Info>
+  **Como usar:** Peça para a IA produzir um plano ou checklist. Você pode dizer, "Esboce um plano passo a passo para X" ou "Antes de codificar, liste os passos que você tomará para implementar Y." Isso pode ser feito no modo Chat para garantir que ela não execute nenhuma mudança de código durante o planejamento​. Depois de obter o plano, você pode até discuti-lo (talvez fazer a IA explicar por que cada passo é necessário) e então prosseguir para a implementação passo a passo. Prompts de planejamento são meta – eles não constroem o app diretamente, mas preparam o terreno para uma construção mais suave.
+</Info>
+
+**Exemplo de Prompt – Planejando uma Implementação de Funcionalidade:**
+
+```
+Antes de escrever qualquer código, **planeje a implementação** da nova funcionalidade de Notificações.
+
+- Liste cada passo necessário para adicionar notificações por email quando uma tarefa estiver atrasada.
+- Considere tanto aspectos de frontend (mudanças na UI, se houver) quanto de backend (criando verificações agendadas ou triggers).
+- Garanta que o plano mantenha a funcionalidade atual estável – não podemos quebrar nada existente.
+- Forneça o plano como uma lista ordenada (1, 2, 3, ...), com uma breve explicação de cada passo.
+
+Uma vez que você esboce o plano, pause para revisão. **Não faça nenhuma mudança de código ainda.**
+```
+
+Este prompt diz à IA para agir como um planejador. Ele pede um plano sequenciado para implementar uma funcionalidade de "notificações por email para tarefas atrasadas". Dizemos explicitamente para não codificar ainda (então executaríamos isso no modo Chat ou apenas confiaríamos que a IA produzirá um plano). A IA pode responder com algo como:
+
+1. **Adicionar um campo de timestamp** às tarefas para data de vencimento (se não estiver presente).
+2. **Criar uma função do lado do servidor** (ou job agendado) para verificar tarefas atrasadas periodicamente.
+3. **Integrar envio de email** usando um serviço de email (ex: Resend ou SMTP) quando uma tarefa atrasada for encontrada.
+4. **Atualizar a UI** para permitir que usuários ativem/desativem notificações para uma tarefa (configuração opcional).
+5. **Testar o fluxo** com uma tarefa que acabou de passar do prazo para garantir que um email seja enviado.
+
+Ao revisar tal plano, você pode capturar quaisquer problemas (talvez percebamos que precisamos de uma nova tabela no BD, ou talvez o passo 4 esteja fora do escopo por agora, etc.) _antes_ que qualquer codificação aconteça. É muito mais fácil ajustar o plano do que reescrever código ruim. Prompts de planejamento economizam tempo em funcionalidades complexas ao acertar a abordagem desde o início​.
+
+## Configuração do Stripe
+
+<Info>
+  **Quando usar:** Quando você quiser integrar pagamentos em seu app usando Stripe. O Lovable tem pontos de integração para Stripe, mas requer configurar chaves, webhooks e UI para checkout. Um prompt pode lidar com o boilerplate de conectar à API do Stripe. Use isso quando precisar adicionar comércio (vender um produto, assinatura, etc.) em seu projeto.
+</Info>
+
+<Info>
+  **Como usar:** Forneça os detalhes que o Stripe precisa: modo (teste ou produção), informações do produto ou preço, e URLs de redirecionamento após o pagamento. Além disso, instrua como a UI deve se comportar (ex: um formulário/modal de checkout). É **crucial** mencionar que as chaves sensíveis serão fornecidas de forma segura (não codificadas diretamente no prompt) – você normalmente as armazena em variáveis de ambiente ou no armazenamento secreto do Lovable. Então você pode dizer \"assuma que configurei as chaves da API no ambiente.\" Dessa forma, a IA saberá para chamar as chaves, não incluí-las literalmente. Além disso, especifique para _não_ alterar código não relacionado ao configurar o Stripe (para evitar mudanças acidentais).
+</Info>
+
+**Exemplo de Prompt – Integrando Pagamentos Stripe:**
+
+```
+Quero **adicionar pagamentos Stripe** ao app.
+
+- Use **Stripe em modo de teste** por enquanto.
+- Temos um produto no Stripe com ID `prod_12345` e um ID de preço `price_67890` (compra única).
+- Implemente um botão de checkout na **página de Preços** que inicie um checkout Stripe para esse produto.
+- Após pagamento bem-sucedido, redirecione o usuário para `/payment-success`. Se o pagamento for cancelado, redirecione para `/payment-cancelled`.
+
+Importante:
+- Assuma que as chaves da API e segredos de webhook estão configurados de forma segura (**não** os codifique diretamente).
+- **Não** modifique outras páginas ou recursos não relacionados a pagamentos.
+
+Quando terminar, forneça quaisquer instruções de configuração de endpoint de webhook que eu precise (ex: URL para adicionar no painel do Stripe para eventos pós-pagamento).
+```
+
+Este prompt fornece todos os detalhes principais para o Stripe: modo de teste, IDs de produto, o que acontece em sucesso/cancelamento, e onde colocar o botão de checkout. Ele explicitamente diz para não tocar em mais nada. A IA (e o helper de integração Stripe do Lovable) usará isso para estruturar a integração Stripe. Por baixo dos panos, o Lovable pode criar uma função serverless (se usando Supabase) para lidar com webhooks, etc., mas você não precisa fazer prompt disso separadamente – a instrução aqui geralmente é suficiente para uma configuração básica.
+
+_Nota:_ Incluímos uma linha sobre as chaves da API serem seguras porque nunca queremos chaves secretas no prompt. A documentação nos lembra: _"Use sua Chave Secreta do Stripe nos segredos da Função Edge do Supabase, e evite incluí-las no prompt"_. Então ao dizer à IA "assuma que está configurado," você garante que o código fará referência a uma variável de ambiente ou config, não uma chave em texto plano.
+
+Após executar este prompt, teste o fluxo de pagamento com os números de cartão de teste do Stripe. Se algo não estiver funcionando (ex: o webhook), o Lovable pode mostrar erros que você pode então debugar ou refinar com outro prompt.
+
+## Supabase & Backend
+
+```
+Melhore o apelo visual deste componente: [cole o componente]. Adicione animações, melhore o espaçamento, crie uma aparência polida mantendo os padrões de acessibilidade e comportamento responsivo.
+```
+
+```
+Projete um esquema de banco de dados para [descreva sua aplicação] com estas relações de entidades: [descreva as relações]. Inclua restrições de chave estrangeira, índices para performance e tipos de dados adequados com considerações para escalabilidade.
+```
+
+```
+Crie um serviço para buscar dados da [nome da API] e implemente cache, lógica de retry de erro e throttling de requisições. Configure interfaces TypeScript adequadas para os dados de resposta e trate o versionamento da API de forma elegante.
+```
+
+```
+Crie políticas de Row Level Security para uma aplicação multi-tenant com estas tabelas: [liste as tabelas]. Implemente isolamento adequado de usuários, acesso baseado em funções e trate o acesso a dados hierárquicos com considerações para performance.
+```
+
+```
+Crie uma Supabase Edge Function para lidar com [descreva a funcionalidade] com tratamento adequado de erros, validação de entrada e verificações de segurança. Inclua rate limiting e uso adequado de variáveis de ambiente.
+```
+
+```
+Implemente sincronização de dados em tempo real para [descreva a funcionalidade] usando subscriptions do Supabase. Trate o gerenciamento de conexão, degradação elegante quando offline e resolução de conflitos.
+```
+
+```
+Implemente uma funcionalidade robusta de busca para [descreva o tipo de conteúdo] com filtragem, ordenação e destaque dos termos encontrados. Inclua sugestões de digitação, buscas recentes e tratamento adequado de cenários sem resultados.
+```
+
+```
+Crie uma tabela/grid de dados para [descreva os dados] com ordenação, filtragem, paginação, redimensionamento de colunas e seleção de linhas. Inclua funcionalidades para exportar dados e personalizar colunas visíveis.
+```
+
+```
+Construa um sistema para importar e exportar [descreva os dados] em vários formatos (CSV, JSON, etc.). Inclua validação, indicadores de progresso, tratamento de erros e a capacidade de mapear campos durante a importação.
+```
+
+```
+Crie um conjunto de gráficos interativos para [descreva dados/métricas] usando Recharts. Inclua diferentes tipos de visualização (barra, linha, pizza), seleção de período de tempo, capacidades de drill-down e comportamento responsivo.
+```
+
+```
+Implemente uma estratégia para sincronizar mudanças de dados offline com um backend quando a conectividade for restaurada. Trate a resolução de conflitos, atualizações otimistas da UI e forneça indicadores visuais para o status de sincronização.
+```
+
+```
+Crie um assistente de formulário multi-etapas para coletar [descreva os dados] com validação, rastreamento de progresso, capacidade de salvar rascunhos e uma revisão resumida antes do envio. Trate campos de formulário condicionais baseados em respostas anteriores.
+```
+
+## Fluxo de Trabalho
+
+```
+Conecte este projeto Lovable ao GitHub e configure um bom fluxo de trabalho para contribuições. Inclua regras de proteção de branch, templates de PR e configuração de fluxo de trabalho CI/CD com deployments de preview automáticos.
+```
+
+```
+Refatore este componente grande em componentes menores e mais gerenciáveis: [cole o componente]. Extraia partes reutilizáveis, implemente passagem adequada de props, mantenha o gerenciamento de estado e garanta que a refatoração não quebre a funcionalidade existente.
+```
+
+```
+Sugira uma estratégia de testes para [componente/funcionalidade] incluindo o que testar e como. Inclua testes unitários para lógica de negócio, testes de integração para fluxo de dados e testes de UI para fluxos críticos do usuário com melhores práticas para mock de dependências.
+```
+
+```
+Implemente tratamento abrangente de erros para esta função assíncrona: [cole a função]. Inclua lógica de retry, mecanismos de fallback, relatório adequado de erros, mensagens de erro amigáveis ao usuário e logging para fins de debugging.
+```
+
+```
+Configure um pipeline de deployment para esta aplicação que inclua ambientes de staging e produção, migrações automáticas de banco de dados, configurações específicas por ambiente e capacidades de rollback.
+```
+
+```
+Analise e otimize este fluxo do usuário: [descreva o fluxo]. Sugira melhorias para experiência do usuário, reduza pontos de atrito, implemente progressive enhancement e garanta acessibilidade por todo o processo.
+```
+
+## Usando o Modo Chat vs Modo Padrão
+
+<Info>
+  **Quando usar:** Lovable tem dois modos para prompts: **Modo Padrão** (que aplica mudanças imediatamente ao seu projeto) e **Modo Somente Chat** (que é mais como uma conversa sem alterar código até você dizer para fazê-lo). Saber quando usar cada um pode otimizar seu fluxo de trabalho. Use o Padrão para tarefas diretas de codificação e use o modo Chat para brainstorming, depuração, ou quando você quer discutir mudanças antes de executá-las.
+</Info>
+
+<Info>
+  **Como usar:**
+
+  - **Modo Padrão** é ótimo para quando você tem uma funcionalidade bem definida para construir ou mudança para fazer. Você dá a instrução, e Lovable fará tudo de uma vez se possível.
+  - **Modo Chat**, por outro lado, é útil se você quer ter uma conversa de ida e volta ou analisar algo (como perguntar _"Por que isso não está funcionando?"_ ou _"Qual é a melhor forma de fazer X?"_) sem alterar imediatamente a base de código​. No Modo Chat, a IA responderá com análise ou um plano, e você geralmente tem que dizer explicitamente "vá em frente e implemente" quando estiver pronto.
+</Info>
+
+**Exemplo de caso de uso – Padrão vs Chat:**
+
+Suponha que você suspeite que há código desatualizado em seu projeto que precisa ser limpo. No modo Padrão, você poderia fazer um prompt direto:
+
+<Info>
+  _Revise o app e me diga onde há código desatualizado._
+</Info>
+
+Lovable poderia tentar tanto identificar quanto possivelmente começar a refatorar tudo de uma vez​. Mas talvez você realmente queira ser cuidadoso e apenas obter conselhos. Nesse caso, você mudaria para o modo Chat e perguntaria algo como:
+
+<Info>
+  _Estou vendo alguns avisos de biblioteca depreciada. Que partes do código podem estar desatualizadas, e como devemos atualizá-las?_
+</Info>
+
+Agora a IA irá _discutir_ isso com você, ao invés de imediatamente reescrever arquivos.
+
+Similarmente, se você tem um erro e quer que a IA o analise, o modo Chat é mais seguro. Você pode copiar uma mensagem de erro e perguntar:
+
+<Info>
+  _O que esse erro significa, e como podemos corrigi-lo?_
+</Info>
+
+A IA explicará e proporá uma solução. Uma vez que você concorde, você pode mudar para o modo Padrão ou explicitamente instruir para aplicar a correção.
+
+Em resumo, **use o Modo Padrão para construção direta** ("faça X para mim"), e **use o Modo Chat para solução de problemas ou discussões de design** ("por que ou como devemos fazer X?"). Um fluxo de trabalho concreto é: _Faça brainstorming no Chat (obtenha um plano ou identifique problemas), então execute no Padrão._ Esta abordagem é até recomendada: por exemplo, _use o Modo Chat para ter a IA analisando erros antes de fazer mudanças_​. É como usar ChatGPT para conselhos e então aplicar as mudanças uma vez que você esteja confiante.
+
+_(Certifique-se de que o Modo Somente Chat esteja habilitado em suas configurações sob Labs se você não o vir​. Este modo garante que a IA não escreverá código para seu projeto até você dizer para fazê-lo, o que é perfeito para experimentação segura.)_
+
+## Escrevendo Bases de Conhecimento e PRDs
+
+<Info>
+  **Quando usar:** No início de um projeto e sempre que você tiver mais contexto para dar à IA do que cabe em um único prompt. No Lovable, a **Base de Conhecimento** é um lugar especial nas configurações do seu projeto onde você pode armazenar informações de contexto, requisitos e diretrizes que persistem através dos prompts​. Um **Documento de Requisitos do Projeto (PRD)** é um resumo abrangente dos objetivos e especificações do seu app – essencialmente, o blueprint do que você está construindo. Use essas ferramentas para prevenir mal-entendidos e para ancorar a IA com a visão geral do seu projeto.
+</Info>
+
+<Info>
+  **Como usar:** Comece preenchendo a Base de Conhecimento no Lovable com informações-chave sobre seu projeto. Isso pode incluir:
+
+  - **Visão Geral & Objetivos:** O que é o projeto e o problema que ele resolve.
+  - **Fluxo do Usuário:** Uma descrição de como os usuários navegam ou usam o app (ex: "Usuários se cadastram, depois veem um dashboard, podem criar tarefas, etc.")​.
+  - **Funcionalidades Principais & Escopo:** Quais funcionalidades estão no escopo (e talvez note algumas fora do escopo para evitar expansão de funcionalidades)​.
+  - **Stack Tecnológica:** Quais tecnologias, APIs e serviços serão usados​.
+  - **Diretrizes de Design:** Quaisquer instruções específicas de UI/UX – branding, esquema de cores, layouts, requisitos de acessibilidade​.
+  - **Detalhes do Backend:** Delinear modelos de dados, tabelas principais do banco de dados, integrações como Stripe ou Supabase, etc.​..
+</Info>
+
+Isso pode parecer muito, mas escrever isso compensa. **A IA usará essas informações em cada prompt para se manter alinhada com as necessidades do seu projeto​.** É como dar à IA uma memória de longo prazo sobre seu app. Você normalmente configura isso uma vez (e atualiza conforme necessário).
+
+Após popular a base de conhecimento, você pode literalmente dizer à IA para usá-la. Por exemplo, seu primeiro prompt para o Lovable pode ser: \_"Antes de escrever qualquer código, por favor **__revise a Base de Conhecimento__** e confirme que você entende o projeto."\_​ Isso permite que a IA resuma ou reconheça o contexto, e você pode perceber se ela perdeu algo.
+
+**Exemplo de Prompt – Usando a Base de Conhecimento:**
+
+```
+Usuário: Antes de escrever qualquer código, por favor revise a Base de Conhecimento e compartilhe seu entendimento do meu projeto.
+IA (resposta provável): "Claro. Baseado na Base de Conhecimento: Você está construindo um app de gerenciamento de tarefas para equipes. O fluxo do app é Usuários se cadastram -> veem um dashboard -> criam projetos e tarefas. A stack tecnológica é Next.js para frontend, Supabase para backend (autenticação e banco de dados). Funcionalidades principais incluem criação de projetos, atribuição de tarefas e um dashboard de relatórios. Funcionalidades no escopo: CRUD de tarefas, papéis de usuário, notificações por email; Fora do escopo: colaboração em tempo real. O design deve seguir um estilo corporativo limpo com Tailwind CSS, e precisa ser responsivo. Backend usa Supabase com segurança em nível de linha para separação de dados multi-tenant..." (e assim por diante).
+```
+
+Esse tipo de resumo da IA confirma que ela ingeriu suas especificações corretamente. Se ela entendeu algo errado, você pode corrigi-la no modo Chat. Uma vez confirmado, você prossegue com a construção (a IA agora "conhece" o plano geral).
+
+Escrever um PRD e preencher a Base de Conhecimento pode parecer trabalho extra inicial, mas **rende dividendos durante todo o desenvolvimento**. Reduz erros e alucinações da IA porque a IA sempre tem uma referência do que o app deve fazer​​. É especialmente útil para projetos maiores que não podem ser construídos em um ou dois prompts. Pense nisso como semear a IA com o mesmo entendimento que você tem na sua cabeça.
+
+Por último, mantenha a Base de Conhecimento conforme seu projeto evolui. Se você adicionar uma funcionalidade importante ou mudar o escopo, atualize o documento PRD/Base de Conhecimento. Dessa forma, prompts futuros considerarão as novas informações. É muito mais fácil do que re-explicar contexto toda vez. Em essência, a Base de Conhecimento \+ PRD é seu manual de projeto de IA – mantém todos (você e a IA) na mesma página sobre o que você está construindo e como.

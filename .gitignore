@@ -3,3 +3,9 @@ site
 
 # Local Netlify folder
 .netlify
+
+
+.env
+node_modules
+package-lock.json
+package.json

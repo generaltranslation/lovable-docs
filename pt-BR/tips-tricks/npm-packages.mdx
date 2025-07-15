@@ -1,0 +1,50 @@
+---
+title: 'Usando pacotes npm'
+description: 'Aprenda como aproveitar pacotes npm para estender suas aplicações Lovable com recursos avançados'
+icon: 'box'
+---
+
+Embora o Lovable seja poderoso por si só, permitindo que os usuários construam aplicações web sofisticadas, você pode aproveitar pacotes npm para recursos mais avançados e estendidos. Esses pacotes ajudam você a construir aplicações ainda mais complexas e ricas em recursos com facilidade.
+
+<Info>
+  **O que é npm?**
+
+  npm (Node Package Manager) é um gerenciador de pacotes para JavaScript que permite aos desenvolvedores compartilhar e reutilizar código. Ele hospeda milhares de pacotes, que são pedaços de código reutilizável, que você pode facilmente integrar em seus projetos para estender funcionalidades.
+
+  Você pode acessá-lo [em npmjs.com](https://www.npmjs.com/).
+</Info>
+
+## Usando pacotes npm para recursos avançados
+
+Digamos que você gostaria de criar uma ferramenta que permita organizar suas tarefas em diferentes quadros Kanban, similar a muitas ferramentas populares de gerenciamento de projetos. Você pode solicitar ao Lovable para construir essa ferramenta do zero, mas pode ser mais lento e desafiador alcançar a funcionalidade desejada.
+
+Em vez disso, você pode usar pacotes npm para simplificar e acelerar o processo. Por exemplo, o pacote [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd) fornece funcionalidade robusta de arrastar e soltar. Ao usar este pacote, você pode facilmente criar um quadro Kanban onde os usuários podem adicionar novos cartões, movê-los dentro das colunas e reordená-los.
+
+<CodeGroup>
+  ```bash Example prompt
+  Use the hello-pangea/dnd npm package to add drag-and-drop functionality to my Kanban board app. 
+  Ensure users can add new cards, move them within columns, and reorder them.
+  ```
+</CodeGroup>
+
+Este prompt direciona o Lovable a integrar o pacote em seu projeto, facilitando o alcance da funcionalidade desejada. Dependendo de outros requisitos, seu resultado pode parecer algo assim.
+
+<Frame>
+  <img src="/assets/npm-example-using-pangea-dnd.png" alt="Lovable implementou funcionalidade de arrastar e soltar no Kanban" />
+</Frame>
+
+## Qualidade e responsabilidade
+
+É importante observar que, embora os pacotes npm possam melhorar significativamente seus projetos, o Lovable não pode garantir a qualidade ou confiabilidade desses pacotes de terceiros.
+
+A funcionalidade e o desempenho dos pacotes npm são de responsabilidade do usuário final, e é essencial testá-los e validá-los completamente dentro de sua aplicação.
+
+### Aumentando suas chances de sucesso
+
+Aqui estão algumas estratégias para ajudá-lo a avaliar a legitimidade e qualidade dos pacotes npm antes de integrá-los aos seus projetos.
+
+* **Número de downloads** - Verifique o número de downloads na página npm do pacote. Um alto número de downloads normalmente indica que o pacote é amplamente usado e confiável pela comunidade.
+
+* **Status de manutenção e atualizações mais recentes** - Examine o repositório do pacote para ver se ele é mantido ativamente. Commits frequentes, atualizações recentes e responsividade a problemas são bons indicadores de um pacote mantido ativamente. Certifique-se de que o pacote tenha atualizações recentes. Um pacote que é atualizado regularmente tem maior probabilidade de ser compatível com as versões mais recentes de dependências e práticas de segurança.
+
+* **Avaliações e feedback da comunidade** - Muitos pacotes npm são hospedados no GitHub ou repositórios de código similares. Leia avaliações, discussões e feedback de outros desenvolvedores nesses locais também. Além disso, fóruns específicos de desenvolvedores podem fornecer insights sobre a confiabilidade do pacote e quaisquer problemas potenciais.

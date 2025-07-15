@@ -1,0 +1,599 @@
+---
+title: "Prompting 1.1"
+description: "Estrutura de prompt, níveis de prompting, meta/reverse meta prompting, e táticas fundamentais com exemplos."
+icon: "graduation-cap"
+---
+
+## Atenção\!
+
+Para ajudá-lo a aproveitar ao máximo o Lovable, compilamos uma lista de estratégias e abordagens de prompting. Algumas delas foram coletadas da experiência da nossa equipe, e outras foram compartilhadas conosco por membros da nossa comunidade. Como o Lovable depende de modelos de linguagem grandes (LLMs), estratégias eficazes de prompting podem melhorar significativamente sua eficiência e precisão.
+
+## O que é Prompting?
+
+Prompting refere-se às instruções textuais que você fornece a um sistema de IA para executar uma tarefa​. No Lovable (um construtor de aplicativos alimentado por IA), prompts são como você "diz" à IA o que fazer – desde criar uma interface de usuário até escrever lógica de backend. O prompting eficaz é crítico porque o Lovable usa modelos de linguagem grandes (LLMs), então prompts claros e bem elaborados podem melhorar significativamente a eficiência e precisão da IA na construção do seu aplicativo​. Em resumo, melhores prompts levam a melhores resultados.
+
+## Por Que o Prompting Importa
+
+A maioria das pessoas pensa que prompting é apenas digitar uma solicitação em uma IA e torcer pelo melhor – **não é bem assim**. A diferença entre uma resposta medíocre da IA e ter a IA construindo fluxos de trabalho inteiros para você se resume a _como você faz o prompt_. Seja você um desenvolvedor ou não-técnico, dominar a engenharia de prompt no **Lovable** pode ajudá-lo a:
+
+- **Automatizar tarefas repetitivas** instruindo a IA precisamente sobre o que fazer.
+- **Debugar mais rapidamente** com insights e soluções geradas pela IA.
+- **Construir e otimizar fluxos de trabalho sem esforço**, deixando a IA lidar com o trabalho pesado uma vez que seja adequadamente orientada.
+
+E a melhor parte? Você não precisa ser um programador especialista. Com as técnicas de prompting certas, você pode desbloquear todo o potencial da IA no Lovable sem tentativa e erro desperdiçados. Este manual irá levá-lo desde conceitos fundamentais até estratégias avançadas de prompt para que você possa se comunicar com a IA efetivamente e construir mais rapidamente.
+
+## Entendendo Como a IA Pensa
+
+Diferentemente da programação tradicional, trabalhar com IA é sobre _comunicar_ suas intenções claramente. Modelos de Linguagem Grandes (LLMs) como os que alimentam o Lovable não "entendem" no sentido humano – eles preveem saídas baseadas em padrões em seus dados de treinamento. Isso tem implicações importantes para como você deve fazer prompts:
+
+Para resultados consistentes, ajuda estruturar seu prompt em seções claras. Um formato recomendado (como _"rodinhas de apoio"_ para prompting) usa seções rotuladas para **Contexto**, **Tarefa**, **Diretrizes** e **Restrições**​:
+
+- **Forneça Contexto e Detalhes:** Modelos de IA não têm senso comum ou contexto implícito além do que você fornece. Sempre forneça informações relevantes ou requisitos. Por exemplo, em vez de apenas dizer "Construa uma página de login", especifique detalhes: _"Crie uma página de login usando React, com autenticação por email/senha e manipulação de JWT."_ Inclua qualquer stack tecnológica ou ferramentas (ex: "usando Supabase para auth") explicitamente.
+- **Seja Explícito com Instruções e Restrições:** Nunca assuma que a IA inferirá seus objetivos. Se você tem restrições ou preferências, declare-as. Por exemplo, se uma saída deve usar uma biblioteca específica ou permanecer dentro de certo escopo, **diga ao modelo antecipadamente**. A IA seguirá suas instruções **literalmente** – ambiguidades podem levar a resultados indesejados ou "alucinações" da IA (informações inventadas).
+- **Estrutura Importa (Ordem e Ênfase):** Graças à arquitetura transformer, modelos prestam atenção especial ao _início e fim_ do seu prompt. Aproveite isso colocando os detalhes mais cruciais ou solicitações no início, e reiterando quaisquer requisitos absolutos no final se necessário. Também lembre que modelos têm uma **janela de contexto** fixa – prompts excessivamente longos ou conversas muito longas podem fazer a IA esquecer detalhes anteriores. Mantenha prompts focados e atualize o contexto quando necessário (ex: relembre o modelo de pontos-chave se uma sessão for longa).
+- **Conheça os Limites do Modelo:** O conhecimento da IA vem de dados de treinamento. Ela não pode saber sobre eventos recentes ou informações proprietárias que você não forneceu. Ela tentará _soar_ confiante mesmo se estiver adivinhando (o que leva a alucinações). Sempre forneça texto de referência ou dados para consultas factuais, ou esteja preparado para verificar sua saída.
+
+Pense no prompting como dizer a um estagiário muito literal _exatamente_ o que você precisa. Quanto mais clara e estruturada sua orientação, melhores os resultados. A seguir, vamos mergulhar nos princípios fundamentais que tornam um prompt eficaz.
+
+## Princípios Fundamentais de Prompting: O Framework C.L.E.A.R.
+
+Bons prompts seguem um conjunto de princípios simples. Uma maneira prática de lembrá-los é **CLEAR**: **Conciso, Lógico, Explícito, Adaptativo, Reflexivo**. Use-os como uma lista de verificação ao criar suas instruções:
+
+- **Conciso:** Seja claro e vá direto ao ponto. Palavras desnecessárias ou linguagem vaga podem confundir o modelo. Use linguagem direta: por exemplo, **RUIM:** "Você poderia talvez escrever algo sobre um tópico de ciência?" **BOM:** "**Escreva um resumo de 200 palavras sobre os efeitos das mudanças climáticas nas cidades costeiras**." Evite palavras de preenchimento – se um detalhe não é instrutivo, é uma distração. Busque precisão e brevidade ao descrever o que você quer.
+- **Lógico:** Organize seu prompt de maneira passo a passo ou bem estruturada. Divida solicitações complexas em etapas ordenadas ou tópicos para que a IA possa seguir facilmente. Em vez de uma única solicitação corrida, separe as preocupações. **RUIM:** "Construa uma funcionalidade de cadastro de usuário e também mostre algumas estatísticas de uso." **BOM:** _"Primeiro, implemente um formulário de cadastro de usuário com email e senha usando Supabase. Então, após o cadastro bem-sucedido, exiba um dashboard mostrando estatísticas de contagem de usuários."_ Um fluxo lógico garante que o modelo aborde cada parte da sua solicitação sistematicamente.
+- **Explícito:** Declare exatamente o que você quer e não quer. Se algo é importante, deixe claro. Forneça exemplos de formato ou conteúdo se possível. O modelo tem um vasto conhecimento, mas não vai ler sua mente sobre especificidades. **RUIM:** "Me fale sobre cães." (Muito aberto.) **BOM:** "**Liste 5 fatos únicos sobre Golden Retrievers, em tópicos.**" Da mesma forma, se você tem um estilo de saída desejado, diga isso (ex: "Responda em formato JSON" ou "Use um tom casual"). Trate a IA como um iniciante: assuma que nada é óbvio para ela.
+- **Adaptativo:** Não se contente com a primeira resposta se ela não for perfeita – prompts podem ser refinados **iterativamente**. Uma grande vantagem da IA do Lovable (e dos LLMs em geral) é que você pode ter um diálogo. Se a saída inicial não acertar o alvo, _adapte sua abordagem_: esclareça instruções ou aponte erros em um prompt de acompanhamento. Por exemplo, _"A solução que você deu está perdendo a etapa de autenticação. Por favor, inclua autenticação de usuário no código."_ Ao iterar, você guia o modelo para melhores resultados. Você pode até perguntar à IA como melhorar o próprio prompt (isso é **Meta Prompting**, abordado mais tarde).
+- **Reflexivo:** Reserve tempo para revisar o que funcionou e o que não funcionou após cada interação com IA. Isso é mais sobre _você_ do que sobre o modelo – como um engenheiro de prompt, anote qual fraseado de prompt obteve um bom resultado e qual levou à confusão. Após uma sessão complexa, você pode até pedir à IA para **resumir a solução final ou raciocínio** (discutiremos Reverse Meta Prompting em breve). Ser reflexivo ajuda você a criar melhores prompts no futuro, construindo um ciclo de melhoria contínua na sua comunicação com IA.
+
+Mantenha esses princípios CLEAR em mente ao desenvolver prompts. A seguir, veremos técnicas específicas de prompting do básico ao avançado, incluindo como estruturar prompts e aproveitar a IA como colaboradora.
+
+## Os Quatro Níveis de Prompting
+
+Prompting eficaz é uma habilidade que cresce com a prática. Aqui delineamos quatro níveis de domínio de prompting, desde "rodinhas de treinamento" estruturadas até técnicas meta avançadas. Cada nível tem seu caso de uso – combine-os conforme necessário:
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/IqWfKj4mUIo?si=aHVQNRgD8xF7EW06" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+### **1. Prompting Estruturado com "Rodinhas de Treinamento"** (Formato Explícito)
+
+Quando você está começando ou enfrentando uma tarefa muito complexa, ajuda usar uma estrutura rotulada em seu prompt. Isso funciona como _rodinhas de treinamento_ para garantir que você forneça todas as informações necessárias. Um formato comprovado no Lovable é dividir o prompt em seções como:
+
+<Info>
+  - **Contexto:** Configuração de fundo ou papel para a IA. (Ex: "Você é um assistente de codificação IA Lovable de classe mundial.")
+  - **Tarefa:** O objetivo específico que você quer alcançar. (Ex: "Construa um aplicativo de lista de tarefas full-stack com login de usuário e sincronização em tempo real.")
+  - **Diretrizes:** Abordagem ou estilo preferido. (Ex: "Use React para frontend, Tailwind para estilização e Supabase para autenticação e banco de dados.")
+  - **Restrições:** Limites rígidos ou o que não deve ser feito. (Ex: "Não use APIs pagas. O aplicativo deve funcionar em mobile e desktop.")
+</Info>
+
+Ao rotular claramente cada parte, você deixa pouco espaço para mal-entendidos. Por exemplo, um prompt pode parecer assim:
+
+<Note>
+  **Contexto:** Você é um desenvolvedor full-stack especialista usando Lovable.\
+  **Tarefa:** Crie uma página de login segura em React usando Supabase (autenticação email/senha).\
+  **Diretrizes:** A UI deve ser minimalista e seguir as convenções do Tailwind CSS. Forneça comentários de código claros para cada etapa.\
+  **Restrições:** Modifique apenas o componente `LoginPage`; não altere outras páginas. Certifique-se de que o resultado final seja uma página funcionando no editor Lovable.
+</Note>
+
+Este nível de detalhe guia a IA passo a passo. _Prompting com rodinhas de treinamento_ é excelente para iniciantes ou tarefas complexas de múltiplas partes – força você a pensar exatamente no que precisa e ajuda o modelo estruturando a solicitação.
+
+### 2. Prompting Conversacional (Sem Rodinhas de Treinamento)
+
+Conforme você fica confortável, nem sempre precisará de uma estrutura tão rígida. **Prompting conversacional** significa que você pode escrever para a IA de forma mais natural, similar a como explicaria uma tarefa para um colega, mantendo ainda a clareza. A chave é manter clareza e completude **sem** os rótulos formais. Por exemplo:
+
+<Info>
+  Vamos construir uma funcionalidade para fazer upload de uma foto de perfil. Deve incluir um formulário com um input de arquivo de imagem e um botão de envio. Quando enviado, deve armazenar a imagem no storage do Supabase e atualizar o perfil do usuário. Por favor, escreva o componente React necessário e qualquer função backend necessária para isso, e certifique-se de lidar com erros (como arquivo muito grande) de forma elegante.
+</Info>
+
+Este é um prompt de forma mais livre, mas ainda **logicamente ordenado e explícito** sobre os requisitos. Sem rodinhas de treinamento, mas ainda eficaz. Prompts conversacionais funcionam bem quando você confia em si mesmo para não esquecer detalhes importantes. Eles mantêm as interações mais naturais, especialmente em chat contínuo onde você está iterando nos resultados.
+
+<Tip>
+  Mesmo no estilo conversacional, você pode simular estrutura dividindo em parágrafos ou pontos para diferentes aspectos da solicitação. O objetivo é o mesmo: comunicação clara. Você pode usar este estilo para tarefas mais rápidas ou quando a IA já foi preparada com contexto.
+</Tip>
+
+### 3. **Meta Prompting (Melhoria de Prompt Assistida por IA)**
+
+Esta é uma técnica avançada onde você literalmente pede à IA para ajudar a melhorar seu prompt ou plano. Como a IA do Lovable (como o ChatGPT) pode raciocinar sobre linguagem, você pode usá-la para refinar suas instruções. Isso é especialmente útil se você obtém um resultado que está fora do alvo – pode ser um sinal de que seu prompt não estava claro. Por exemplo:
+
+<Info>
+  Revise meu último prompt e identifique qualquer ambiguidade ou informação faltante. Como posso reescrevê-lo para ser mais conciso e preciso?
+</Info>
+
+<Info>
+  Reescreva este prompt para ser mais específico e detalhado: 'Crie uma página de login segura em React usando Supabase, garantindo autenticação baseada em papéis.'
+</Info>
+
+A IA pode responder com uma versão melhor estruturada ou mais detalhada da sua solicitação. Isso pode revelar o que não estava claro. Essencialmente, você está deixando a IA agir como um _editor de prompts_. No Lovable, você pode fazer isso no **modo Chat** com segurança (já que o modo Chat não editará diretamente seu projeto). O meta prompting transforma a IA em um colaborador que te ajuda a pedir o que você realmente quer. É uma maneira poderosa de impulsionar suas habilidades de engenharia de prompts – a IA pode sugerir melhorias que você não havia considerado.
+
+### 4. **Meta Prompting Reverso (IA como Ferramenta de Documentação)**
+
+Meta prompting reverso significa usar a IA para resumir ou documentar o que aconteceu _depois_ de uma tarefa, para que você possa aprender ou reutilizar mais tarde. Pense nisso como pedir para a IA refletir sobre o processo e te dar um prompt ou explicação para a próxima vez. Isso é ótimo para depuração e captura de conhecimento. Por exemplo, depois de solucionar um problema complicado com o Lovable, você pode fazer o prompt:
+
+<Info>
+  Resuma os erros que encontramos ao configurar a autenticação JWT e explique como os resolvemos. Então, elabore um prompt que eu poderia usar no futuro para evitar esses erros ao configurar autenticação.
+</Info>
+
+A IA pode produzir um resumo conciso do problema e solução, seguido de um prompt modelo como _"Contexto: construindo auth… Tarefa: evitar erro X fazendo Y…"_. Essa abordagem de meta reverso te ajuda a construir uma biblioteca pessoal de **prompts reutilizáveis** e lições aprendidas. No Lovable, isso pode ser ouro: na próxima vez que você enfrentar uma tarefa similar, você tem um prompt testado e aprovado pronto para usar (ou pelo menos uma lista de verificação clara para seguir).
+
+<Tip>
+  Suponha que você passou uma hora depurando por que uma chamada de API falhou. Uma vez corrigido, peça para a IA documentar isso. Você não apenas reforçará seu entendimento, mas também criará material para alimentar a Base de Conhecimento ou projetos futuros para que a IA não repita os mesmos erros.
+</Tip>
+
+## Técnicas Avançadas de Prompting
+
+Uma vez que você dominou o básico, é hora de aproveitar estratégias mais avançadas para obter o máximo do AI do Lovable. Essas técnicas ajudam a lidar com cenários complexos, reduzir erros (como alucinações) e adaptar a saída da AI às suas necessidades.
+
+### Zero-Shot vs. Few-Shot Prompting
+
+**Zero-Shot Prompting** significa que você pede ao modelo para executar uma tarefa _sem exemplos_. Você confia no treinamento geral do modelo para saber o que fazer. Este é o padrão para a maioria dos prompts: você declara a solicitação, e a AI gera uma resposta puramente do que ela "sabe" e entende do seu prompt. Zero-shot é eficiente e funciona bem se a tarefa é comum ou claramente descrita. Por exemplo: _"Traduza a seguinte frase para o espanhol: 'I am learning to code.'"_ é um prompt zero-shot – comando direto, e a AI usa seu conhecimento para responder (não são necessários exemplos).
+
+**Few-Shot Prompting** significa que você fornece alguns **exemplos ou demonstrações** no seu prompt para mostrar à AI exatamente o formato ou estilo que você deseja. Essencialmente, você está ensinando por exemplo no próprio prompt. Isso pode melhorar drasticamente a qualidade da saída para formatos específicos ou quando a tarefa é incomum. Em um prompt few-shot, você pode dizer:
+
+<Info>
+  Corrija a gramática nestas frases:\\n**Entrada:** "the code not working good" → **Saída:** "The code is not working well."\\n**Entrada:** "API give error in login" → **Saída:** "The API gives an error during login."\\nAgora **Entrada:** "user not found in database" → **Saída:**
+</Info>
+
+Ao fornecer dois exemplos de entrada-saída, a AI está preparada para continuar com um padrão similar para o terceiro. Few-shot prompting é útil no Lovable quando você precisa de um estilo específico de resposta (por exemplo, comentários de código em um formato específico, ou exemplos de mensagens de commit). Ele consome mais tokens de prompt (porque você está incluindo esses exemplos), mas frequentemente produz resultados mais consistentes.
+
+<Info>
+  **Quando usar qual:**
+
+  Tente zero-shot primeiro para tarefas simples ou quando você confia na capacidade integrada do modelo. Se os resultados não estão no formato ou profundidade que você deseja, mude para few-shot adicionando um exemplo. Por exemplo, se você pede uma função e a saída não está seguindo seu estilo preferido, mostre uma função de exemplo com o estilo que você gosta e faça o prompt novamente. Few-shots brilham para saídas complexas (como escrever casos de teste – forneça um teste de exemplo, então peça para escrever mais). Em resumo, **zero-shot para respostas diretas rápidas, few-shot para estilo controlado ou instruções complexas.**
+</Info>
+
+### Gerenciando Alucinações e Garantindo Precisão
+
+"Alucinações" de IA são momentos em que o modelo inventa com confiança informações ou código que não estão corretos. Em uma plataforma de codificação como Lovable, alucinações podem significar que a IA usa uma função inexistente, chama uma API que não existe, ou fabrica detalhes em um resumo. Embora não possamos eliminar isso completamente (é uma limitação da IA), nós **podemos fazer prompts de maneiras que reduzem alucinações**:
+
+- **Forneça Dados de Fundamentação:** Quanto mais _contexto confiável_ você fornecer, menos a IA terá que adivinhar. No Lovable, sempre aproveite a **Base de Conhecimento** para seu projeto. Inclua seu Documento de Requisitos do Projeto (PRD), fluxos de usuário, stack tecnológica, etc., no contexto do projeto. Dessa forma, as respostas da IA serão "fundamentadas" nas especificidades do _seu_ app. Por exemplo, se seu app usa uma determinada biblioteca ou tem um modelo de dados definido, coloque isso na Base de Conhecimento para que a IA não invente outros diferentes.
+- **Referências no Prompt:** Ao fazer perguntas factuais ou código que interage com sistemas externos, inclua trechos de documentação relevantes ou dados. Por exemplo, _"Usando o formato de resposta da API fornecido abaixo, analise o objeto do usuário… [então inclua um pequeno exemplo JSON]."_ Ao mostrar à IA dados reais ou documentos, é menos provável que ela fabrique funções ou campos.
+- **Peça Raciocínio Passo a Passo:** Às vezes você suspeita que a IA pode estar improvisando. Nesses casos, peça para ela mostrar seu raciocínio ou verificação. Por exemplo, no **modo Chat** você poderia dizer: _"Explique sua abordagem de solução antes de dar o código final. Se houver incertezas, declare-as."_ Este prompting de cadeia de pensamento faz a IA desacelerar e se verificar. Pode capturar erros ou pelo menos revelá-los no raciocínio, que você pode corrigir.
+- **Instrua Honestidade:** Você pode incluir uma diretriz em seu prompt como _"Se você não tem certeza de um fato ou do código correto, não o fabrique – em vez disso, explique o que seria necessário ou peça esclarecimento."_ Modelos avançados frequentemente seguem tais instruções (eles podem responder com, "Não tenho certeza, mas assumo X…" em vez de apenas dar uma resposta errada). Não é à prova de falhas, mas pode mitigar saídas confidentemente incorretas.
+- **Verificação Iterativa:** Depois que a IA dá uma resposta, especialmente para coisas críticas (como cálculos, ou fatos importantes, ou código complexo), faça uma etapa de verificação. Você pode perguntar à IA, ou usar outra ferramenta, para verificar novamente a saída. Por exemplo: _"Confirme que o código acima segue os requisitos e explique qualquer parte que possa não atender à especificação."_ Este prompt faz a IA revisar seu trabalho e frequentemente ela capturará se desviou de suas instruções.
+
+No Lovable, alucinações também podem significar que a IA cria um arquivo ou componente que você não pediu, ou toma alguma liberdade criativa que não foi pretendida. Sempre revise o código gerado pela IA para sanidade. Se algo parecer muito "mágico" ou inesperado, questione. Ao gerenciar alucinações com essas estratégias, você mantém controle sobre seu projeto e garante precisão.
+
+### Aproveitando Insights do Modelo (Conheça Suas Ferramentas de IA)
+
+Nem todos os modelos de IA são iguais, e até mesmo o mesmo modelo pode se comportar de forma diferente dependendo das configurações. Para obter resultados de nível mestre, ajuda entender as ferramentas à sua disposição no Lovable:
+
+- **Modo Chat vs Modo Padrão:** O Lovable oferece (no momento desta escrita) um **Modo Chat** (assistente de IA conversacional) e um Modo Padrão/Editor (que aplica mudanças diretamente). Use-os intencionalmente. O **Modo Chat** é excelente para brainstorming, discussão de decisões de design ou depuração – a IA pode gerar livremente ideias ou análises sem codificar imediatamente. Por exemplo, você pode descrever um erro e no modo Chat dizer: _"Vamos analisar este log de erro e descobrir o que deu errado."_ A IA pode então percorrer as possíveis causas. O **Modo Padrão**, por outro lado, é para executar mudanças (escrever código, criar componentes). Um fluxo de trabalho típico seria: delinear ou solucionar problemas no modo Chat e, uma vez que você tenha um plano, mudar para o modo Padrão para implementá-lo com um prompt direto (já que o modo padrão modificará os arquivos do seu projeto). Saber quando usar cada modo mantém seu fluxo de desenvolvimento eficiente e seguro.
+- **Comprimento de Token e Respostas:** Esteja ciente do comprimento da resposta. Se você pedir uma saída muito grande (como um módulo inteiro de código), a IA pode cortar ou perder coerência se exceder o limite de tokens. Nesses casos, divida a tarefa em prompts menores (por exemplo, gere código para uma função por vez). A interface de chat ou prompt do Lovable pode mostrar um aviso se a saída for truncada – isso é um sinal para solicitar a parte restante ou dividir o trabalho.
+- **Formatação e Preferências de Código:** A IA pode se adaptar às suas preferências de formatação se você as declarar. Por exemplo, diga "produza código em formato markdown" ou "siga as regras ESLint do projeto" se você as tiver. Ela não saberá magicamente seu guia de estilo a menos que você o inclua no contexto. Se você preferir certas convenções de nomenclatura ou padrões, pode mencionar isso no prompt (isso faz parte de ser Explícito). Com o tempo, conforme a IA vê estilo consistente em seu projeto, ela o imitará – mas dar lembretes gentis nos prompts pode acelerar esse alinhamento.
+
+Em resumo, trate a IA como uma ferramenta poderosa, mas literal. Entenda os modos e modelos com os quais você está interagindo, e sempre estruture seus prompts para aproveitar seus pontos fortes (entrada estruturada e detalhada) enquanto se protege contra suas fraquezas (esquecimento, verbosidade, alucinações). Agora, vamos traduzir esses princípios em práticas concretas para usar o Lovable efetivamente.
+
+## **Dicas Adicionais de Prompting**
+
+Finalmente, vamos abordar dicas e técnicas específicas ao trabalhar na plataforma Lovable. Essas melhores práticas combinam os conceitos gerais de engenharia de prompt com os recursos do Lovable para ajudá-lo a obter o melhor resultado.
+
+### Comece com uma Base de Conhecimento Sólida
+
+Antes mesmo de escrever um prompt, configure a Base de Conhecimento do seu projeto (nas configurações do projeto do Lovable). Inclua os **Requisitos do Projeto (PRD)**, fluxos de usuário, detalhes da stack tecnológica, diretrizes de design de UI e quaisquer especificações de backend. Isso atua como contexto persistente que a IA sempre terá. Por exemplo, se seu PRD lista claramente "Fora do escopo: login social", a IA tem menos probabilidade de adicionar aleatoriamente um recurso de login do Google. Você também pode fazer um prompt explícito no início:
+
+<Info>
+  _Antes de escrever qualquer código, leia a Base de Conhecimento do projeto e confirme que você entende o propósito e as restrições do app._
+</Info>
+
+Isso garante que a IA internalize o contexto do seu projeto e reduza sugestões irrelevantes ou recursos alucinados.
+
+### Seja específico, evite imprecisão
+
+Prompts vagos levam a resultados vagos. Sempre esclareça _o que_ você quer e _como_.
+
+<Warning>
+  **NÃO FAÇA**:
+
+  ```
+  Torne este app melhor.
+  ```
+
+  **Outro exemplo:**
+
+  ```
+  Crie um formulário para entrada do usuário
+  ```
+</Warning>
+
+<Check>
+  **FAÇA**:
+
+  O último dá direção clara sobre escopo e resultado esperado.
+
+  ```
+  Refatore o app para limpar componentes não utilizados e melhorar a performance, sem alterar a UI ou funcionalidade.
+  ```
+
+  **Outro exemplo:**
+
+  ```
+  Crie um formulário de registro de usuário com campos para nome de usuário, email e senha e inclua um botão de envio.
+  ```
+</Check>
+
+### Prompting incremental
+
+Resista ao impulso de pedir um app complexo inteiro em um prompt. Divida seu processo de desenvolvimento em etapas lógicas e faça prompts para uma de cada vez.
+
+<Warning>
+  **NÃO FAÇA**:
+
+  ```
+  Construa um app CRM com Supabase, autenticação, exportação para Google Sheets e enriquecimento de dados.
+  
+  Construa meu app de e-commerce inteiro com autenticação, listagens de produtos e checkout.
+  ```
+</Warning>
+
+<Check>
+  **FAÇA**:
+
+  Esta progressão passo a passo ajuda a IA a manter o foco e precisão, e você pode detectar problemas cedo:
+
+  ```
+  Configure um backend CRM conectado ao Supabase.
+  ```
+
+  ```
+  Ótimo! Você poderia por favor adicionar um fluxo de autenticação seguro com papéis de usuário?
+  ```
+
+  ```
+  Obrigado! O próximo passo é integrar o Google Sheets para exportar registros.
+  ```
+
+  **Outro exemplo:**
+
+  ```
+  Configure um schema de banco de dados para informações do usuário.
+  ```
+
+  ```
+  Desenvolva um endpoint de API para recuperar dados do usuário, por favor
+  ```
+</Check>
+
+### Inclua Restrições e Requisitos
+
+Não hesite em especificar restrições. Se algo _deve_ ou _não deve_ ser feito, diga isso.
+
+<Note>
+  **Adicionando restrições**
+
+  ```
+  Crie um app simples de tarefas com no máximo 3 tarefas visíveis por vez.
+  Inclua a capacidade de adicionar, editar e excluir tarefas.
+  ```
+
+  ```
+  Otimize este código, mas garanta que a UI e funcionalidade principal permaneçam inalteradas. documente cada mudança que você fizer.
+  ```
+
+  ```
+  Use no máximo 3 chamadas de API para isso, e garanta que nenhuma biblioteca externa seja necessária.
+  ```
+
+  ```
+  A página deve exibir no máximo 3 tarefas por vez.
+  ```
+
+  Tais limites impedem que a IA faça over-engineering. Adicionar uma restrição como um número máximo de itens ou uma meta de performance pode focar a IA no que é importante.
+</Note>
+
+### Evite ambiguidade na redação
+
+Se um termo pode ser interpretado de diferentes maneiras, esclareça-o. Quanto mais claro você for, menos a IA terá que adivinhar.
+
+<Warning>
+  **NÃO FAÇA**:
+
+  ```
+  Adicione um recurso de perfil
+  ```
+
+  ```
+  Suporte notificações
+  ```
+</Warning>
+
+<Check>
+  **FAÇA**:
+
+  O último dá direção clara sobre escopo e resultado esperado.
+
+  ```
+  Adicione uma página de perfil do usuário com campos X, Y, Z.
+  ```
+
+  ```
+  Envie uma notificação por email no envio do formulário.
+  ```
+</Check>
+
+### Cuide do seu tom e cortesia
+
+Embora não mude a funcionalidade, um tom educado às vezes pode gerar melhores resultados. Frases como "por favor" ou uma solicitação respeitosa podem adicionar contexto e tornar o prompt um pouco mais descritivo, o que pode ajudar a IA. Por exemplo,
+
+<Info>
+  _Por favor, abstenha-se de modificar a homepage, foque apenas no componente do dashboard._
+</Info>
+
+Isso soa educado e diz explicitamente à IA o que não fazer. Não é sobre os sentimentos da IA – é sobre incluir detalhes. (Além disso, nunca faz mal ser gentil​\!)
+
+### Use os Modos do Lovable Intencionalmente
+
+Como mencionado, utilize o **Modo Chat** para planejamento e o **Modo Padrão** para construção. Por exemplo, ao iniciar uma nova funcionalidade, você pode entrar no Modo Chat e fazer um brainstorm da divisão de componentes:
+
+<Info>
+  Quero adicionar uma seção de blog ao meu app. Vamos discutir como estruturar os dados e páginas.
+</Info>
+
+A IA pode responder com um esboço. Uma vez satisfeito, você pode mudar para o Modo Padrão e dizer:
+
+<Info>
+  Crie uma página `BlogPost` e uma tabela ou schema do supabase para posts de blog baseado no plano acima.
+</Info>
+
+### Use a formatação a seu favor
+
+Estruture listas ou passos quando apropriado. Se você quer que a IA produza uma lista ou siga uma sequência, enumere-os no prompt. Ao numerar passos, você sugere à IA que responda da mesma forma.
+
+<Note>
+  ```
+  Vamos pensar no processo de configurar um sistema de autenticação seguro:
+  1. Quais são os componentes necessários?
+  2. Como eles devem interagir?
+  3. Forneça o código de implementação.
+  ```
+
+  <Info>
+    _Primeiro, explique a abordagem. Segundo, mostre o código. Terceiro, dê um exemplo de teste._
+  </Info>
+</Note>
+
+### Aproveite exemplos ou referências
+
+Se você tem um design alvo ou estilo de código, mencione-o ou forneça um exemplo. Fornecer um exemplo (imagem ou trecho de código) dá à IA uma referência concreta para emular.
+
+<Note>
+  **Definindo o contexto**
+
+  ```
+  Estamos construindo uma ferramenta de gerenciamento de projetos que ajuda equipes a rastrear suas tarefas.
+  Esta ferramenta deve ter funcionalidades como:
+   - autenticação de usuário
+   - criação de projetos
+   - atribuição de tarefas
+   - relatórios
+  
+  Agora, para a primeira tarefa, crie a UI para criação de projetos.
+  ```
+
+  **Outro exemplo:**
+
+  ```
+  Preciso de um app CRM com integração Supabase e um fluxo de autenticação seguro. Comece configurando o backend.
+  ```
+
+  **Outro exemplo:**
+
+  ```
+  Estamos desenvolvendo uma plataforma de e-commerce focada em produtos ecológicos. Gere uma página de listagem de produtos com filtros para categoria e preço.
+  ```
+</Note>
+
+### Usando prompts de imagem
+
+O Lovable até permite uploads de imagem com seu prompt, então você pode mostrar um design e dizer "combine com este estilo".
+
+Existem duas abordagens principais aqui. A primeira é uma abordagem simples de prompting.
+
+<Note>
+  **Prompting simples com upload de imagem**
+
+  Você pode fazer upload de uma imagem e então adicionar um prompt de exemplo como este:
+
+  ```
+  Crie e implemente uma UI que pareça o mais similar possível à imagem anexada.
+  ```
+
+  ```
+  Esta captura de tela mostra um problema de layout no mobile. Ajuste margens e padding para torná-lo responsivo mantendo a mesma estrutura de design.
+  ```
+</Note>
+
+Ou, você pode ajudar a IA a entender melhor o conteúdo da imagem e alguns detalhes adicionais sobre ela. Excelentes resultados podem ser alcançados adicionando instruções específicas à imagem carregada. Embora a imagem valha mil palavras, adicionar algumas suas próprias para descrever a funcionalidade desejada pode fazer uma grande diferença - especialmente porque interações nem sempre podem ser óbvias a partir de uma imagem estática.
+
+<Note>
+  **Prompting de imagem com instruções detalhadas**
+
+  ```
+  Quero que você crie o app o mais similar possível ao mostrado nesta captura de tela.
+  É essencialmente um clone de kanban.
+  Deve ter a capacidade de adicionar novos cartões (tickets) em cada coluna, ter a capacidade de mudar a ordem desses tickets dentro de uma única coluna, e até mesmo mover esses cartões entre colunas.
+  Sinta-se livre para usar o pacote npm Pangea home dnd para funcionalidade de arrastar e soltar.
+  ```
+</Note>
+
+### Integração de feedback
+
+Revise a saída da IA e forneça feedback específico para refinamentos.
+
+<Note>
+  ```
+  O formulário de login está bom, mas por favor adicione validação para o campo de email para garantir que contenha um endereço de email válido.
+  ```
+</Note>
+
+### Enfatizando Acessibilidade
+
+Encoraje a geração de código que adere aos padrões de acessibilidade e melhores práticas modernas. Isso garante que a saída seja não apenas funcional, mas também amigável ao usuário e compatível com diretrizes de acessibilidade.
+
+<Note>
+  ```
+  Gere um componente React para um formulário de login que siga as melhores práticas de acessibilidade, incluindo rótulos ARIA apropriados e suporte à navegação por teclado.
+  ```
+</Note>
+
+### Componentes e Bibliotecas Predefinidos
+
+Especifique o uso de certas bibliotecas de UI ou componentes para manter consistência e eficiência em seu projeto. Isso direciona a IA a utilizar ferramentas específicas, garantindo compatibilidade e uma linguagem de design uniforme em toda sua aplicação.
+
+<Note>
+  ```
+  Crie uma barra de navegação responsiva usando a biblioteca shadcn/ui com Tailwind CSS para estilização.
+  ```
+
+  ### 
+</Note>
+
+### Prompting Multilíngue
+
+Ao trabalhar em um ambiente multilíngue, especifique o idioma desejado tanto para comentários de código quanto para documentação. Isso garante que o conteúdo gerado seja acessível aos membros da equipe que falam idiomas diferentes, melhorando a colaboração.
+
+<Note>
+  ```
+  Gere um script Python que calcule a sequência de Fibonacci. Forneça comentários e documentação em francês.
+  ```
+</Note>
+
+### Definindo Estrutura de Projeto e Gerenciamento de Arquivos
+
+Delineie claramente a estrutura do projeto, incluindo nomes de arquivos e caminhos, para garantir geração de código organizada e sustentável. Isso fornece clareza sobre onde novos componentes devem residir dentro do projeto, mantendo uma organização coerente de arquivos.
+
+<Note>
+  ```
+  Crie um novo componente React chamado 'UserProfile' e salve-o como 'components/user-profile.tsx'. Certifique-se de que inclua uma foto de perfil, nome de usuário e seção de biografia.
+  ```
+</Note>
+
+### Forneça Instruções de Edição Precisas (Foque a IA)
+
+Por padrão, quando você pede ao Lovable AI para alterar algo, ele pode reescrever um arquivo inteiro ou múltiplos arquivos. Para evitar mudanças não intencionais, seja muito específico sobre _onde_ e _o que_ alterar. Você pode usar o recurso "Select" do Lovable para destacar um componente ou arquivo, então fazer um prompt apenas sobre essa seleção. Ou explicitamente nomeie o arquivo/componente em seu prompt. Por exemplo:
+
+<Info>
+  _No componente_ `Header`_, altere o texto do botão de cadastro para 'Começar' e mova-o para o lado esquerdo da barra de navegação._
+</Info>
+
+Dessa forma, a IA sabe que deve focar no componente `Header` e apenas ajustar essa parte. Outro truque: **diga à IA o que não tocar**. Você pode adicionar: "Não modifique nenhum outro componente ou lógica não relacionada ao cabeçalho." Isso impede que a IA se desvie e potencialmente quebre algo mais. Esta prática (às vezes chamada de abordagem "Diff & Select") garante mudanças mínimas e direcionadas – resultando em respostas mais rápidas e menos bugs de regressão.
+
+### Bloqueando Arquivos (Solução Alternativa)
+
+Atualmente, o Lovable pode não ter um recurso explícito de bloqueio de arquivos, mas você pode simulá-lo através da formulação do seu prompt. Se há arquivos críticos que a IA nunca deve alterar (talvez um componente complexo que está funcionando bem), você pode repetir uma instrução em cada prompt como:
+
+<Info>
+  _Não altere o arquivo authentication.js._
+</Info>
+
+Ao consistentemente dizer à IA para se abster, você reduz a chance de edições indesejadas. Similarmente, se você quer que a IA trabalhe apenas dentro de uma parte do projeto, constranja-a explicitamente:
+
+<Info>
+  _Foque as mudanças exclusivamente no componente_ `ProfilePage`_; assuma que todas as outras partes do app permanecem como estão._
+</Info>
+
+Ser direto sobre isso no prompt ajuda a manter a IA dentro dos limites.
+
+### Ajustes de Design e UI
+
+Ao solicitar mudanças de UI no Lovable, a clareza é crucial para não quebrar a funcionalidade:
+
+- Se você quer **mudanças puramente visuais**, diga isso. ****_"Torne o botão de login azul e 20% maior, mas não altere nenhuma de suas funcionalidades ou lógica onClick."_**** Isso garante que a IA não renomeie IDs acidentalmente ou mude a lógica ao reestilizar.
+- Para **responsividade** (tornar um design amigável para mobile), guie a IA através de um plano. Por exemplo: _"Otimize a página inicial para mobile: use uma abordagem mobile-first. Comece delineando como cada seção deve se reorganizar em telas menores, depois implemente essas mudanças de CSS. Use breakpoints padrão do Tailwind (sm, md, lg) e evite breakpoints customizados. Garanta que nada na funcionalidade mude, apenas o layout."_ Ao fornecer esse tipo de instrução detalhada, você obtém uma adaptação completa para mobile sem quebrar o layout desktop.
+- Se você tem uma mudança de design em mente, descrever o resultado desejado e quaisquer restrições (como "manter a mesma estrutura HTML, apenas atualizar CSS") ajudará a IA a focar na solução certa. Sempre teste o app após mudanças de design da IA para confirmar que tudo ainda funciona como esperado.
+
+### Refatoração e Otimização de Código
+
+Conforme seu projeto evolui, a IA do Lovable pode sugerir refatoração para melhorar performance ou manutenibilidade. Solicitar refatoração é um caso de uso avançado mas valioso:
+
+- Enfatize **nenhuma mudança no comportamento**: \_"Refatore o ****_código para clareza e eficiência, mas \_ a funcionalidade e saídas do app devem permanecer idênticas."_**** Isso diz à IA que a refatoração não deve introduzir bugs ou mudanças de funcionalidade.
+- Você pode pedir um **plano de refatoração primeiro**: \_"Escaneie a pasta \_`utils/`_e sugira melhorias na estrutura do código ou duplicação. Liste as mudanças mas não as aplique ainda."_  A IA pode te dar um relatório do que melhorar. Então você pode decidir quais mudanças solicitar para implementação.
+- Para refatoração em larga escala, faça em etapas. Solicite um módulo por vez, teste, depois prossiga. Isso se alinha com o princípio passo-a-passo. Por exemplo: primeiro refatore a lógica de gerenciamento de estado, depois refatore as chamadas de API, ao invés de tudo de uma vez.
+- Após refatorar, é sábio solicitar uma **verificação rápida**: _"Agora que o código foi refatorado, execute uma checklist rápida: a UI parece igual e todos os testes ou fluxos principais ainda passam?"_ A IA pode se auto-verificar ou listar coisas para verificar manualmente.
+
+### Debugging com Assistência da IA
+
+Bugs são inevitáveis. O Lovable tem uma funcionalidade "Try to Fix" para correções rápidas, mas você também pode recrutar a IA através de prompts:
+
+- Quando um erro ocorre, copie quaisquer **logs de erro ou mensagens** em um prompt (idealmente no modo Chat) e pergunte: _"Aqui está o erro e trecho de código relevante – o que está causando isso e como podemos corrigir?"_ Contexto detalhado do erro ajuda a IA a identificar o problema.
+- Use os princípios CLEAR durante debugging: seja Explícito sobre o que o código deveria fazer versus o que aconteceu. Às vezes apenas explicar o bug em detalhes para a IA a levará à solução.
+- Se a primeira correção da IA não funcionar, use o princípio Adaptativo: esclareça o que mudou ou forneça o novo erro, e peça para tentar novamente ou sugerir uma abordagem alternativa.
+- Aproveite o Modo Chat para discutir o bug: _"A correção não funcionou. O state ainda está undefined em runtime. O que mais poderia estar errado? Vamos pensar através das possíveis causas."_ Você pode ter um vai-e-vem até uma solução plausível ser encontrada, então aplicá-la no Modo Padrão.
+
+  <Tip>
+    Para bugs de UI, você pode até compartilhar uma captura de tela (se o Lovable suportar entrada de imagem no chat) ou descrever o problema visual. Ex: "A sidebar deveria se esconder no mobile, mas ainda está visível. Aqui está o CSS… Por que pode estar falhando?" A IA pode raciocinar sobre problemas de CSS ou layout se receber informações suficientes.
+  </Tip>
+- Sempre teste após uma correção. Se funcionar, considere usar Reverse Meta Prompting para que a IA resuma qual foi a causa raiz e como evitá-la no futuro, enriquecendo sua base de conhecimento.
+
+### Quando (e Quando Não) Envolver a IA
+
+- Um prompter experiente sabe que às vezes, você não precisa fazer prompt algum. Se uma mudança é extremamente pequena ou você já sabe como fazê-la rapidamente (ex: alterar um rótulo de texto, ajustar um valor de padding), pode ser mais rápido apenas fazê-la manualmente no editor de código. Depender excessivamente da IA para tarefas triviais pode te atrasar e esgotar sua cota de prompts. Use a IA onde ela agrega valor – lógica complexa, geração de boilerplate, operações multi-etapas, ou coisas sobre as quais você não tem certeza. Para problemas mais simples, você pode:
+  - Usar seu próprio conhecimento ou uma busca rápida (ou até mesmo perguntar ao ChatGPT fora do Lovable) para descobrir, especialmente se isso evitar gastar um prompt em algo que a IA pode entender mal.
+  - Utilizar ferramentas de desenvolvedor: abrir o console do DevTools do navegador para inspecionar um elemento ou debugar um erro de JavaScript em tempo real. Uma vez que você identifique a correção, pode implementá-la diretamente ou confirmar via prompt.
+
+<Info>
+  Se você notar que um botão está com a cor errada, pode ser mais rápido apenas corrigir a classe CSS você mesmo do que descrever o problema para a IA e arriscar que ela mude mais do que o pretendido. Por outro lado, se você precisa implementar uma nova funcionalidade do zero, esse é um trabalho perfeito para a IA – você descreve o que e por que, e ela descobre o como no código.
+</Info>
+
+Lembre-se, a IA do Lovable é como um desenvolvedor assistente. Você a gerencia dando tarefas claras e supervisão. Ela pode acelerar drasticamente o desenvolvimento, mas você permanece como o líder que revisa e direciona o trabalho.
+
+## Aplicando Essas Estratégias em Diferentes Ferramentas
+
+Os princípios de prompting acima se aplicam não apenas no chat do Lovable, mas em qualquer lugar onde você interage com IA ou ferramentas de automação:
+
+### No Builder do Lovable
+
+Você usará principalmente esses prompts na interface de chat do Lovable para construir e refinar seu app.
+
+1. Comece com um prompt amplo do projeto, depois itere funcionalidade por funcionalidade.
+2. Use o modo Chat-Only quando precisar discutir ou debugar sem alterar o código.
+
+### W[******ith make.com ou n8n (automação de workflow)******](http://make.com)
+
+Você pode não fazer prompts nessas plataformas em linguagem natural da mesma forma, mas projetar uma automação **ainda se beneficia de instruções claras de IA**.
+
+Por exemplo, você pode fazer o Lovable gerar lógica de integração:
+
+<Info>
+  [**_Quando um formulário for enviado, envie os dados para um webhook do Make.com para notificação no Slack._**](http://Make.com)
+</Info>
+
+Na verdade, o Lovable pode ajudar a configurar automação integrando com webhooks. Se seu app precisar delegar tarefas (como enviar emails, atualizar um CRM), você pode fazer um prompt para o Lovable usar Make ou n8n.
+
+<Info>
+  [**_Após um usuário se cadastrar no app, acione um workflow do Make.com que cria um registro no Salesforce._**](http://Make.com)
+</Info>
+
+O Lovable escreverá o código para chamar esse webhook ou API. Manter o prompt estruturado garante que a IA saiba exatamente como conectar o Lovable com esses serviços externos.
+
+### **Casos extremos e integrações externas**
+
+O Lovable integra com muitos serviços (Stripe, GitHub, Supabase, etc.). Ao fazer prompts para estes, trate os detalhes da integração como parte do seu **Contexto/Restrições**. Por exemplo,
+
+<Info>
+  _Conecte o formulário ao Stripe (modo de teste) para pagamentos. Em caso de sucesso, redirecione para /thank-you._
+</Info>
+
+Seja claro sobre o que os serviços externos devem fazer. O mesmo vale para usar n8n (automação auto-hospedada) – você pode escrever,
+
+<Info>
+  _Envie uma requisição POST para a URL do webhook n8n após o envio do formulário, e aguarde sua resposta para mostrar uma mensagem de confirmação._
+</Info>
+
+A clareza aqui é fundamental para que a IA produza as chamadas corretas.
+
+## Resumo
+
+- Prompting forte é sobre **clareza, estrutura e contexto**. Seja você dizendo ao Lovable para construir uma funcionalidade, ou orquestrando um cenário do [Make.com](http://Make.com), o objetivo é pintar um quadro do que você quer.
+- Comece com prompts estruturados se você não tiver certeza, e evolua para um estilo mais conversacional conforme ganha confiança.
+- Use técnicas meta para melhorar e aprender com cada interação.
+- Com prática, você guiará a IA como uma extensão da sua equipe de desenvolvimento – e parecerá natural obter exatamente o resultado que você precisa.
+
+## Conclusão
+
+A esta altura, você deve ter uma compreensão sólida de como criar prompts que sejam claros, eficazes e adaptados à IA do Lovable. Desde os princípios fundamentais do CLEAR até estratégias avançadas como exemplos few-shot e meta prompting, essas técnicas capacitam você a obter exatamente o que precisa da IA – nem mais, nem menos. Você aprendeu a estruturar suas solicitações, fornecer contexto, evitar armadilhas como alucinações e aproveitar recursos específicos do Lovable (Knowledge Base, modo Chat, etc.) para otimizar seu fluxo de trabalho.
+
+O prompting de nível master é uma virada de jogo: transforma a IA de um truque em um companheiro de equipe confiável. Com a prática, você descobrirá que pode construir aplicativos mais rapidamente, debugar com menos frustração e até mesmo explorar soluções criativas simplesmente _fazendo as perguntas certas_ e fornecendo a orientação adequada. A chave é permanecer **inteligente, conciso, direto e adaptativo** em suas instruções – muito como um engenheiro experiente se comunicando com sua equipe.
+
+Finalmente, sempre continue aprendendo com cada interação (esse hábito Reflexivo). Cada prompt/resposta é um feedback para você refinar ainda mais sua técnica. À medida que continua construindo no Lovable, você desenvolverá uma intuição sobre o que a IA precisa ouvir para produzir ótimos resultados. Combine isso com sua própria engenhosidade, e há pouco que você não possa alcançar.
+
+**Foque em suas grandes ideias** – deixe a IA do Lovable cuidar dos detalhes de execução uma vez que você diga claramente o que fazer.
+
+Bom prompting e boa construção\!

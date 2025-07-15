@@ -1,0 +1,356 @@
+---
+title: "Página de Destino"
+description: "Bem-vindo ao guia oficial para construir páginas de destino no Lovable. "
+icon: "file"
+---
+
+Aprenda como ir da ideia a uma página de destino totalmente funcional e animada, usando IA \+ um toque de brilho especial.
+
+## Duas Maneiras de Construir Landing Pages
+
+### 1. Geração Única
+
+Deixe o Lovable fazer o trabalho pesado. Apenas escreva um único prompt e deixe a IA gerar sua landing page inteira.
+
+**Exemplo de Prompt:**
+
+```
+Você é um especialista em CRO. Construa uma landing page para uma agência de turismo espacial direcionada a indivíduos ricos. A experiência inclui voos em gravidade zero. Siga as melhores práticas de otimização de taxa de conversão.
+```
+
+<Tip>
+  Adicione público específico, recursos ou tom para ajudar o Lovable a fazer melhores suposições.
+</Tip>
+
+### 2. Seção por Seção
+
+Prefere mais controle? Construa uma peça por vez: hero, preços, FAQs e mais.
+
+**Exemplo de fluxo:**
+
+<Steps>
+  <Step title="Passo 1">
+    Gere uma seção hero em branco
+  </Step>
+  <Step title="Passo 2">
+    Clique em qualquer seção com [edições visuais](https://docs.lovable.dev/features/visual-edit) para:
+
+    - Alterar texto, cores, tamanho
+    - Mover ou deletar elementos
+    - Ajustar layout ou animações
+  </Step>
+  <Step title="Passo 3">
+    Adicione imagens, animações, tabelas de preços (detalhes no final)
+  </Step>
+  <Step title="Passo 4">
+    Refatore o estilo \+ adicione branding \+ solicite um tema como:
+
+    - Modo escuro
+    - Neo-brutalismo
+    - Glassmorfismo
+    - Fontes futurísticas (ex: _Space Grotesque_)
+
+    <Tip>
+      "Torne o layout mais elegante e menor" pode fazer maravilhas.
+    </Tip>
+    **Estudo de Caso: Construindo HorseX Live**
+
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VVbC80KgF9E?si=pFZFvBHzaJMf9EWf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+    Esta página é baseada em nossa livestream onde construímos uma landing page com tema espacial chamada **HorseX**—uma agência de viagem espacial para cavalos (sim, sério).
+
+    - Tema espacial 🌌
+    - Animações
+    - Modo escuro
+    - Mascote cavalo (obviamente)
+    - Preços & FAQs
+    - Logo \+ favicon
+  </Step>
+  <Step title="Passo 5">
+    Lance, Hospede e Mostre
+
+    - **Publique** com um clique
+    - **Conecte a domínio personalizado**
+    - **Lance no Lovable Launch** (como Product Hunt mas para Lovable)
+
+    <Tip>
+      Aumente a visibilidade enviando para [Lovable Launch](https://docs.lovable.dev/features/launched)
+    </Tip>
+  </Step>
+</Steps>
+
+## Inspiração de Layout e Ferramentas
+
+Aqui estão algumas ferramentas que usamos ao vivo:
+
+- [**Mobbin**](https://mobbin.com) – Inspiração de design do mundo real
+- [**21st.dev**](http://21st.dev) – Componentes de animação e design para copiar e colar
+- [**Replicate Playground**](https://replicate.com/playgroundai) – Geração de imagens/logos com IA
+- [**Remove.bg**](http://Remove.bg) – Remover fundos de imagens
+- [**Icon Generator**](https://icons.pqoqubbw.dev/) – Ícones animados gratuitos
+
+## Recursos avançados
+
+Eleve sua landing page com Lovable adicionando experiências interativas ricas, interfaces responsivas e visualizações de produtos reais funcionais.
+
+<AccordionGroup>
+  <Accordion title="P5.js + Animações Personalizadas">
+    Para magia visual como cavalos orbitando ou estrelas piscando:
+
+    * Use sketches P5.js em seções hero
+    * Anime fundos (ajuste opacidade + contraste para visibilidade)
+    * Adicione efeitos de partículas ou animações de scroll em timeline
+
+    🛠 Se falhar ao renderizar, use:
+
+    * Modo chat para debugging
+    * "Implement plan" do bloco de código
+    * Peça para resetar + usar código de referência funcionando
+
+    <Tip>
+      Use o Modo Chat para debugar P5.js quando as coisas quebram.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Personalizar Favicon">
+    Favicons precisam ser 64x64 `.ico` ou `.png`.
+
+    **Passos:**
+
+    1. Gere um ícone no Replicate
+    2. Redimensione via [favicon.io](http://favicon.io) ou similar
+    3. Cole a imagem no prompt:
+
+    ```
+    Change the website favicon to this.
+    ```
+  </Accordion>
+
+  <Accordion title="Formulários de Contato que Realmente Funcionam">
+    Colete emails e responda automaticamente com **Resend**.
+
+    **Caso de uso:**
+
+    * Formulário de Contato de Vendas
+    * Email de confirmação para o usuário
+    * Email de notificação para sua equipe
+
+    **Prompt:**
+
+    ```
+    Implement a contact form that uses Resend.
+    Send a confirmation email to the user and a notification to my team.
+    ```
+
+    <Tip>
+      Precisa limitar uso ou detectar abuso? Adicione rastreamento de IP com fingerprinting do Supabase.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Que Tipo de Landing Page Você Deveria Construir?">
+    Aqui está o que você pode construir:
+
+    * Blog
+    * Portfólio
+    * Site SaaS
+    * Organização sem fins lucrativos
+    * Inscrição em curso
+    * Promoção de evento
+
+    👉 Tente construir um de cada para se sentir confortável.
+  </Accordion>
+
+  <Accordion title="Otimização de Taxa de Conversão (CRO) 101">
+    O objetivo da sua landing page = 1 ação.
+
+    **Isso pode ser:**
+
+    * Agendar uma ligação
+    * Comprar um lugar (como HorseX)
+    * Se inscrever em uma lista de espera
+
+    **Melhores práticas de CRO:**
+
+    * Limite CTAs
+    * Mantenha títulos claros
+    * Combine layout com expectativas da audiência
+    * Use prova social + sinais de confiança
+
+    Lovable entende o termo "CRO optimized", então use-o em seus prompts.
+  </Accordion>
+
+  <Accordion title="Páginas Estáticas vs Dinâmicas">
+    Lovable constrói páginas estáticas por padrão.
+
+    Para torná-la dinâmica:
+
+    * Adicione formulários (ex: para coletar leads)
+    * Conecte ao Supabase
+    * Adicione checkout usando Stripe
+    * Integração CMS (ex: com Strapi)
+  </Accordion>
+
+  <Accordion title="Polimento Final = Razzle Dazzle">
+    Aqui está o que separa um site de R$10K de um de R$50K:
+
+    * Animações
+    * Fontes + espaçamento
+    * Consistência de marca
+    * Polimento de copywriting
+    * Velocidades de carregamento
+    * Configuração SEO (Lovable agora suporta robots.txt e tags OG)
+  </Accordion>
+
+  <Accordion title="Adicionar Previews Reais do Produto">
+    Deixe visitantes **testarem seu produto diretamente** da landing page. Você pode incorporar mini-apps usando Supabase e APIs externas como GROQ.
+
+    **Exemplo:** Um previsualizador de email "Torne profissional" alimentado pela API GROQ:
+
+    * Conecte ao Supabase primeiro para evitar problemas de conexão depois
+    * Use `chat mode` para ajudar Lovable a entender e implementar novas APIs
+    * Peça por fingerprinting ou limites de uso via IP se necessário
+
+    **Prompt:**
+
+    ```
+    Add a section where users can preview our AI email assistant.
+    Connect to Supabase. Use GROQ API for email enhancement.
+    ```
+  </Accordion>
+
+  <Accordion title="Use 21st.dev para Animações Bonitas">
+    Melhore seu design visual com animações e componentes de alta qualidade:
+
+    * Partículas flutuantes brilhantes
+    * Seções sticky baseadas em scroll
+    * Animações de timeline
+    * Carrosséis de logo
+    * Popups modais para demos de vídeo
+
+    <Tip>
+      Se animações não aparecerem, use modo chat para debugar ou re-implementar do zero. Você também pode fazer upload de screenshots e dizer:\
+      *"Por favor anime esta seção de fundo."*
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Adicionar Popups Modais (Vídeos e Mais)">
+    Quer mostrar uma demo sem bagunçar o hero?
+
+    **Use modais:**
+
+    * Incorpore vídeos do YouTube ou demos
+    * Acione no clique do botão (ex: "Assistir Demo")
+    * Termo comum de prompt: `modal popup`
+
+    **Prompt:**
+
+    ```
+    When the "Watch Demo" button is clicked, open a modal popup with this video.
+    ```
+  </Accordion>
+
+  <Accordion title="Adicione uma Seção de Confiança com Logos Reais">
+    Prova social importa.
+
+    * Crie uma seção "Confiado Por" com logos de empresas animados.
+    * Certifique-se de que os logos permaneçam como arquivos de imagem, não caminhos SVG.
+    * Evite sobreposições acinzentadas.
+
+    **Prompt:**
+
+    ```
+    Adicione uma seção "Confiado por" usando logos reais de empresas.
+    Mantenha-os como imagens, não SVGs. Use animações do 21st.dev.
+    ```
+  </Accordion>
+
+  <Accordion title="Animações do Hero e Polimento da UI">
+    Não se contente com seções hero estáticas:
+
+    * Anime palavras (alterne entre frases)
+    * Adicione formas flutuantes (círculos, gradientes)
+    * Combine a paleta de cores entre hero, títulos e timeline
+
+    Exemplos de prompts:
+
+    ```
+    Anime a palavra no título do hero para alternar entre "inteligência" e "assistência"
+    Adicione círculos roxos flutuantes no fundo
+    Faça o texto do título usar o gradiente roxo primário
+    ```
+  </Accordion>
+
+  <Accordion title="Navegação Fixa + Navbar Personalizada">
+    Quer rolagem suave para as seções?
+
+    * Use uma barra de navegação fixa
+    * Substitua a navegação padrão por uma do [21st.dev](http://21st.dev)
+    * Certifique-se de que ela linka para **seções**, não páginas novas
+
+    <Tip>
+      Use capturas de tela e diga: *"Faça esta navbar rolar para as seções da página e combine com nosso tema."*
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Responsividade Mobile">
+    Lovable gera automaticamente páginas mobile-friendly—mas teste e ajuste:
+
+    * Adicione margem e padding via edição visual
+    * Teste modais, animações e layouts no mobile
+  </Accordion>
+
+  <Accordion title="O que é o Efeito Parallax?">
+    **Parallax** cria uma sensação de **profundidade** fazendo com que elementos de fundo se movam em velocidade diferente dos elementos de primeiro plano conforme você rola. É como caminhar por uma floresta em um videogame — árvores na frente se movem mais rápido que montanhas no fundo.
+
+    **Por que é legal:**
+
+    * Adiciona imersão
+    * Faz sua landing page parecer mais dinâmica e interativa
+    * Separa visualmente as seções de forma sutil
+
+    **Exemplo de Prompt:**
+
+    ```
+    Adicione um efeito de rolagem parallax ao fundo da seção hero.
+    Faça as estrelas se moverem mais devagar que o texto e imagens.
+    ```
+
+    <Tip>
+      Use com moderação. Muito parallax = esmagador.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="O que é Isometria (Design Isométrico)?">
+    **Design isométrico** cria um efeito 3D usando gráficos 2D, tipicamente em ângulo de 30°. Pense em jogos como *Monument Valley* ou *Sim City* old-school. Tudo parece "inclinado" mas perfeitamente alinhado — sem distorção de perspectiva.
+
+    **Por que usar:**
+
+    * Estética limpa e futurística
+    * Faz os visuais do seu app parecerem mais sofisticados
+    * Ótimo para temas de tecnologia, dados e IA
+
+    **Exemplo de Prompt:**
+
+    ```
+    Use ilustrações isométricas para a seção de recursos do produto.
+    Faça os gráficos parecerem um dashboard futurístico em 3D.
+    ```
+
+    Você também pode importar ilustrações isométricas de:
+
+    * [Storyset](https://storyset.com)
+    * [Icons8 Isometric](https://icons8.com/icons/set/isometric)
+    * [3D Icons Library](https://www.3dicons.com/)
+
+    <Tip>
+      Gráficos isométricos combinam muito bem com **glassmorphism** ou UIs de tema escuro para páginas SaaS modernas.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+
+
+
+## Outros tutoriais
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/S0k8FOmqjog?si=0F5qww1GEQLVtaY5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />

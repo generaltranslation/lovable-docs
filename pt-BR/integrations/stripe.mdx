@@ -1,0 +1,219 @@
+---
+title: "Integração com Stripe"
+description: "Como configurar pagamentos em seu app usando nossa integração com Stripe"
+icon: "credit-card"
+---
+
+![Integrar Stripe no Lovable](/images/lovable-stripe.webp)
+
+O Lovable agora permite que você configure o Stripe inteiramente através do **chat**.
+
+**Configuração automática via chat (recomendado)**  
+   Após conectar o **Supabase** e salvar sua **Chave Secreta do Stripe** via **Adicionar Chave de API**, apenas descreva o que você precisa:  
+   - "Adicionar três níveis de assinatura …"  
+   - "Criar um checkout único para meu e-book por $29"  
+   O Lovable gera as edge functions de checkout/portal, tabelas de banco de dados com RLS e botões de UI—sem codificação manual ou webhooks, a menos que você os solicite.
+
+
+<Note>
+  * Para **vendas únicas**, certifique-se de que seu carrinho ou página de produto já funciona.
+  * Para **assinaturas**, confirme que o Supabase Auth está configurado para que o Lovable possa vincular clientes do Stripe ao **id** de cada usuário
+</Note>
+
+
+### Principais Pontos
+
+- Use o **fluxo via chat** tanto para assinaturas quanto para pagamentos únicos.  
+- **Nunca cole sua Chave Secreta do Stripe no chat.** Configure-a através do formulário **Adicionar Chave de API** no chat.  
+- **Webhooks são opcionais.** O Lovable depende de polling de edge-function, a menos que você solicite webhooks.  
+- Faça debug no **Console do Navegador → Network/Errors**, **Supabase → Edge Functions → Logs** e **Stripe Dashboard → Logs**.  
+- Sempre teste no **Modo de Teste do Stripe**, depois faça o deploy.
+
+## Requisitos
+
+Antes de integrar o Stripe, certifique-se de que os seguintes pré-requisitos sejam atendidos:
+
+- O projeto **deve** estar conectado ao Supabase. [Saiba mais sobre o Supabase](https://docs.lovable.dev/integrations/supabase)
+- Uma **conta do Stripe** com produtos devidamente configurados.
+- Um **frontend e backend** funcionais:
+  - Para vendas de produtos individuais, certifique-se de que um carrinho de compras e uma página de checkout estejam funcionais.
+  - Para assinaturas, configure funcionalidades de login e diferentes níveis de preços.
+
+<Note>
+  **Observe**
+  A integração com o Stripe não funciona na visualização. Para testar a integração, certifique-se de fazer o deploy. Você também deve certificar-se de estar no modo de teste no Stripe ao experimentar a funcionalidade. Ao testar o pagamento, o número do cartão: 4242 4242 4242 4242, quaisquer 3 dígitos como CVC e qualquer data futura funcionarão como cartão.
+</Note>
+
+## Configuração de Pagamento Stripe (Fluxo de Chat Sem Código)
+
+O Lovable agora gera toda a lógica do Stripe para você. Uma vez que sua **Chave Secreta do Stripe** esteja configurada através do formulário **Adicionar Chave de API** no chat e seu projeto esteja **conectado ao Supabase**, simplesmente diga ao Lovable o que você precisa no chat—não são necessários Links de Pagamento manuais.
+
+<Steps>
+  <Step title="Passo 1">
+    **Prepare seu projeto**
+
+    - Supabase conectado
+    - Chave Secreta do Stripe adicionada através do formulário **Adicionar Chave de API** no chat
+    - (Opcional) Preços ou IDs de produtos à mão
+  </Step>
+  <Step title="Passo 2">
+    Exemplos:
+
+    - Criar um checkout único para meu "Curso Digital" por $29
+    - Configurar um plano Premium anual por $99, vinculado ao id de cada usuário
+  </Step>
+  <Step title="Passo 3">
+    **Revisar e aplicar**
+    O Lovable auto-estrutura as Edge Functions, tabelas do banco de dados e componentes de UI (todos vinculados ao id do usuário no Supabase). Verifique a prévia, então clique em **Aplicar** para fazer o deploy.
+  </Step>
+</Steps>
+
+<Note>
+  - As assinaturas devem sempre estar vinculadas ao `id` do usuário autenticado no Supabase para acesso seguro baseado em funções.
+</Note>
+
+## Integração Avançada: Webhooks & Supabase
+
+Para estruturas de pagamento complexas como **assinaturas e acesso baseado em funções**, o Lovable recomenda usar o **Supabase** para lidar com segurança com a integração do Stripe. Isso permite o manuseio adequado de webhooks, gerenciamento de assinaturas e controle de acesso baseado em funções com base nos níveis de pagamento.
+
+<Note>
+  A Edge Function que lida com as mudanças necessárias na conta do usuário deve ser configurada automaticamente pela IA.
+</Note>
+
+<Steps>
+  <Step title="Conectar Supabase ao Seu Projeto">
+    Começar é simples. O Lovable torna a conexão com o Supabase fácil com uma integração nativa integrada:
+
+    1. Clique no **botão Supabase** no canto superior direito do Lovable.
+    2. Siga as instruções para vincular seu projeto.
+    3. Uma vez conectado, o Supabase permite processamento seguro de pagamentos, gerenciamento de assinaturas, manuseio de webhooks, armazenamento de dados do cliente e tratamento de erros.
+  </Step>
+  <Step title="Processamento Seguro de Pagamentos">
+    Inicie o processo solicitando ao Lovable:
+
+    <Note>
+      Vamos conectar o Stripe ao meu projeto. Começaremos com o processamento seguro de pagamentos.
+    </Note>
+    O Lovable gerará o esquema SQL necessário para lidar com pagamentos. Isso inclui tabelas de banco de dados para usuários, assinaturas e pagamentos. Você pode revisar e personalizar essas tabelas para atender às necessidades específicas do seu produto antes de aplicar as mudanças.
+  </Step>
+  <Step title="Implementar Edge Functions para Webhooks">
+    **Edge Functions** no Supabase atuam como pequenas funções serverless de alta performance que executam próximo ao usuário, garantindo respostas rápidas. Elas ajudam a processar eventos de webhook, como confirmações de pagamento, antes de atualizar o banco de dados.
+
+    <Steps>
+      <Step title="Passo 1">
+        **Recupere a URL do Endpoint** da Edge Function no Supabase.
+      </Step>
+      <Step title="Passo 2">
+        **Vá para o Painel do Stripe** \> Developers \> Webhooks \> Create an Event Destination.
+        ![Stripe API Key](https://lovable.dev/content/news/stripe-api.png)
+      </Step>
+      <Step title="Passo 3">
+        **Selecione Eventos de Webhook** que se alinhem com as necessidades do seu projeto:
+
+        - `payment_intent.succeeded`
+        - `payment_intent.payment_failed`
+        - `customer.subscription.created`
+        - `customer.subscription.updated`
+        - `customer.subscription.deleted`
+      </Step>
+      <Step title="Passo 4">
+        **Digite a URL do Endpoint** do Supabase.
+      </Step>
+      <Step title="Passo 5">
+        **Copie o Webhook Secret** e armazene-o com segurança em **Supabase → Edge Functions → Manage Secrets → Add New Secret**.
+
+        <Info>
+          Se não tiver certeza sobre como nomear o secret, pergunte ao Lovable no **modo chat** para orientação.
+        </Info>
+      </Step>
+    </Steps>
+  </Step>
+  <Step title="Adicionar Chaves de API com Segurança">
+    Para integrar o Stripe com segurança, evite compartilhar sua chave de API diretamente no chat. Em vez disso:
+
+    ![](/images/ConnectLovabletoStripe\(1\).png)
+
+    <Steps>
+      <Step title="Passo 1">
+        **Vá para o Painel do Stripe** \> Developers \> API Keys.
+      </Step>
+      <Step title="Passo 2">
+        **Copie a Secret Key** (NÃO cole diretamente no chat do Lovable).
+      </Step>
+      <Step title="Passo 3">
+        **Use o recurso \"Add API Key\" do Lovable** para armazená-la com segurança.
+
+        <Warning>
+          **Aviso Importante de Segurança**
+
+          Nunca cole sua **Secret Key** diretamente no chat do Lovable. Trate-a como as chaves da sua casa—expô-la pode permitir acesso não autorizado à sua conta do Stripe. Em vez disso, armazene-a com segurança usando o recurso de chave de API do Lovable.
+        </Warning>
+      </Step>
+    </Steps>
+  </Step>
+  <Step title="Testando Sua Integração">
+    - **Use o Modo de Teste do Stripe** para testar pagamentos com segurança.
+    - **Detalhes do cartão de teste**:
+      - Número do Cartão: `4242 4242 4242 4242`
+      - Qualquer data de expiração futura
+      - Qualquer CVC de 3 dígitos
+    - **Faça o deploy do seu app**—a integração do Stripe não funciona no modo de preview.
+  </Step>
+</Steps>
+
+## Depuração e Solução de Problemas
+
+<AccordionGroup>
+  <Accordion title="Verificar Logs do Console">
+    <Steps>
+      <Step title="Passo 1">
+        Abra as **Ferramentas do Desenvolvedor** (Clique com o botão direito \> Inspecionar \> Console no Chrome).
+      </Step>
+      <Step title="Passo 2">
+        Procure por erros e revise os logs de eventos do webhook.
+      </Step>
+      <Step title="Passo 3">
+        Copie as mensagens de erro e peça assistência de depuração ao Lovable.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Revisar Logs do Supabase">
+    <Steps>
+      <Step title="Passo 1">
+        Vá para o **Painel do Supabase**
+      </Step>
+      <Step title="Passo 2">
+        Edge Functions
+      </Step>
+      <Step title="Passo 3">
+        Logs para verificar erros de webhook.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Verificar Eventos de Webhook no Stripe">
+    <Steps>
+      <Step title="Passo 1">
+        Navegue até o **Painel do Stripe**
+      </Step>
+      <Step title="Passo 2">
+        Logs de webhook
+      </Step>
+      <Step title="Passo 3">
+        Confirme que o Stripe está enviando dados corretamente.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Usar o Modo Chat do Lovable">
+    <Steps>
+      <Step title="Passo 1">
+        Mude para o **modo chat** e faça perguntas de acompanhamento ao Lovable.
+      </Step>
+      <Step title="Passo 2">
+        Faça perguntas de acompanhamento ao Lovable.
+      </Step>
+      <Step title="Passo 3">
+        Use o **Método do Pato de Borracha** e explique seu problema passo a passo para esclarecer o problema.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,177 @@
+---
+title: "Integração com GitHub"
+description: "Aprenda como conectar e sincronizar seus projetos com repositórios do GitHub"
+icon: "github"
+---
+
+![Integração Github Lovable](/images/github-lovable.png)
+
+## O que é GitHub
+
+Integrar o GitHub ao seu projeto Lovable garante que você tenha controle de versão completo, ferramentas de colaboração e portabilidade de código durante todo o ciclo de vida do seu aplicativo.
+
+### **Resumo:**
+
+- **Git** é um sistema de controle de versão que rastreia mudanças no seu código.
+- **GitHub** é a plataforma padrão da indústria para hospedar repositórios Git e rastrear mudanças de código, o que o torna essencial tanto para desenvolvedores individuais quanto para equipes usando Lovable.
+- Ao vincular seu projeto ao GitHub, cada mudança no seu aplicativo Lovable é feita backup em um repositório Git em tempo real. Isso significa que você obtém um histórico completo do seu código, a capacidade de colaborar com desenvolvedores em fluxos de trabalho familiares e a liberdade de hospedar ou implantar seu aplicativo fora do Lovable, se necessário.
+- A **integração com GitHub** traz transparência, segurança e flexibilidade ao seu processo de desenvolvimento Lovable.
+
+## Principais Benefícios da Integração com GitHub:
+
+O Lovable suporta cada projeto com um repositório Git, facilitando para os desenvolvedores enviarem commits diretamente para o GitHub. Isso significa:
+
+- **Histórico de Versões e Backup:** Todo o seu código é rastreado com Git, então você pode revisar mudanças ou reverter para qualquer estado anterior. Cada commit é salvo no GitHub, fornecendo um backup externo do seu projeto​
+- **Colaboração em Equipe:** Seu código fica no GitHub onde outros (desenvolvedores, colaboradores) podem facilmente visualizá-lo, comentar e contribuir via pull requests​. Membros não técnicos da equipe também podem ver o histórico do código para transparência.
+- **Sincronização em Tempo Real:** O Lovable sincroniza automaticamente com seu repositório GitHub. Se você enviar código para o GitHub, o Lovable o puxa quase imediatamente​. Se você editar código no Lovable, ele envia essas mudanças para o GitHub. Você sempre terá o código mais recente em ambos os lugares sem cópia manual.
+- **Integração de Fluxo de Trabalho:** Use as ferramentas do GitHub (branches, pull requests, issues, CI/CD, etc.) junto com o Lovable​. Por exemplo, você pode executar testes ou fazer deploy do seu app via GitHub Actions quando o código é mesclado, tudo isso enquanto continua usando o editor e IA do Lovable para desenvolver funcionalidades.
+- **Flexibilidade de Deploy:** Conectar ao GitHub te dá a opção de hospedar seu app na sua própria infraestrutura ou plataforma de escolha. Você não fica preso à hospedagem do Lovable – você pode exportar o código e fazer deploy em qualquer lugar​. (O Lovable ainda sincronizará mudanças com o GitHub, então você pode continuar editando no Lovable mesmo se hospedar o app em outro lugar.)
+
+## Conectando o Lovable à Sua Conta do GitHub (Guia de Configuração)
+
+<Frame>
+  <video autoPlay controls loop muted className="w-full">
+    <source src="/assets/connect-to-github.mp4" type="video/mp4" />
+  </video>
+</Frame>
+
+Para começar a usar o GitHub com o Lovable, você precisa conectar sua conta do GitHub e criar um repositório para seu projeto. Veja como configurar:
+
+<Steps>
+  <Step title="Iniciar Conexão com o GitHub:">
+    No editor do Lovable, clique em **GitHub → Connect to GitHub** (geralmente encontrado no canto superior direito do editor do projeto)​. Isso iniciará o processo de autorização.
+  </Step>
+  <Step title="Autorizar o Lovable no GitHub:">
+    Você será redirecionado para o GitHub para autorizar o Lovable GitHub App. Faça login no GitHub se solicitado. Quando perguntado para conceder acesso, escolha **All repositories** ou **Only select repositories**​. Conceder acesso a todos os repositórios é mais fácil, mas selecionar repositórios específicos também funciona – de qualquer forma, o Lovable poderá criar um novo repositório para seu projeto em sua conta ou organização
+  </Step>
+  <Step title="Selecionar Conta/Organização do GitHub">
+    Se seu usuário do GitHub pertence a organizações, você pode precisar confirmar qual conta do GitHub ou organização instalar o app do Lovable. Você pode criar o repositório do projeto sob seu GitHub pessoal ou qualquer organização onde você tenha permissão.
+
+    <Note>
+      Você pode conectar apenas **uma** conta do GitHub por conta do Lovable por vez​. Se você quiser usar o GitHub de uma organização, certifique-se de ter acesso de administrador nessa organização para permitir a criação de repositórios
+    </Note>
+  </Step>
+  <Step title="Criar o Repositório">
+    Uma vez que o GitHub esteja conectado, retorne ao seu projeto do Lovable. Clique no botão **Create Repository** (localizado no canto superior direito da interface do editor do Lovable)​. O Lovable então criará um novo repositório do GitHub para este projeto e enviará o código atual do projeto para esse repositório. Este push inicial pode levar alguns segundos. Após este passo, o código do seu projeto do Lovable agora está no GitHub.
+  </Step>
+  <Step title="Verificar a Conexão">
+    Vá ao GitHub e navegue até sua conta (ou organização) – você deve ver o novo repositório com o nome do seu projeto. Ele conterá todo o código do seu app do Lovable. No Lovable, você também pode ver uma confirmação ou o nome do repositório do GitHub vinculado. A partir de agora, quaisquer mudanças no Lovable serão sincronizadas com este repositório e vice-versa.
+  </Step>
+</Steps>
+
+<Tip>
+  Se você planeja conectar múltiplos projetos do Lovable ao GitHub, você pode repetir o processo acima para cada projeto (cada um criará seu próprio repositório). Cada projeto do Lovable pode ter um repositório do GitHub vinculado. Lembre-se de que sua conta do Lovable permanece vinculada ao login do GitHub que você autorizou até você desconectá-la. Se você precisar trocar a conta do GitHub, você teria que desconectar a atual nas suas configurações do Lovable e então conectar uma nova conta.
+</Tip>
+
+## Como Funciona a Sincronização (Lovable ↔ GitHub)
+
+Uma vez que seu projeto esteja conectado ao GitHub, o Lovable garante que as mudanças de código permaneçam sincronizadas entre o editor do Lovable e seu repositório GitHub. A integração é **bidirecional**, mas segue algumas regras e comportamentos específicos:
+
+<Frame>
+  <video autoPlay controls loop muted className="w-full">
+    <source src="/assets/sync-commits.mp4" type="video/mp4" />
+  </video>
+</Frame>
+
+- **Sincronização Apenas da Branch Padrão:** O Lovable atualmente rastreia **apenas a branch padrão** do seu repositório GitHub​. Esta é tipicamente a branch `main` (ou `master`, dependendo do seu repositório). Se você fizer push de commits para outras branches no GitHub, essas mudanças **não** aparecerão no seu projeto Lovable até que sejam mescladas na branch padrão​. Por exemplo, se você estiver trabalhando em uma branch `feature/login`, o Lovable não mostrará essas atualizações no editor até que você mescle `feature/login` na `main` no GitHub. Da mesma forma, o Lovable só fará push de suas mudanças para a branch padrão. Tenha isso em mente ao usar múltiplas branches. (Veja o FAQ sobre como trocar a branch padrão se você precisar alterar qual branch o Lovable sincroniza.)
+- **Atualizações em Tempo Real do GitHub:** Quando você faz commit e push de código para a branch padrão no GitHub, esses commits aparecerão no Lovable quase automaticamente​. A integração do Lovable escuta por mudanças – sempre que você faz push para o GitHub, o Lovable puxa o commit mais recente para o projeto. Você não precisa atualizar manualmente ou importar nada; o editor refletirá o novo código tipicamente dentro de alguns segundos do push​. Isso permite que desenvolvedores trabalhem em seu próprio ambiente e vejam os resultados no Lovable instantaneamente.
+- **Fazendo Push de Mudanças do Lovable:** Se você fizer mudanças no Lovable (por exemplo, editando código via Modo Dev do Lovable ou fazendo a IA gerar novo código), essas mudanças também são salvas no repositório Git que suporta seu projeto. O Lovable fará push desses commits para o GitHub automaticamente, atualizando o repositório. Na prática, você pode tratar o Lovable como outro cliente git – quando a IA ou você modifica código no editor do Lovable, é como se você tivesse feito commit e push para o GitHub. Por exemplo, adicionar uma nova página ou editar um arquivo no Lovable resultará em um commit (com as mudanças) aparecendo no histórico de commits do repositório GitHub. Isso garante que tanto o Lovable quanto o GitHub sempre tenham o mesmo código mais recente.
+- **Não é Necessário Pull/Push Manual:** A sincronização é contínua. Você não precisa "puxar" atualizações manualmente para o Lovable ou "empurrar" atualizações para o GitHub – o Lovable cuida disso. Fazer push de código para o GitHub aciona o Lovable para buscar as mudanças, e editar no Lovable aciona um push para o GitHub nos bastidores​. Seu foco pode estar na construção, não na sincronização. Se você suspeitar que uma mudança não sincronizou, uma rápida atualização do editor do Lovable ou verificação do repositório GitHub pode confirmar o estado mais recente (mas em geral é automático).
+- **Tratamento de Conflitos:** Como tanto o Lovable quanto o GitHub podem alterar o código, há uma chance de conflito git se mudanças acontecerem no mesmo arquivo ao mesmo tempo. Na prática isso é raro, mas se um conflito ocorrer, você o resolveria como qualquer conflito Git. Por exemplo, você pode precisar ir ao repositório GitHub e manualmente mesclar ou corrigir mudanças conflitantes, então fazer commit. O Lovable então puxará o código resolvido. Para evitar conflitos, é melhor coordenar quem está editando ou usar branches para mudanças maiores (mesclando na main quando pronto).
+
+Em resumo, a integração com GitHub significa que o código do seu projeto Lovable e o repositório GitHub são efetivamente uma única fonte, espelhada em tempo real. Você pode confiantemente alternar entre o editor do Lovable e outras ferramentas de desenvolvimento sabendo que ambos permanecerão atualizados​
+
+## Importando um Repositório GitHub Existente para o Lovable
+
+E se você já tem uma base de código no GitHub e quer usar o Lovable com ela? Atualmente, **o Lovable ainda não suporta importar diretamente ou vincular a um repositório GitHub externo existente como um novo projeto**​. Em outras palavras, você não pode apontar o Lovable para um repositório existente e fazer com que ele puxe todo esse código automaticamente (por enquanto). No entanto, existem maneiras de trazer seu código existente para o Lovable:
+
+- **Importação Manual via um Novo Repositório:** Uma solução alternativa é criar um novo projeto Lovable e conectá-lo ao GitHub (seguindo os passos de configuração acima), o que te dá um repositório vazio (ou um repositório com o código inicial do Lovable). Então, você pode **adicionar manualmente seu código existente a esse repositório**. Por exemplo, você poderia clonar o novo repositório GitHub para sua máquina local, copiar os arquivos do seu projeto antigo, fazer commit e push. Uma vez que você faça push do seu código existente para a branch padrão do repositório, o Lovable sincronizará esses arquivos e você os verá no editor do Lovable. Isso efetivamente migra seu código para um projeto Lovable.
+- **Copiar e Colar Pequenos Trechos:** Se seu projeto é pequeno, você também pode iniciar um projeto Lovable e copiar pedaços de código (como arquivos individuais ou funções) para o Lovable via o editor ou a IA (por exemplo, colando código no editor de código do Lovable ou solicitando à IA com seu código). Isso é menos ideal para projetos grandes, mas pode funcionar para módulos menores.
+- **[Funcionalidade de Importação Planejada:](https://feedback.lovable.dev/p/have-the-possibility-to-import-an-existing-github-project)** A equipe do Lovable está ciente de que a importação direta de repositório é uma funcionalidade desejada, e é algo sob consideração para atualizações futuras​. Fique de olho no roadmap do Lovable ou anúncios para qualquer funcionalidade que permita importar um repositório existente de forma mais direta.
+
+<Info>
+  Importar uma base de código existente pode envolver configurar qualquer configuração necessária no Lovable (por exemplo, variáveis de ambiente, dependências) para espelhar a configuração do projeto original. Depois de trazer o código, teste o projeto dentro do Lovable para garantir que tudo funcione. A partir daí, você pode usar as funcionalidades de IA do Lovable no seu código e ainda sincronizar de volta para o GitHub.
+</Info>
+
+## Desenvolvendo com GitHub e Lovable em Paralelo
+
+Uma vez conectado, você pode construir e editar sua aplicação usando GitHub (ou seu ambiente de desenvolvimento local) e Lovable simultaneamente. Isso é ótimo para desenvolvedores que querem usar suas próprias ferramentas ou para equipes onde alguns membros preferem codificar manualmente. Aqui estão algumas maneiras de trabalhar efetivamente com a integração:
+
+- **Visualizando o Repositório:** No editor do Lovable, você terá uma opção para visualizar o repositório do GitHub (frequentemente através de um link ou botão **"View on GitHub"**)​. Clicar nisto levará você diretamente para a página do repositório no GitHub. De lá, você pode navegar pelo código, abrir arquivos e até mesmo editar diretamente no GitHub se necessário.
+- **Usando IDE Local ou Codespaces:** Você pode clonar o repositório do GitHub para sua máquina local e abri-lo em seu IDE favorito (como VS Code, WebStorm, etc.), ou usar GitHub Codespaces (um IDE na nuvem no GitHub) para desenvolvimento​. Isso significa que você pode escrever e modificar código fora da interface do Lovable.
+
+  <Note>
+    Um desenvolvedor em sua equipe poderia clonar o repositório, fazer mudanças extensas com suporte completo de IDE, executar testes localmente e então fazer push dos commits para o GitHub. Por causa da integração, esses commits sincronizarão de volta para o Lovable automaticamente​, então o projeto Lovable será atualizado para incluir as mudanças.
+  </Note>
+- **Fluxos de Trabalho Normais do GitHub:** Você pode aproveitar todos os recursos de colaboração do GitHub no repositório do seu projeto: criar **branches** para novas funcionalidades, abrir **pull requests** para revisar código antes de fazer merge, registrar **issues** e usar quadros de projeto para rastrear tarefas, etc.​. O Lovable não interfere com isso; ele simplesmente observa o branch padrão para mudanças reais no código. Por exemplo, você pode fazer todo o seu trabalho para uma nova funcionalidade em um branch `feature`, fazer push para o GitHub, revisá-lo através de um pull request e então fazer merge para `main`. Uma vez feito o merge, o Lovable puxará essas mudanças para que a aplicação em execução seja atualizada. Dessa forma, equipes podem impor revisões de código e usar o gerenciamento de projetos do GitHub, enquanto ainda se beneficiam das capacidades de desenvolvimento rápido do Lovable.
+- **Combinando IA e Codificação Manual:** Você pode continuar a usar o assistente de IA do Lovable para gerar código ou novos componentes, e então inspecionar ou ajustar finamente esse código através do GitHub. A integração permite um fluxo de trabalho híbrido: por exemplo, um fundador não-técnico pode usar o Lovable para estruturar uma funcionalidade com IA, e um desenvolvedor pode então limpar ou otimizar esse código no repositório do GitHub. Ambos os conjuntos de mudanças se mesclam perfeitamente.
+
+  <Note>
+    Por exemplo, use **GitHub Actions** para executar testes automaticamente em cada pull request, ou para fazer deploy da aplicação para um serviço de hospedagem sempre que `main` for atualizado​
+  </Note>
+- **Lembre-se:** mesmo fazendo desenvolvimento pesado através do GitHub, você sempre pode voltar ao editor do Lovable para usar as ferramentas visuais ou chat de IA para assistência. A base de código é a mesma, então quaisquer mudanças que você fez manualmente estarão presentes no Lovable. Esta integração faz do Lovable uma parte da sua cadeia de ferramentas ao invés de um ambiente isolado.
+
+## Documentando Mudanças e Fazendo Rollback
+
+Trabalhar com GitHub incentiva boas práticas de desenvolvimento de software como documentar mudanças e gerenciar versões. Aqui estão algumas dicas sobre gerenciar suas mudanças de código e reverter quando necessário:
+
+- **Use Mensagens de Commit Significativas:** Sempre que você fizer commit de mudanças (especialmente ao fazer commit via IDE local ou interface do GitHub), escreva uma mensagem de commit clara descrevendo _o que_ você mudou e _por que_. Por exemplo, `"Fix signup form validation bug"` é muito mais útil que `"update code"`. Boas mensagens de commit ajudam membros da equipe (e seu eu futuro) a entender o histórico do projeto. Elas servem como documentação para a evolução do seu app. Se a IA do Lovable fez muitas mudanças de uma vez, considere dividi-las em commits lógicos com mensagens para cada mudança principal, se você estiver fazendo isso manualmente. Se os commits estão sendo gerados automaticamente, você sempre pode fazer squash ou editá-los depois no GitHub para maior clareza.
+- **Rastreie Versões no Lovable:** O Lovable fornece um histórico de versões no editor (similar ao histórico de revisões do Google Docs) que mantém o controle das mudanças feitas através da plataforma. Você pode acessar o painel de histórico de versões para ver estados anteriores do seu projeto e até mesmo restaurar uma versão anterior com um clique​. Isso é efetivamente um recurso de "rollback" construído sobre o Git – se algo der errado após uma mudança gerada por IA ou uma edição, você pode reverter para um estado conhecido como bom. É uma maneira rápida para não-desenvolvedores desfazerem erros sem usar o GitHub diretamente.
+- **Fazendo Rollback com Git ou Lovable (Reverts):** Como seu projeto está sob Git, você pode realizar rollbacks revertendo commits no GitHub também. Por exemplo, se um determinado commit introduziu um problema, você (ou um desenvolvedor) pode clicar em "Revert" no GitHub para esse commit, ou usar `git revert` localmente e fazer push. Isso criará um novo commit que desfaz as mudanças do commit problemático. O Lovable sincronizará esse commit de revert e seu projeto voltará ao comportamento anterior. Sempre teste seu app após um revert para garantir que o problema foi resolvido e nenhuma outra funcionalidade foi afetada.
+- **Use Branches para Mudanças Grandes:** Uma boa estratégia para reduzir a necessidade de rollbacks é usar feature branches para mudanças importantes. Você pode desenvolver uma grande funcionalidade em um branch separado e só fazer merge para o branch principal (que o Lovable usa) depois que estiver totalmente testada. Dessa forma, seu branch principal (e o app ao vivo no Lovable) permanece estável, e você só introduz mudanças quando elas estão prontas. Se algo no feature branch não estiver funcionando, isso não afeta seu código de produção no Lovable até ser feito o merge.
+- **Documentação de Mudanças:** Se você está colaborando com outros ou passando o projeto adiante, considere manter um breve **changelog** ou usar as notas de release do GitHub. Embora as mensagens de commit sejam o log principal, resumir mudanças de forma legível para humanos (ex: "Implementou autenticação de usuário, atualizou UI para página de perfil, corrigiu bug de pagamento") pode ser útil para stakeholders não-técnicos acompanharem o progresso. Você pode fazer isso em um arquivo Markdown no repositório ou no GitHub Releases.
+- **Recurso de Rollback do Lovable:** O Lovable automaticamente faz backup do seu projeto, então se você cometeu um erro, pode usar o rollback integrado na interface do Lovable para desfazer mudanças acidentais​. Isso é essencialmente usar controle de versão Git por baixo dos panos. Garante que até usuários não-técnicos tenham uma rede de segurança – você não precisa ser um especialista em Git para restaurar uma versão anterior do seu app. No entanto, para gerenciamento complexo de versões (como manter múltiplas versões ou fazer rollbacks parciais), você provavelmente usará as ferramentas do GitHub.
+
+Ao documentar diligentemente suas mudanças e aproveitar os recursos de versionamento do GitHub e Lovable, você pode se mover rapidamente com confiança. Se uma atualização publicada causar problemas, você tem registros claros do que mudou e múltiplas maneiras de reverter ou corrigir para frente. Isso reduz significativamente os riscos do processo de desenvolvimento.
+
+## Solução de Problemas e Perguntas Frequentes (GitHub Sync)
+
+Abaixo estão algumas perguntas e problemas comuns que os usuários encontram com a integração do GitHub, juntamente com orientações sobre como resolvê-los. Clique em uma pergunta para visualizar a resposta.
+
+<AccordionGroup>
+  <Accordion title="Por que meus commits não estão aparecendo no Lovable?">
+    **Possíveis causas:** A razão mais comum é que os commits foram feitos em uma branch que o Lovable não está rastreando. Lembre-se, o Lovable só sincroniza com a **branch padrão** do repositório (geralmente `main` ou `master`)​. Se você fez commit em uma branch diferente e não mesclou essas mudanças na branch padrão, o Lovable não as verá. Para corrigir isso, mescle a branch na branch padrão (ou altere a branch padrão – veja a próxima pergunta). Uma vez que o commit esteja na branch padrão, o Lovable deve puxá-lo automaticamente.
+
+    Outra possibilidade é um problema com o link de integração. Por exemplo, se você **renomeou o repositório GitHub ou mudou seu nome de usuário GitHub** após conectar, o webhook/conexão pode estar quebrado. Nesses casos, reconectar sua conta GitHub ao Lovable pode restabelecer o link. Certifique-se de que o Lovable GitHub App ainda tem acesso ao repositório (verifique suas configurações do GitHub → Applications). Se foi removido ou perdeu acesso, reautorize-o e então tente fazer push do commit novamente.
+
+    Além disso, verifique novamente se o commit foi enviado com sucesso para o GitHub (não apenas commitado localmente). Se você não executou `git push` (no caso de desenvolvimento local), o commit não estará no GitHub para o Lovable detectar.
+
+    Se seus commits **estão na branch padrão** e você ainda não vê atualizações no Lovable, tente atualizar manualmente o projeto no editor do Lovable. Em casos raros, pode haver um pequeno atraso ou um problema no webhook. Geralmente, porém, os commits aparecem quase instantaneamente quando tudo está configurado corretamente.
+  </Accordion>
+
+  <Accordion title="Como altero a branch padrão com a qual o Lovable sincroniza">
+    O Lovable seguirá qualquer branch que esteja definida como **padrão** nas configurações do seu repositório GitHub. Por padrão, esta é `main` (para novos repositórios GitHub) a menos que você a tenha alterado. Se você quiser que o Lovable rastreie uma branch diferente (digamos que você queira usar uma branch `development` como fonte principal), você precisa alterar a branch padrão no GitHub:
+
+    1. **No GitHub:** Vá para **Settings** do seu repositório > **Branches** > **Default branch**. Escolha a branch que você quer definir como nova padrão e confirme a mudança. (Se a branch ainda não existir, você precisará criá-la e talvez populá-la com o código atual.)
+    2. **Após Alterar:** Uma vez que você defina uma nova padrão, o Lovable deve começar a tratar essa branch como a que deve sincronizar. Como o Lovable só rastreia a branch padrão​, alterá-la efetivamente aponta o Lovable para a nova branch. Dê um momento para buscar o código da nova branch padrão. Todos os commits futuros para essa branch sincronizarão com o Lovable, e edições no Lovable serão enviadas para essa branch.
+    3. **Verificar no Lovable:** Verifique o editor do Lovable para garantir que agora está mostrando o código da nova branch padrão. Você pode ver uma notificação de atualização ou pode simplesmente notar que quaisquer diferenças (se a branch tinha código diferente) agora estão refletidas. Se não parecer atualizar, tente desconectar e reconectar a integração GitHub no Lovable (como último recurso). Mas tipicamente, isso não é necessário — deve seguir o padrão automaticamente.
+    4. **Mesclar Mudanças Antigas:** Um passo crucial é garantir que quaisquer commits importantes da antiga branch padrão sejam mesclados na nova padrão. Alterar a branch padrão no GitHub **não** mescla automaticamente o conteúdo. Se você mudou as branches padrão porque quer mudar o desenvolvimento para uma nova linha de trabalho, certifique-se de que a nova branch tem todo o código mais recente. Você pode precisar mesclar a main anterior na nova branch para que nada seja perdido. Após mesclar, o Lovable mostrará as mudanças combinadas.
+
+    Tenha em mente que todos os colaboradores agora estarão fazendo push para a nova branch padrão por padrão. Atualize sua equipe ou documentação para evitar confusão. O Lovable agora ignorará a branch anteriormente padrão (só prestará atenção na nova). Se necessário, você sempre pode voltar redesignando a branch antiga como padrão nas configurações do GitHub.
+  </Accordion>
+
+  <Accordion title="Como o Lovable detecta novos commits do GitHub?">
+    A integração do Lovable usa a API e webhooks do GitHub por baixo dos panos para se manter atualizada. Quando você conecta ao GitHub pela primeira vez, você essencialmente instala o Lovable GitHub App no seu repositório, o que configura a comunicação. Então, **quando você faz push de um novo commit para a branch padrão**, o GitHub notifica o serviço do Lovable (via um evento webhook). O Lovable então automaticamente puxa as últimas mudanças para o seu projeto​. Tudo isso acontece em segundo plano em questão de segundos. É por isso que, assim que você faz push do código para o GitHub, você geralmente verá seu projeto Lovable atualizar quase imediatamente sem nenhuma ação necessária da sua parte​.
+
+    Por outro lado, quando você faz mudanças no editor do Lovable, o Lovable usa a conexão com o GitHub para fazer push desses commits para o seu repositório. Isso pode acontecer através do backend do Lovable usando a API do GitHub – para você é transparente: você apenas notará que novos commits (com mensagens apropriadas) aparecem no seu repositório GitHub sempre que você muda algo no Lovable.
+
+    Em resumo, o Lovable está constantemente "ouvindo" por commits do GitHub e "falando" com o GitHub quando mudanças ocorrem no editor. É uma sincronização bidirecional facilitada pela integração que você configurou durante a conexão. Você não precisa gerenciar nenhum desse processo; apenas saiba que por trás das cenas, webhooks/chamadas de API estão mantendo tudo alinhado. Se a sincronização parecer parar, pode ser devido a uma conexão quebrada (nesse caso, reconectar a integração ou reautorizar o GitHub App pode reabilitar o webhook).
+  </Accordion>
+
+  <Accordion title="Posso hospedar meu app Lovable eu mesmo após conectar ao GitHub?">
+    Sim. Integrar com o GitHub te dá acesso completo ao seu código, o que significa que você pode fazer deploy ou hospedar a aplicação fora do Lovable se quiser. Por padrão, o Lovable fornece hospedagem para o seu projeto (quando você clica em "Publish" no Lovable, ele faz deploy do seu app para a nuvem do Lovable). Isso não muda só porque você vinculou o GitHub – você pode continuar a usar a hospedagem do Lovable **e** ter o código no GitHub ao mesmo tempo.
+
+    No entanto, se você preferir hospedar o app no seu próprio servidor ou outra plataforma, você pode fazer isso usando o código do repositório GitHub​. Por exemplo, você poderia pegar o repositório e fazer deploy dele no Vercel, Heroku, AWS, ou qualquer ambiente da sua escolha. Como o código é uma base de código de aplicação web padrão (projetos Lovable são tipicamente apps JavaScript/TypeScript full-stack), você pode configurá-lo como qualquer projeto.
+
+    <Warning>
+      **Mesmo se você hospedar em outro lugar, você ainda pode usar o Lovable para desenvolver**. Você pode tratar o Lovable como um editor visual/assistente de IA poderoso, e quando estiver pronto para atualizar seu app auto-hospedado, você faz push dos commits para o GitHub (via Lovable). Seu pipeline de deploy externo (se configurado) então faria deploy desses novos commits. Neste cenário, o Lovable é para construir e o GitHub é a fonte única da verdade tanto para o Lovable quanto para sua própria hospedagem.
+    </Warning>
+
+    Note que se você hospedar o app você mesmo fora do Lovable, você precisará gerenciar variáveis de ambiente, secrets, conexões de banco de dados e outras configurações no seu novo ambiente assim como faria para qualquer app. A integração do Lovable com serviços como Supabase ou Stripe ainda estará no seu código – elas continuam a funcionar desde que a configuração apropriada esteja em vigor no novo host.
+  </Accordion>
+</AccordionGroup>
+
+
+Seguindo este guia e utilizando o GitHub com o Lovable, você combinará a velocidade do desenvolvimento assistido por IA com a confiabilidade e controle das práticas tradicionais de software. Esta integração foi projetada para ser acessível para usuários não técnicos (você obtém um backup seguro e uma maneira fácil de transferir código) enquanto fornece todo o poder que os desenvolvedores esperam em uma cadeia de ferramentas moderna.
+
+Bom código!

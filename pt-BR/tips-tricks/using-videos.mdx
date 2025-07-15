@@ -1,0 +1,69 @@
+---
+title: "Usando Vídeos"
+description: "Aprenda como incorporar vídeos em seus projetos usando links externos ou uploads do GitHub"
+icon: "film"
+---
+
+Lovable oferece dois métodos para incorporar vídeos em seus projetos. Abaixo, cobriremos ambas as opções passo a passo:
+
+<AccordionGroup>
+  <Accordion title="Vinculando a um vídeo externo">
+    <Tip>
+      A maneira mais simples e recomendada de incorporar um vídeo é vinculando a um hospedado externamente, como no YouTube.
+    </Tip>
+    <CodeGroup>
+
+    ```txt Example prompt
+    Incorpore este vídeo
+    https://www.youtube.com/watch?v=dQw4w9WgXcQ 
+    na seção de conteúdo hero.
+    ```
+
+    </CodeGroup>
+  </Accordion>
+  <Accordion title="Usando um vídeo da sua pasta pública do GitHub">
+    <Warning>
+      Fazer upload de vídeos grandes para seu repositório GitHub pode fazer com que ele cresça em tamanho, o que pode afetar a performance do Lovable (tempos de clonagem de repositório mais longos, inicialização mais lenta de previews/sandbox).
+
+      Uma opção melhor é usar serviços hospedados (como YouTube) ou opções de armazenamento de arquivos como S3, essencialmente fornecendo uma URL que você pode referenciar, conforme descrito nos passos anteriores.
+    </Warning>
+    Você pode fazer upload de vídeos para o repositório GitHub do seu projeto e referenciá-los diretamente. Veja como:
+
+    <Steps>
+      <Step title="Conecte seu repositório GitHub">
+        Primeiro, certifique-se de que seu projeto está vinculado a um repositório GitHub. [Aqui está como configurar seu repositório](https://docs.lovable.dev/integrations/git-integration).
+      </Step>
+      <Step title="Acesse a pasta pública">
+        Dentro do seu repositório conectado, navegue até o diretório `public`. Esta pasta é especificamente usada para hospedar assets do projeto como imagens, vídeos e outras mídias.
+      </Step>
+      <Step title="Faça upload de um vídeo">
+        Agora você pode adicionar seu vídeo à pasta pública arrastando e soltando ou clicando em **"choose your files"** para navegar e fazer upload do arquivo da sua máquina local.
+      </Step>
+      <Step title="Faça commit do arquivo">
+        Após selecionar seu arquivo de vídeo, digite uma breve mensagem de commit (ex: "Adiciona um vídeo de Marte para ser usado no app") e clique em **"Commit changes"**.
+        ![Committing video file](/assets/using-videos-github-commiting.png)
+      </Step>
+      <Step title="Obtenha o caminho do vídeo">
+        Uma vez que o upload esteja completo, clique no arquivo de vídeo e use o ícone de copiar :octicons-copy-16: para copiar seu caminho. Você precisará deste caminho no próximo passo.
+        ![Copy video file path](/assets/using-videos-github-selecting.png)
+      </Step>
+      <Step title="Referencie o vídeo no Lovable">
+        Agora, você pode incorporar o vídeo especificando o caminho do arquivo no seu prompt. Por exemplo, você pode usar um prompt como este:
+
+        <CodeGroup>
+
+        ```bash Example prompt
+        Insira um vídeo adicional na seção de introdução usando este arquivo: 
+        public/mars-video-nasa.mp4
+        ```
+
+        </CodeGroup>
+
+        Certifique-se de usar o caminho exato do arquivo que você copiou anteriormente.
+      </Step>
+    </Steps>
+    Para ver estes métodos em ação, explore um dos projetos de exemplo: [Projeto de exemplo do Lovable usando vídeos](https://lovable.dev/projects/380835ab-c8d7-4f45-9b0d-51ec04294457). Você encontrará prompts reais demonstrando como os vídeos são integrados usando ambos os métodos.
+
+    Adicionalmente, para uma visão mais técnica do processo de adição de vídeos, confira este repositório público: [GitHub: Exemplo de Upload de Vídeo](https://github.com/viborc/adding-videos-example). Ele inclui o upload do vídeo e os detalhes de implementação usados no projeto.
+  </Accordion>
+</AccordionGroup>

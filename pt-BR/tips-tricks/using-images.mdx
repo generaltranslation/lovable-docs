@@ -1,0 +1,120 @@
+---
+title: "Usando imagens no Lovable"
+description: "Aprenda como adicionar imagens aos seus projetos Lovable"
+icon: "frame"
+---
+
+Para adicionar imagens você pode fazer uma das quatro coisas:
+
+<AccordionGroup>
+  <Accordion title="Faça upload da imagem no chat de prompt">
+    Simplesmente faça upload delas no chat e explique para a IA do Lovable onde e como você gostaria que elas aparecessem em seu projeto.
+
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/fABvCZP4QlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+  </Accordion>
+
+  <Accordion title="Substitua no editor visual">
+    Você pode substituir uma imagem existente diretamente usando a funcionalidade do [editor visual](https://docs.lovable.dev/features/precision-edit#visual-edits):
+
+    <Steps>
+      <Step title="Passo 1">
+        Clique na ferramenta "Edit".
+      </Step>
+
+      <Step title="Passo 2">
+        Selecione o espaço reservado para imagem que você gostaria de alterar.
+
+        ![images/visual-edit-replace.png](/images/visual-edit-replace.png)
+      </Step>
+
+      <Step title="Passo 3">
+        Altere a imagem.
+
+        ![images/visual-edit-image.png](/images/visual-edit-image.png)
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Usando uma URL de imagem externa">
+    Uma maneira de adicionar imagens ao seu projeto é referenciando uma imagem de uma URL externa. Este método permite que você use imagens hospedadas em plataformas externas como Unsplash, Imgur, ou qualquer outro serviço de hospedagem de imagens. Tenha cuidado com os direitos autorais!
+
+    Veja como solicitar ao Lovable para usar uma imagem externa:
+
+    <Steps>
+      <Step title="Passo 1">
+        Encontre a imagem que você deseja usar.
+
+        Por exemplo, você pode visitar um site como Unsplash, selecionar uma imagem e copiar sua URL.
+      </Step>
+
+      <Step title="Passo 2">
+        No prompt do seu projeto, simplesmente diga ao Lovable para usar essa imagem especificando a URL. Por exemplo:
+
+        ```
+        Use a imagem desta URL 
+        https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Pale_Blue_Dot.png/442px-Pale_Blue_Dot.png 
+        para a imagem da seção hero.
+        ```
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Usando imagens do seu diretório público do GitHub">
+    Outro método para adicionar imagens ao seu projeto Lovable é usando imagens enviadas para o diretório `public` do seu repositório GitHub conectado. Veja como você pode fazer isso:
+
+    <Steps>
+      <Step title="Conecte seu repositório GitHub">
+        Certifique-se de que seu projeto esteja conectado ao seu repositório GitHub. [Aqui está como conectar seu repositório](https://docs.lovable.dev/integrations/git-integration).
+      </Step>
+
+      <Step title="Localize a pasta public">
+        Dentro do seu repositório GitHub, navegue até o diretório `public`. Esta pasta é normalmente usada para hospedar recursos como imagens que podem ser referenciadas em seu projeto.
+      </Step>
+
+      <Step title="Adicionar arquivo">
+        Clique em **Add file** e então, no menu suspenso, selecione a opção **Upload files**.
+        ![Selecting files for upload](/assets/using-images-github-upload.png)
+      </Step>
+
+      <Step title="Enviar uma imagem">
+        O próximo passo é transferir sua imagem para seu repositório:
+
+        * Arraste e solte a imagem na pasta public, ou
+        * Clique no link **"choose your files"** para navegar e selecionar o arquivo de imagem.
+          ![Selecting files for upload](/assets/using-images-github-commiting.png)
+      </Step>
+
+      <Step title="Confirmar as alterações">
+        Após selecionar sua imagem, escreva uma mensagem de commit simples (ex: "Adicionando arquivos de imagem para serem usados no app") e clique em **"Commit changes"** para salvar o arquivo em seu repositório.
+      </Step>
+
+      <Step title="Obter o caminho da imagem">
+        Uma vez que o arquivo foi enviado, selecione-o e então clique no ícone de copiar ao lado do nome do arquivo para copiar o caminho da imagem. Este caminho será usado em seu prompt do Lovable.
+        ![Selecting files for upload](/assets/using-images-github-selecting.png)
+      </Step>
+
+      <Step title="Usar a imagem no Lovable">
+        Agora você pode referenciar esta imagem em seu projeto usando um prompt como o seguinte:
+
+        ```
+        Adicione uma imagem adicional à seção hero. 
+        Desta vez, use esta do meu repositório local: public/c-64-close-up.jpg.jpeg
+        ```
+
+        Certifique-se de usar o nome da sua imagem e o caminho que você copiou no passo anterior.
+
+        <Warning>
+          Enviar imagens grandes para seu repositório GitHub pode fazer com que ele cresça em tamanho, o que pode afetar a performance do Lovable (tempos de clonagem de repositório mais longos, inicialização mais lenta de previews/sandbox).
+
+          Tente otimizar suas imagens antes de enviá-las para sua pasta `public` comprimindo-as e usando dimensões que sejam relevantes para seu caso de uso. Por exemplo, não use uma imagem em tamanho Full HD se ela será exibida apenas como um pequeno ícone.
+        </Warning>
+      </Step>
+    </Steps>
+
+    Para ajudá-lo a entender melhor como integrar imagens usando os métodos descritos acima, temos um projeto que você pode explorar: [Lovable Project Example](https://lovable.dev/projects/e823fedf-238d-4313-86a8-1fd4bfc2a9ba). Neste projeto, você pode ver os prompts reais e como cada método funciona na prática.
+
+    Além disso, aqui está um repositório público do GitHub que inclui os commits, imagens enviadas e detalhes completos de implementação. Você pode visualizar o repositório aqui: [GitHub: Adding Images Example](https://github.com/viborc/adding-images-example).
+
+    Sinta-se à vontade para explorar o projeto e o repositório para aprofundar seu entendimento e melhorar suas habilidades de implementação.
+  </Accordion>
+</AccordionGroup>

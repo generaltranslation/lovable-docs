@@ -1,0 +1,221 @@
+---
+title: "Integração com 21st.dev"
+description: "Construa Landing Pages de IA com Alta Conversão Usando Lovable"
+icon: "ruler-combined"
+---
+
+A maioria das landing pages geradas por IA parecem iguais—seções vagas, cores fora da marca e sem personalidade. Mas não precisa ser assim.
+
+Vamos compartilhar um fluxo de trabalho estruturado usando Lovable e 21stdev que cria landing pages que os clientes _realmente_ amam (como [esta aqui](https://lovable.dev/projects/35d72d2e-6e25-40e5-9b0c-c0d1a7c1b727)).
+
+![Hero Section Landing Page](/images/hero-section.png)
+
+## Guia passo a passo
+
+Da inspiração do design ao polimento final, aqui está o guia passo a passo que ele usa para construir rapidamente sem sacrificar a qualidade:
+
+<Steps>
+  <Step title="Comece com Inspiração de Design, Não com um Prompt">
+    Antes de escrever uma única palavra de prompt, navegue pelo [Dribbble](https://dribbble.com/) ou [Behance](https://www.behance.net/). Procure por designs com:
+
+    * Tipografia e espaçamento limpos
+    * CTAs claros e layout minimalista
+    * Interações sutis (não excessivamente elaboradas)
+
+    <Tip>
+      Escolha algo que você possa realisticamente replicar. Evite designs 3D excessivamente complexos se você não planeja recriá-los.
+    </Tip>
+
+    <Info>
+      Um cliente real pediu um design "moderno e minimalista". Isso informou o ponto de partida visual. Evite escolher algo que você não consegue entregar.
+    </Info>
+  </Step>
+
+  <Step title="Comece com um projeto em branco">
+    Inicie seu projeto Lovable com o prompt:
+
+    <Note>
+      Comece com um projeto vazio em branco. Adicionaremos detalhes depois.
+    </Note>
+  </Step>
+
+  <Step title="Converta WebP para PNG e Prepare sua Captura de Tela do Design">
+    Depois de encontrar seu design de referência, baixe-o. Se ele salvar no formato WebP, use um conversor online para mudá-lo para PNG para que possa ser facilmente usado nos fluxos de trabalho do Lovable ou GPT.
+
+    <Note>
+      Ferramentas que recomendamos: https://cloudconvert.com/webp-to-png
+    </Note>
+  </Step>
+
+  <Step title="Transforme Inspiração em um Prompt Detalhado Usando o Modo Chat">
+    Use o [Modo Chat](https://docs.lovable.dev/features/labs#chat-mode) do Lovable para extrair:
+
+    * Seções da página (hero, recursos, FAQ, etc.)
+    * Estrutura do layout, espaçamento e ordem do conteúdo
+    * Famílias de fontes, paletas de cores e gradientes
+    * Tipos de animação, efeitos de hover e transições
+
+    <Info>
+      O [modo Chat](https://docs.lovable.dev/features/labs#chat-mode) do Lovable (ou customGPT) também é treinado para recomendar imagens do Unsplash para miniaturas de blog e ilustrações.
+    </Info>
+
+    <Warning>
+      O Lovable ocasionalmente rotula coisas incorretamente (por exemplo, a fonte "Space Grotesque" foi escrita incorretamente). Sempre revise e corrija as saídas do prompt antes de colar no Lovable.
+    </Warning>
+
+    Você pode até pedir ao modo chat do Lovable para elaborar seções ou reescrever o prompt com melhores sugestões de UX.
+  </Step>
+
+  <Step title="Gere o Primeiro Rascunho com o Lovable">
+    Cole o prompt detalhado no Modo de Edição do Lovable. Então:
+
+    * Faça upload da sua captura de tela PNG como referência
+    * Adicione notas como "*Use a fonte Space Grotesque*" ou "Use Unsplash para miniaturas de blog"
+
+    Esta combinação leva a designs muito mais precisos do que prompts vagos de uma única frase.
+
+    <Info>
+      Note como o Lovable parece muito mais rápido comparado a configurar Tailwind ou Bootstrap manualmente apenas um ano atrás.
+    </Info>
+  </Step>
+
+  <Step title="Edite em Tempo Real: Prompts Visuais + Texto">
+    Use a [ferramenta de edição visual](https://docs.lovable.dev/features/visual-edit) do Lovable para:
+
+    * Redimensionar imagens (por exemplo, "torne esta imagem 800px de largura")
+    * Posicionar imagens hero (por exemplo, "coloque esta imagem no lado direito")
+    * Alinhar seções do design com a imagem de referência
+
+    Combine isso com edições em linguagem natural para precisão.
+  </Step>
+
+  <Step title="Aperfeiçoe o Design com Componentes 21stdev">
+    Use os componentes de UI pré-construídos do [21stdev](https://21st.dev/) para melhorar:
+
+    ![21stdev custom component ](/images/21stdev.png)
+
+    * Seções hero
+    * Barras de navegação com efeitos de hover
+    * Layouts de depoimentos
+    * CTAs e grades de recursos
+
+    Encontre um componente que você goste, copie o prompt e cole no Lovable. Certifique-se de combinar o tom visual com o resto do site.
+  </Step>
+
+  <Step title="Corrija Interpretações Errôneas da IA">
+    A IA economiza tempo, mas espere limpeza:
+
+    ![Add spec component in landing page](/images/component.png)
+
+    * Ajuste a marca (Lovable usa azul por padrão)
+    * Melhore espaçamento e padding manualmente
+    * Use tipografia consistente em todo o site
+    * Adicione gradientes ou profundidade para um visual não plano
+
+    Faça o design parecer *intencional*, não "padrão".
+  </Step>
+
+  <Step title="Otimize para Mobile (Não Negociável)">
+    Não pule isso. Garanta que:
+
+    ![Mobile Responsive website](/images/mobile-responsive.png)
+
+    * Inputs ocupem toda a largura
+    * Tamanhos de fonte se adaptem a telas menores
+    * Botões sejam amigáveis ao toque
+    * Seções se empilhem bem e rolem suavemente
+
+    UX mobile é crítico para conversões.
+  </Step>
+
+  <Step title="Adicione Animações Leves e Microinterações">
+    Para modernizar a sensação:
+
+    * Use fade-ins para seções hero
+    * Adicione efeitos de hover em botões
+    * Anime seções no scroll
+    * Use movimento sutil de fundo
+
+    Lovable pode integrar [Framer Motion](https://motion.dev/) pronto para uso se solicitado corretamente.
+
+    ![Add animation landing page](/images/animation.png)
+  </Step>
+
+  <Step title="Gere Visuais Personalizados com IA (Opcional)">
+    Crie prompts para ChatGPT, Midjourney ou Ideogram baseados nos seus elementos favoritos do design de referência.
+
+    **Passos:**
+
+    <Steps>
+      <Step title="Capture uma screenshot da seção visual desejada" />
+
+      <Step title="Peça ao ChatGPT para escrever um prompt correspondente" />
+
+      <Step title="Gere a imagem na sua ferramenta de IA" />
+
+      <Step title="Remova o fundo, depois reinsira no Lovable" />
+    </Steps>
+
+    <Note>
+      O mais recente ChatGPT 4o parece valer o teste.
+    </Note>
+
+    Isso é especialmente útil para visuais 3D ou ilustrações temáticas.
+  </Step>
+
+  <Step title="Faça Deploy com Um Único Clique">
+    Quando estiver satisfeito com o resultado:
+
+    * Clique em "Deploy" no Lovable
+    * Conecte um domínio personalizado via Netlify
+
+    Seu site fica no ar em minutos. Nenhuma configuração manual necessária.
+  </Step>
+
+  <Step title="Compartilhe com Clientes e Itere">
+    Copie o link público e compartilhe com seu cliente. Eles podem:
+
+    * Revisar ao vivo
+    * Sugerir ajustes
+    * Aprovar rapidamente
+
+    Você pode continuar refinando seções usando o editor visual ou baseado em prompts do Lovable. É um ciclo de iteração rápido.
+  </Step>
+</Steps>
+
+
+
+
+## Por Que Esta Abordagem Funciona?
+
+IA não é mágica. Mas com estrutura, ela se torna um superpoder. Comparado ao prompting não estruturado:
+
+- O primeiro rascunho fica 10x mais próximo do resultado final
+- Você gasta menos tempo corrigindo erros
+- Cada seção tem um propósito
+- O produto final parece personalizado, não padronizado
+
+É uma mistura de automação **\+** artesanato.
+
+## Principais Conclusões
+
+- Comece com uma inspiração visual forte
+- Use prompts estruturados com o Lovable Chat Mode
+- Adicione capturas de tela e esclareça expectativas
+- Atualize seções usando componentes 21stdev
+- Corrija peculiaridades de design e otimize para mobile
+- Anime onde importa
+- Implante rápido, itere mais rápido
+
+Este é o fluxo de trabalho que [Prajwal](https://x.com/PrajwalTomar_/status/1902371273147064772) usa todos os dias para seus clientes - que testamos internamente - para construir landing pages rápidas, bonitas e de alta conversão—alimentadas por Lovable AI, mas guiadas pela intenção.
+
+Boa Construção\!
+
+## Mais Recursos
+
+- [Tutorial do Brock Mesarich](https://www.youtube.com/watch?v=v48gJFQvE1Y&pp=ygUPbG92YWJsZSAyMXN0ZGV2)
+- Tutorial do Lukas Margerie ([1](https://www.youtube.com/watch?v=-GiBI0leMHU&t=30s&pp=ygUPbG92YWJsZSAyMXN0ZGV2) - [2](https://www.youtube.com/watch?v=uqdFobvoRQQ&pp=ygUPbG92YWJsZSAyMXN0ZGV20gcJCb0Ag7Wk3p_U))
+- [Tutorial do AI Jason](https://www.youtube.com/watch?v=8MPElOdNjtk&pp=ygUPbG92YWJsZSAyMXN0ZGV2)
+- [Tutorial do Mark Kashef](https://www.youtube.com/watch?v=Zv7N0SxfpRM&t=269s&pp=ygUPbG92YWJsZSAyMXN0ZGV2)
+- [Tutorial do Alejavi Rivera](https://www.youtube.com/watch?v=mMBp0uGZOWw&pp=ygUPbG92YWJsZSAyMXN0ZGV2) (espanhol)
+- [Tutorial do Fazt Code](https://www.youtube.com/watch?v=RGZeP1_oMoY&pp=ygUPbG92YWJsZSAyMXN0ZGV2)

@@ -1,0 +1,483 @@
+---
+title: "Introdução"
+description: "Estenda a funcionalidade do seu site usando integrações e APIs externas."
+icon: "link"
+---
+
+Lovable possui integrações nativas perfeitas para exportar código e adicionar um backend. Mas também é possível integrar uma API externa se você estiver procurando adicionar essa funcionalidade específica ao seu site.
+
+## O que é uma API?
+
+Uma API é uma forma de aplicações de software se comunicarem e compartilharem dados entre si.
+Diferentes APIs oferecem diferentes funcionalidades, como enviar emails ou processar pagamentos.
+Você pode ler mais sobre o poder das APIs [neste artigo em nosso blog](https://lovable.dev/blog/2025-01-28-the-power-of-apis).
+
+## Integrações Nativas
+
+Explore as seções abaixo para começar rapidamente e aprender mais sobre nossas integrações nativas com GitHub e Supabase.
+
+<CardGroup cols="2">
+  <Card title="Integração GitHub" icon="github" href="github">
+    Entenda como integrar o Lovable com o GitHub para exportar seu código e ter controle de versão sem complicações.
+  </Card>
+  <Card title="Integração Supabase" icon="database" href="supabase">
+    Adicione um backend ao seu site usando Supabase, para suportar autenticação e armazenamento persistente de dados.
+  </Card>
+</CardGroup>
+
+## Integrações Verificadas
+
+As integrações verificadas funcionam melhor com Lovable:
+
+<CardGroup cols="3">
+  <Card title="Stripe" href="stripe">
+    Adicione recursos de processamento de pagamentos ao seu app.
+  </Card>
+  <Card title="OpenAI" href="https://openai.com/api/">
+    Adicione recursos de IA ao seu app usando os modelos da OpenAI.
+  </Card>
+  <Card title="Anthropic" href="https://www.anthropic.com/api">
+    Adicione recursos de IA ao seu app usando os modelos Claude da Anthropic.
+  </Card>
+  <Card title="Resend" href="https://resend.com/">
+    Adicione recursos de email ao seu app usando a API de email moderna da Resend.
+  </Card>
+  <Card title="Clerk" href="https://clerk.com/">
+    Plataforma Abrangente de Gerenciamento de Usuários.
+  </Card>
+  <Card title="Three.js" href="https://threejs.org/docs/">
+    Adicione gráficos 3D interativos ao seu app.
+  </Card>
+  <Card title="D3.js" href="https://devdocs.io/d3/">
+    Crie visualizações de dados dinâmicas e interativas.
+  </Card>
+  <Card title="Highcharts" href="https://highcharts.com/docs/index">
+    Crie gráficos e visualizações profissionais e interativos.
+  </Card>
+  <Card title="p5.js" href="https://p5js.org/reference/">
+    Crie projetos de programação criativa e gráficos interativos.
+  </Card>
+  <Card title="Runware" href="https://runware.ai/">
+    Faça seu app gerar imagens a partir de prompts de texto.
+  </Card>
+  <Card title="ElevenLabs" href="https://elevenlabs.io/developers">
+    Adicione funcionalidade de Texto-para-Fala.
+  </Card>
+  <Card title="Make" href="https://developers.make.com/api-documentation">
+    Plataforma visual para construir fluxos de trabalho que automatizam tarefas e conectam apps.
+  </Card>
+  <Card title="Replicate" href="https://replicate.com/docs/">
+    Execute e ajuste modelos de IA de código aberto.
+  </Card>
+  <Card title="Stability AI" href="https://platform.stability.ai/docs/api-reference">
+    Desenvolve modelos de IA abertos em várias modalidades.
+  </Card>
+  <Card title="Figma" href="https://lovable.dev/blog/2025-01-22-figma-to-lovable-builder-io-native-integration">
+    Importe designs do seu workspace do Figma.
+  </Card>
+  <Card title="Twilio" href="https://www.twilio.com/docs/messaging/api">
+    Adicione recursos de SMS ao seu app usando Twilio.
+  </Card>
+  <Card title="n8n" href="https://docs.n8n.io/api/">
+    Construa fluxos de trabalho com plataforma visual para sua aplicação.
+  </Card>
+</CardGroup>
+
+Você sempre pode solicitar novas integrações [aqui](https://feedback.lovable.dev/?b=675883fb92175ba92d835f92).
+
+## Usando Qualquer API com Lovable
+
+Todas as outras APIs chamáveis ainda podem ser integradas, mas frequentemente requerem contexto e instruções adicionais.
+
+Você pode ter:
+
+- **Sistemas internos com APIs customizadas**\
+  Estes podem ser serviços que sua equipe construiu (ex: sistemas de inventário, pipelines de análise, ferramentas internas) que expõem endpoints REST ou GraphQL mas não são publicamente documentados ou amplamente conhecidos.
+  Você quer que o Lovable extraia dados ou envie dados para esses sistemas para automatizar fluxos de trabalho ou alimentar interfaces de usuário.
+- **APIs de terceiros que o Lovable ainda não suporta**\
+  Talvez você use um produto SaaS de nicho, um provedor de dados especializado, ou uma integração de parceiro que o Lovable não tem conhecimento integrado.
+  Mesmo que não seja oficialmente suportado, você ainda quer que o Lovable se conecte, faça chamadas e trabalhe com os dados.
+
+Em ambos os casos, o desafio é o mesmo: o Lovable não "conhece" a API por padrão. Mas com boa documentação e configuração de autenticação, ele ainda pode usá-la efetivamente.
+De qualquer forma, a abordagem é a mesma: **o Lovable ainda pode se conectar a ela**. Veja como.
+
+<Steps>
+  <Step title="Dê ao Lovable o contexto que ele precisa">
+    O Lovable funciona melhor quando entende a API. Você pode fornecer:
+
+    - **Especificação OpenAPI** (se disponível)
+    - **Documentação copiada e colada ou exemplos** (especialmente endpoints e exemplos de requisições/respostas)
+
+    Quanto mais clara a documentação, melhor o Lovable pode raciocinar sobre como chamar a API.
+  </Step>
+  <Step title="Gerencie a autenticação com segurança">
+    Para APIs que requerem autenticação:
+
+    **Opção 1: Use Supabase Edge Functions como proxy**
+
+    - Armazene segredos com segurança no Supabase
+    - Deixe o Lovable chamar o endpoint da API via Edge Function (não a API diretamente)
+
+    **Opção 2: Implemente a integração da API diretamente no seu projeto Lovable**
+
+    - Exponha um endpoint de autenticação (ex: para trocar credenciais por um token ou sessão)
+    - Deixe o Lovable chamar esse endpoint de autenticação como parte do fluxo de integração
+    - Inclua tokens, cabeçalhos ou informações de sessão em chamadas subsequentes da API
+  </Step>
+</Steps>
+
+Exemplos de APIs:
+
+<CardGroup cols="3">
+  <Card title="Mapbox" href="https://docs.mapbox.com/">
+    Alimenta navegação para pessoas, pacotes e veículos em todos os lugares.
+  </Card>
+
+  <Card title="Rive" href="https://rive.app/docs/getting-started/introduction">
+    Crie e publique animações interativas.
+  </Card>
+
+  <Card title="Together.ai" href="https://docs.together.ai/docs/introduction">
+    Execute ou ajuste modelos de código aberto líderes com apenas algumas linhas de código.
+  </Card>
+
+  <Card title="PostHog" href="https://posthog.com/docs">
+    Análise de produto OS para fornecer comportamento do usuário, replays de sessão e testes A/B.
+  </Card>
+
+  <Card title="Firecrawl" href="https://docs.firecrawl.dev/introduction">
+    Transforme sites em dados prontos para LLM.
+  </Card>
+
+  <Card title="Perplexity" href="https://docs.perplexity.ai/home">
+    Adicione recursos poderosos de IA ao seu aplicativo.
+  </Card>
+
+  <Card title="Zapier" href="https://docs.zapier.com/platform/home">
+    Ferramenta de automação que conecta diferentes aplicações web.
+  </Card>
+
+  <Card title="GoJS" href="https://gojs.net/latest/api/">
+    Adicione fluxogramas especialmente úteis para visualizar fluxos de trabalho e processos.
+  </Card>
+
+  <Card title="Transformers.js (HF)" href="https://huggingface.co/docs/transformers.js/en/index">
+    Execute modelos de aprendizado de máquina diretamente no navegador sem um servidor.
+  </Card>
+
+  <Card title="Grok / xAI" href="https://docs.x.ai/docs/overview">
+    Adicione recursos de IA ao seu aplicativo.
+  </Card>
+
+  <Card title="Twilio" href="https://www.twilio.com/docs">
+    Faça e receba chamadas telefônicas, envie e receba mensagens de texto.
+  </Card>
+
+  <Card title="Linkup" href="https://www.linkup.so/">
+    Ofereça mecanismo de busca com IA em suas aplicações.
+  </Card>
+
+  <Card title="Google Workspace" href="https://developers.google.com/docs/api/how-tos/overview">
+    Ferramentas de produtividade e colaboração baseadas em nuvem desenvolvidas pelo Google.
+  </Card>
+
+  <Card title="Lemon Squeezy" href="https://docs.lemonsqueezy.com/api">
+    Plataforma de e-commerce que simplifica a venda de produtos digitais.
+  </Card>
+
+  <Card title="Serper.dev" href="https://serper.dev/">
+    Integre resultados do Google Search em suas aplicações.
+  </Card>
+
+  <Card title="Notion" href="https://developers.notion.com/">
+    Funções de anotações, gerenciamento de tarefas e banco de dados.
+  </Card>
+
+  <Card title="Mailgun" href="https://documentation.mailgun.com/docs/mailgun/api-reference/intro/">
+    Envie, receba e rastreie emails.
+  </Card>
+
+  <Card title="Calendly" href="https://developer.calendly.com/api-docs">
+    Ferramenta de agendamento que simplifica o planejamento de reuniões.
+  </Card>
+
+  <Card title="SendGrid" href="https://sendgrid.com/en-us/solutions/email-api">
+    Serviço de entrega de email para gerenciamento e entrega de emails transacionais e de marketing.
+  </Card>
+
+  <Card title="TinyMCE" href="https://www.tiny.cloud/docs/tinymce/latest/apis/tinymce.root/">
+    Editor de texto rico para uma experiência de edição WYSIWYG.
+  </Card>
+
+  <Card title="bannerbear" href="https://www.bannerbear.com/">
+    Automatiza a geração de imagens e vídeos para redes sociais.
+  </Card>
+
+  <Card title="Square" href="https://developer.squareup.com/us/en">
+    Aceite pagamentos, gerencie vendas e lide com vários aspectos do comércio.
+  </Card>
+
+  <Card title="HeyGen" href="https://www.heygen.com/api">
+    Serviços de criação de vídeo gerados por IA.
+  </Card>
+
+  <Card title="GetLago" href="https://getlago.com/docs/api-reference/intro">
+    [Medição de código aberto e cobrança baseada em uso](https://www.getlago.com/)
+  </Card>
+
+  <Card title="Ticketmaster" href="https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/">
+    Incorpore informações de eventos e ingressos.
+  </Card>
+
+  <Card title="Tenor" href="https://tenor.com/gifapi/documentation">
+    Adicione GIFs aos seus aplicativos.
+  </Card>
+
+  <Card title="Ideogram" href="https://developer.ideogram.ai/ideogram-api/api-setup">
+    Gere tipografia e imagens alimentadas por IA.
+  </Card>
+
+  <Card title="Luma" href="https://docs.lu.ma/reference/getting-started-with-your-api">
+    Crie ou compartilhe eventos
+  </Card>
+
+  <Card title="Freesound" href="https://freesound.org/docs/api/">
+    Acesse uma biblioteca de efeitos sonoros e loops gratuitos.
+  </Card>
+
+  <Card title="iLovePDF" href="https://www.iloveapi.com/">
+    Converta, mescle e edite PDFs.
+  </Card>
+
+  <Card title="Discord" href="https://discord.com/developers/docs/reference">
+    Construa bots com inteligência artificial.
+  </Card>
+
+  <Card title="Google Imagen" href="https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview">
+    Geradores de texto para imagem.
+  </Card>
+
+  <Card title="Slack" href="https://api.slack.com/">
+    Automatize mensagens e fluxos de trabalho.
+  </Card>
+
+  <Card title="Petfinder" href="https://www.petfinder.com/developers/">
+    Acesse o banco de dados do Petfinder com centenas de milhares de animais de estimação.
+  </Card>
+
+  <Card title="Sports DB" href="https://www.thesportsdb.com/free_sports_api">
+    Pesquise e acesse dados sobre todos os jogadores, eventos, programação de TV e pontuações.
+  </Card>
+
+  <Card title="Weather App" href="https://openweathermap.org/api">
+    Acesse dados meteorológicos atuais para qualquer localização.
+  </Card>
+
+  <Card title="Youtube" href="https://developers.google.com/youtube/v3">
+    Adicione uma variedade de recursos do Youtube à sua aplicação.
+  </Card>
+
+  <Card title="Findwork" href="https://publicapi.dev/findwork-api">
+    Acesse listagens de empregos e outros recursos de carreira.
+  </Card>
+
+  <Card title="Pixabay" href="https://pixabay.com/api/docs/">
+    Pesquise e recupere imagens e vídeos livres de royalties.
+  </Card>
+
+  <Card title="Alpha Vantage" href="https://www.alphavantage.co/">
+    Dados de mercado financeiro em tempo real e históricos.
+  </Card>
+
+  <Card title="Currents" href="https://currentsapi.services/">
+    Organize e acesse notícias globais em tempo real de várias fontes.
+  </Card>
+
+  <Card title="Kofi" href="https://help.ko-fi.com/hc/en-us/articles/360004162298-Does-Ko-fi-have-an-API-or-webhook">
+    Aceite doações, venda produtos, receba solicitações e ganhe com streaming.
+  </Card>
+
+  <Card title="GitHub Stats" href="https://docs.github.com/en/rest/metrics/statistics?apiVersion=2022-11-28">
+    Acompanhe atividade de repositório e contribuições.
+  </Card>
+
+  <Card title="TheNews API" href="https://www.thenewsapi.com/">
+    Pesquise notícias e artigos de blog de 150 mil fontes mundiais.
+  </Card>
+
+  <Card title="TripAdvisor" href="https://www.tripadvisor.com/developers">
+    Integre conteúdo de serviços, obtenha reservas e direcione as avaliações dos seus clientes para o Trip.
+  </Card>
+
+  <Card title="Verifone" href="https://verifone.cloud/api-catalog">
+    Colete dados de transações.
+  </Card>
+
+  <Card title="New York Times" href="https://developer.nytimes.com/apis">
+    Pesquise artigos do New York Times.
+  </Card>
+
+  <Card title="Polygon.io" href="https://polygon.io/">
+    Consulte os dados mais recentes dos mercados financeiros.
+  </Card>
+
+  <Card title="WordCloud" href="https://wordcloudapi.com/">
+    Crie nuvens de palavras.
+  </Card>
+
+  <Card title="QRCode Generator" href="https://goqr.me/api/">
+    Gere e decodifique ou leia gráficos de código QR.
+  </Card>
+
+  <Card title="Deezers" href="https://developers.deezer.com/api">
+    Adicione recursos relacionados à música à sua aplicação.
+  </Card>
+
+  <Card title="Hacker Earth" href="https://www.hackerearth.com/docs/wiki/developers/v4/">
+    Compile e execute código em várias linguagens.
+  </Card>
+
+  <Card title="Cocktail DB" href="https://www.thecocktaildb.com/api.php">
+    Acesse um grande banco de dados de receitas de coquetéis, ingredientes e imagens.
+  </Card>
+
+  <Card title="Beer API" href="http://beer-api.readthedocs.io/">
+    Acesse descrições de diferentes tipos de cervejas como ales, lagers, porters, stouts e mais.
+  </Card>
+
+  <Card title="Hashtag API" href="https://publicapi.dev/hashtag-api#:~:text=The%20Hashtag%20API%20allows%20users,hashtag%20functionality%20into%20their%20applications.">
+    Recupere, crie, atualize e exclua hashtags.
+  </Card>
+
+  <Card title="USAJobs" href="https://developer.usajobs.gov/">
+    Forneça oportunidades de emprego em seu site.
+  </Card>
+
+  <Card title="SFMTA" href="https://www.sfmta.com/reports/gtfs-transit-data">
+    Transmita uma ou mais viagens para o Sistema Eletrônico de Acesso de Táxi SFMTA.
+  </Card>
+
+  <Card title="UPCDatabase" href="https://upcdatabase.org/api">
+    Acesse o banco de dados UPC.
+  </Card>
+
+  <Card title="TIme API" href="https://timeapi.io/">
+    Acesse informações sobre fusos horários, converta horários entre fusos horários e acompanhe o horário de verão.
+  </Card>
+
+  <Card title="Plotly" href="https://plotly.com/python-api-reference/">
+    Biblioteca de gráficos que cria gráficos interativos e de qualidade para publicação.
+  </Card>
+
+  <Card title="Manifest.build" href="https://manifest.build/docs/rest-api">
+    Micro-backend.
+  </Card>
+
+  <Card title="Paypal" href="https://developer.paypal.com/api/rest/">
+    Integre soluções de checkout do Paypal em suas aplicações.
+  </Card>
+
+  <Card title="4everland" href="https://docs.4everland.org/hositng/hosting-api">
+    Alternativa de backend.
+  </Card>
+
+  <Card title="Outseta" href="https://go.outseta.com/support/kb/articles/d1QpxQE7/how-to-integrate-with-outseta-s-rest-api">
+    Crie e atualize pessoas, contas, assinaturas e faturas.
+  </Card>
+
+  <Card title="Recraft" href="https://www.recraft.ai/docs">
+    Geração de imagens vetoriais a partir de texto.
+  </Card>
+
+  <Card title="n8n" href="https://docs.n8n.io/api/">
+    Automações e fluxos de trabalho.
+  </Card>
+
+  <Card title="Venice" href="https://venice.ai/api-beta">
+    Conversas de IA sem censura e geração de imagens.
+  </Card>
+
+  <Card title="Shopify" href="https://shopify.dev/docs/api">
+    Aprimore suas capacidades de e-commerce.
+  </Card>
+
+  <Card title="BuildShip" href="https://buildship.com/">
+    Backend e automação.
+  </Card>
+
+  <Card title="RunPod" href="https://docs.runpod.io/sdks/python/apis">
+    Integrações de lógica personalizada e implantações.
+  </Card>
+
+  <Card title="Gumloop" href="https://docs.gumloop.com/nodes/advanced/call_api">
+    Solução de automação e fluxo de trabalho.
+  </Card>
+
+  <Card title="Odoo" href="https://www.odoo.com/documentation/18.0/developer/reference/external_api.html">
+    Busque e envie dados entre sua aplicação.
+  </Card>
+
+  <Card title="Tableau" href="https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api.htm">
+    Ferramenta de análise de dados.
+  </Card>
+
+  <Card title="Power BI" href="https://learn.microsoft.com/en-us/rest/api/power-bi/">
+    Ferramenta de análise de dados.
+  </Card>
+
+  <Card title="Mermaid" href="https://mermaid.js.org/config/usage.html">
+    Renderize diagramas, gráficos e visualizações personalizáveis.
+  </Card>
+
+  <Card title="Stancer" href="https://www.stancer.com/documentation/api/">
+    Alternativa ao Stripe.
+  </Card>
+
+  <Card title="Mercado" href="https://www.mercadopago.com.ar/developers/en/docs/checkout-api/landing">
+    Crie processos de checkout.
+  </Card>
+
+  <Card title="Canva" href="https://www.canva.dev/docs/connect/">
+    Integre o Canva em suas próprias aplicações web.
+  </Card>
+
+  <Card title="Razorpay" href="https://razorpay.com/docs/api/">
+    Construa interface de pagamento (Indiano)
+  </Card>
+
+  <Card title="Coinbase" href="https://www.coinbase.com/en-fr/developer-platform/products/exchange-api">
+    Dados de mercado em tempo real.
+  </Card>
+
+  <Card title="GSAP" href="https://gsap.com/docs/v3/">
+    Biblioteca de animação.
+  </Card>
+
+  <Card title="Cohere" href="https://docs.cohere.com/">
+    Integre processamento e geração de linguagem natural em seus produtos.
+  </Card>
+
+  <Card title="OpenRouter" href="https://openrouter.ai/docs/quickstart">
+    Acesse centenas de modelos de IA.
+  </Card>
+
+  <Card title="Fal AI" href="https://docs.fal.ai/">
+    Implante modelos de IA personalizados.
+  </Card>
+
+  <Card title="Paystack" href="https://paystack.com/docs/api/">
+    Gateway de pagamento online (África)
+  </Card>
+
+  <Card title="Remotion" href="https://www.remotion.dev/docs/api">
+    Crie vídeos com IA e renderize em um arquivo MP4.
+  </Card>
+
+  <Card title="Paddle" href="https://developer.paddle.com/api-reference/overview">
+    Pagamentos, impostos e gerenciamento de assinaturas.
+  </Card>
+
+  <Card title="Polar API" href="https://docs.polar.sh/api-reference">
+    Extraia dados como níveis de atividade e frequência cardíaca de dispositivos Polar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,76 @@
+---
+title: "Usando Fontes Personalizadas (Google)"
+description: "Aprenda como usar fontes web-safe e Google Fonts em seus projetos Lovable"
+icon: "font"
+---
+
+Atualmente, o Lovable não suporta uploads diretos de fontes personalizadas.
+
+No entanto, existem várias maneiras fáceis de usar fontes web-safe ou incorporar fontes personalizadas em seus projetos. Abaixo, vamos guiá-lo através dos métodos disponíveis para **usar fontes web-safe** e **Google fonts**:
+
+<AccordionGroup>
+  <Accordion title="Usando uma fonte web-safe">
+    <Info>
+      **O que são fontes web-safe?**
+
+      Fontes web-safe são fontes que estão comumente instaladas na maioria dos sistemas operacionais (Windows, macOS, Linux, etc.) e são visíveis em todos os dispositivos.
+
+      Essas fontes garantem que seu texto tenha aparência consistente em diferentes navegadores e plataformas sem precisar carregar recursos externos. Algumas das fontes web-safe comuns são:
+
+      - Arial/Helvetica
+      - Times New Roman
+      - Georgia
+      - Courier New
+      - Verdana
+      - Tahoma
+      - Trebuchet MS
+      - Lucida Sans Unicode
+    </Info>
+    Se você quiser usar uma fonte web-safe em seu projeto, pode especificar a fonte diretamente em seu prompt. Por exemplo, se quiser usar **Courier New** para um cabeçalho ou título na seção hero, simplesmente referencie a fonte pelo nome em seu prompt.
+
+    ```text
+    Use Courier New como fonte do cabeçalho na seção hero para o título principal.
+    ```
+
+    Fontes web-safe como Courier New garantem que seu projeto terá tipografia consistente em todas as plataformas sem exigir recursos externos para carregar a fonte. No entanto, elas podem limitar sua criatividade. Felizmente, existem opções como a capacidade de usar Google Fonts.
+  </Accordion>
+  <Accordion title="Usando Google Fonts">
+    Se você preferir usar fontes personalizadas, o Lovable funciona muito bem com **Google Fonts**. Isso permite que você use facilmente uma ampla gama de fontes em seu projeto. Você pode referenciar uma Google font pelo nome ou linkando diretamente ao recurso da fonte.
+
+    ### Usando por nome
+
+    Em seu prompt, você pode especificar o nome de uma Google font, e o Lovable a incluirá em seu projeto. Por exemplo:
+
+    ```text
+    Use Playfair Display como fonte do primeiro subtítulo na seção hero.
+    
+    Certifique-se de usar o hook useEffect do React para aplicar a fonte adequadamente.
+    ```
+
+    ### Usando por link
+
+    Alternativamente, você pode fornecer um link direto para a Google font, e o Lovable usará essa fonte em seu projeto. Você pode obter o link do [Google Fonts](https://fonts.google.com) selecionando a fonte desejada e copiando o link.
+
+    Aqui está como solicitar ao Lovable para usar uma Google font via link:
+
+    ```text
+    Adicione este link da Google font https://fonts.google.com/specimen/Dancing+Script 
+    e use esta fonte para o terceiro subtítulo.
+    
+    Certifique-se de carregar a fonte usando o hook useEffect do React.
+    ```
+
+    Seguindo esses métodos, você pode personalizar a tipografia do seu projeto Lovable usando fontes web-safe ou Google Fonts.
+
+    ## Aprendizado adicional e exemplos
+
+    Para ver esses métodos de integração de fontes em ação, você pode explorar um de nossos projetos de exemplo: [Projeto de exemplo do Lovable usando fontes](https://lovable.dev/projects/3a826f38-d9cb-4d60-b4da-30a9b00149c8).
+
+    Neste projeto, você encontrará prompts reais demonstrando como aplicamos diferentes estilos de fonte, incluindo fontes web-safe como Courier New e fontes personalizadas do Google Fonts.
+
+    <Frame>
+      ![Diferentes fontes usadas no projeto Lovable](/assets/using-custom-fonts-example.png)
+    </Frame>
+    Além disso, para uma visão mais técnica de como as fontes foram integradas, confira este repositório público: [GitHub: adding-fonts-example](https://github.com/viborc/adding-fonts-example). Ele inclui os detalhes completos de implementação, mostrando como várias fontes foram carregadas e aplicadas no projeto.
+  </Accordion>
+</AccordionGroup>

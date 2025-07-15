@@ -1,0 +1,82 @@
+---
+title: "Segurança"
+description: "Recursos de segurança no Lovable"
+icon: "shield-halved"
+---
+
+# Chaves de API
+
+Lovable escreve código frontend, o que significa que ele roda no navegador. Portanto, nenhum dado sensível de qualquer tipo deve ser armazenado no código.
+
+Para conectar a serviços de terceiros (como OpenAI, Anthropic etc), chaves de API são necessárias. Recomendamos que você use os secrets do Supabase para armazenar suas chaves de API, em combinação com as [Supabase Edge Functions](https://docs.lovable.dev/integrations/supabase#edge-functions).
+
+## Detecção automática de chave de API
+
+Sempre que você colar uma chave de API no chat, o Lovable irá detectá-la automaticamente e avisá-lo para não codificar credenciais sensíveis diretamente no seu código frontend. Em vez de colar chaves de API, descreva o que você está tentando realizar e o Lovable irá guiá-lo através da implementação segura.
+
+![Detecção de chave de API em ação](/assets/features/images/API-key-detection.png)
+
+Por exemplo, em vez de:
+
+"Adicione esta chave de API para chamar o OpenAI: sk_test_abc123..."
+
+Tente isto:
+
+"Quero integrar a API do OpenAI para gerar respostas de texto"
+
+O Lovable então mostrará como:
+
+1. Armazenar sua chave de API com segurança nos secrets do Supabase.
+
+2. Criar uma Supabase Edge Function para fazer a chamada da API no lado do servidor.
+
+3. Chamar essa Edge Function do seu código frontend.
+
+Esta abordagem mantém suas credenciais sensíveis seguras e segue as melhores práticas de segurança para aplicações web.
+
+## Supabase RLS
+
+As políticas RLS determinam quem pode acessar quais dados no seu banco de dados Supabase. Recomendamos que você as revise cuidadosamente antes de publicar seu projeto.
+
+# Verificação de segurança
+
+Antes de publicar, o Lovable exibe avisos de segurança do [consultor de segurança do Supabase](https://supabase.com/docs/guides/database/database-advisors?queryGroups=lint&lint=0002_auth_users_exposed) e pedirá para você confirmar que deseja publicar se houver algum aviso.
+
+Recomendamos fortemente que você resolva todos os problemas antes de publicar seus projetos e mantenha os dados do seu aplicativo seguros.
+
+<Info>
+  Ver nenhum aviso ou erro do consultor de segurança do Supabase não garante que não há problemas de segurança em seu aplicativo. Recomendamos que você peça ao Lovable para revisar a segurança do seu aplicativo antes de publicar.
+</Info>
+
+# Verificação de segurança
+
+Lovable inclui verificação de segurança abrangente alimentada por IA para ajudar a identificar potenciais vulnerabilidades em seu código antes de você publicar.
+
+## Revisão aprimorada de políticas RLS
+
+O consultor de segurança do Supabase às vezes pode perder o uso incorreto de RLS (Row Level Security). Para resolver isso, o Lovable inclui uma revisão profunda de segurança de código que usa IA para analisar seu aplicativo em busca de possíveis problemas de segurança além daqueles que o consultor integrado do Supabase detecta. Isso fornece cobertura adicional para problemas de políticas RLS e sugere planos específicos sobre como corrigi-los.
+
+## Revisão manual de segurança
+
+Você pode solicitar uma revisão de segurança a qualquer momento pedindo ao Lovable para "revisar a segurança do meu app" ou clicando no botão "Revisar Segurança" no diálogo de publicação.
+
+O Lovable irá:
+
+1. Analisar todo o seu código em busca de vulnerabilidades de segurança
+2. Verificar problemas comuns como prevenção de XSS, sanitização de entrada e falhas de autenticação
+3. Revisar suas políticas RLS do Supabase e segurança do banco de dados (indo mais fundo que o próprio advisor do Supabase)
+4. Fornecer um relatório detalhado com recomendações específicas
+
+![How to find the security review](/assets/features/images/find-security-review.png)
+
+![The security review in action](/assets/features/images/security-review-in-action.png)
+
+## Verificações de segurança pré-publicação
+
+Antes da publicação, o Lovable exibe automaticamente avisos de segurança tanto do consultor de segurança do Supabase quanto de seu próprio scanner de segurança AI aprimorado. Você será solicitado a confirmar se há algum aviso, embora recomendemos altamente resolver todos os problemas primeiro.
+
+![Pre-publish security review](/assets/features/images/pre-publish-security-review.png)
+
+<Warning>
+Lembre-se: Mesmo sem avisos, sempre solicite uma revisão manual de segurança para aplicações de produção.
+</Warning>

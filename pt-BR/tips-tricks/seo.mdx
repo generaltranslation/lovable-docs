@@ -1,0 +1,206 @@
+---
+title: "SEO"
+description: "Fique em #1 no Google desde o primeiro dia!"
+icon: "magnifying-glass"
+---
+
+**Otimização para Mecanismos de Busca (SEO)** ajuda suas páginas a rankearem melhor no Google e outros mecanismos de busca, tornando-as mais descobríveis. O Lovable facilita seguir as melhores práticas de SEO.
+
+Este guia te orienta sobre como otimizar suas páginas geradas pelo Lovable para mecanismos de busca e maximizar a visibilidade.
+
+<AccordionGroup>
+  <Accordion title="Metadados Automáticos e Meta Descrições">
+    Os metadados desempenham um papel crucial em como os mecanismos de busca entendem e exibem seu conteúdo. O Lovable pode gerar automaticamente:
+
+    * **Tags de Título** – Otimizadas com base no conteúdo da página.
+    * **Meta Descrições** – Resumos gerados por IA que melhoram as taxas de clique.
+    * **Palavras-chave** – Sugestões de palavras-chave relevantes baseadas no conteúdo.
+
+    <Info>
+      **Dica Profissional:**
+
+      Ao fazer prompts no Lovable, inclua "Siga as melhores práticas de SEO" para garantir que os metadados sejam incluídos.
+    </Info>
+  </Accordion>
+
+  <Accordion title="Sitemaps Personalizados para Indexação de Mecanismos de Busca">
+    Um sitemap ajuda os mecanismos de busca a rastrear e indexar seu site de forma eficiente.
+
+    **Como Gerar um Sitemap no Lovable:**
+
+    <Steps>
+      <Step title="Passo 1">
+        Peça ao Lovable para **"Criar um sitemap com meu domínio personalizado"**.
+      </Step>
+
+      <Step title="Passo 2">
+        Publique/atualize seu projeto.
+      </Step>
+
+      <Step title="Passo 3">
+        Envie o sitemap para o **Google Search Console** em "Sitemaps" usando a URL **https://\[seudominio]/sitemap.xml** (substitua \[seudominio] pelo seu domínio personalizado). Note que se seu sitemap tiver outro nome, você precisa substituir **sitemap.xml** na URL por esse nome. Isso pode ser visto no visualizador de código no arquivo público.
+      </Step>
+
+      <Step title="Passo 4">
+        Adicione Sitemap: https://\[seudominio]/sitemap.xml no seu arquivo robots.txt (opcional)
+      </Step>
+    </Steps>
+
+    Lembre-se de atualizar seu sitemap de tempos em tempos ou certifique-se de que ele seja atualizado automaticamente quando seu site for construído.
+
+    Seu sitemap não estará automaticamente disponível em https://\[seudominio]/sitemap.xml assim que você fizer isso. Para verificar seu sitemap, abra sua interface de linha de comando e digite **"curl https://\[seudominio]/sitemap.xml"** , seu sitemap deve aparecer.
+  </Accordion>
+
+  <Accordion title="Configuração do Robots.txt para Controle de Busca">
+    O arquivo `robots.txt` informa aos mecanismos de busca quais páginas eles devem ou não devem rastrear. O Lovable pode criar e personalizar este arquivo para você.
+
+    **Passos para Adicionar um Arquivo robots.txt:**
+
+    <Steps>
+      <Step title="Passo 1">
+        Faça um prompt no Lovable com **"Gere um arquivo robots.txt para meu site."**
+      </Step>
+
+      <Step title="Passo 2">
+        Personalize o arquivo para permitir ou bloquear mecanismos de busca de páginas específicas.
+      </Step>
+
+      <Step title="Passo 3">
+        Faça upload dele para o diretório raiz do seu site.
+      </Step>
+    </Steps>
+
+    Oi
+  </Accordion>
+
+  <Accordion title="Cabeçalhos e Estrutura Otimizados para SEO">
+    Os cabeçalhos (H1, H2, H3…) ajudam os mecanismos de busca a entender seu conteúdo. O Lovable garante:
+
+    * **Tags H1 são únicas e descritivas.**
+    * **Tags H2 e H3** organizam o conteúdo logicamente.
+    * **Cabeçalhos ricos em palavras-chave** são incluídos onde relevante.
+
+    <Info>
+      **Melhor Prática:**
+
+      Mantenha apenas **um H1 por página** e estruture o conteúdo hierarquicamente com subcabeçalhos H2 e H3.
+    </Info>
+  </Accordion>
+
+  <Accordion title="Links Internos para Melhor SEO">
+    Links internos ajudam usuários e mecanismos de busca a navegar pelo seu site. O Lovable pode:
+
+    * Sugerir **links internos relevantes** entre páginas.
+    * Garantir **arquitetura lógica do site** para indexação fácil.
+    * Melhorar **autoridade da página** com estratégias adequadas de linkagem.
+
+    **Como Adicionar Links Internos no Lovable:**
+
+    <Steps>
+      <Step title="Passo 1">
+        Use prompts como **"Sugira links internos para esta página."**
+      </Step>
+
+      <Step title="Passo 2">
+        Adicione manualmente links para **conteúdo relacionado** dentro do seu projeto.
+      </Step>
+
+      <Step title="Passo 3">
+        Mantenha o texto âncora descritivo e relevante.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Marcação Schema para Rich Snippets">
+    A marcação schema melhora como suas páginas aparecem nos resultados de busca (por exemplo, mostrando avaliações, FAQs ou detalhes de eventos). O Lovable suporta:
+
+    * **Marcação schema básica** para artigos, FAQs e produtos.
+    * **Dados estruturados otimizados para SEO** que o Google entende.
+
+    **Como Usar Schema no Lovable:**
+
+    <Steps>
+      <Step title="Passo 1">
+        Pergunte ao Lovable: **"Gere marcação schema para esta página."**
+      </Step>
+
+      <Step title="Passo 2">
+        Copie o código JSON-LD e insira-o em seu site.
+      </Step>
+
+      <Step title="Passo 3">
+        Valide usando o **Teste de Resultados Ricos do Google.**
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Dicas Avançadas para Sucesso em SEO">
+    * **Otimize imagens** com texto alternativo e tamanhos de arquivo comprimidos.
+    * **Evite conteúdo duplicado** tornando cada página única.
+    * **Use palavras-chave de cauda longa** para segmentar buscas de nicho.
+    * **Mantenha o conteúdo atualizado** com atualizações regulares.
+  </Accordion>
+
+  <Accordion title="Personalize Sua Imagem Compartilhada">
+    Ao compartilhar seu projeto nas redes sociais, você pode personalizar a imagem de visualização de duas maneiras:
+
+    <AccordionGroup>
+      <Accordion title="Deixe a IA Cuidar Disso">
+        Faça upload de uma imagem e use um prompt simples como:
+
+        <Note>
+          **Exemplo de prompt**
+
+          ```
+          Você pode alterar a imagem que aparece quando o site é compartilhado nas plataformas de redes sociais para a imagem acima?
+          ```
+        </Note>
+      </Accordion>
+
+      <Accordion title="Atualizar Manualmente via GitHub">
+        <Steps>
+          <Step title="Passo 1">
+            Clique em **Editar código** (canto superior direito do seu projeto).
+          </Step>
+
+          <Step title="Passo 2">
+            Conecte seu projeto ao GitHub se ainda não o fez. Siga nosso [guia de integração com GitHub](https://docs.lovable.dev/integrations/git-integration).
+          </Step>
+
+          <Step title="Passo 3">
+            Abra o repositório do seu projeto e navegue até a pasta `public`.
+          </Step>
+
+          <Step title="Passo 4">
+            Substitua o `og-image.png` existente pela sua nova imagem.
+          </Step>
+
+          <Step title="Passo 5">
+            Renomeie sua nova imagem para `og-image.png`.
+          </Step>
+
+          <Step title="Passo 6">
+            **Reimplante seu projeto** para aplicar as alterações.
+          </Step>
+        </Steps>
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</AccordionGroup>
+
+
+
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Quanto tempo leva para o Google indexar minha página?">
+    O Google normalmente indexa páginas dentro de algumas horas a alguns dias. Enviar um sitemap acelera esse processo.
+  </Accordion>
+  <Accordion title="E se eu não vir minha página rankeando?">
+    Verifique se seu sitemap foi enviado e certifique-se de que seu conteúdo segue as melhores práticas de SEO.
+  </Accordion>
+  <Accordion title="O Lovable otimiza para SEO mobile?">
+    Sim\! O Lovable garante estruturas de página mobile-friendly automaticamente.
+  </Accordion>
+</AccordionGroup>

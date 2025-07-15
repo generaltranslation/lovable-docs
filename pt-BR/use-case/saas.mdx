@@ -1,0 +1,208 @@
+---
+title: "SaaS"
+description: "Como Construir Produtos SaaS com Lovable"
+icon: "laptop"
+---
+
+Bem-vindo ao guia definitivo para construir aplicações SaaS usando Lovable.dev.
+
+Esta documentação irá te guiar através da construção, escalonamento e implantação de produtos SaaS totalmente funcionais sem escrever uma única linha de código—a menos que você queira.
+
+## Processo Passo a Passo
+
+<Steps>
+  <Step title="Comece com a UI">
+    **Por quê**: Comece com a estrutura e layout do seu app para minimizar erros e planejar com antecedência.
+
+    **Como**:
+
+    - Escreva um prompt que descreva as páginas e fluxo do usuário.
+    - Opcionalmente adicione screenshots (Figma, Excalidraw).
+    - Foque apenas no front-end inicialmente.
+
+    **Exemplo de Prompt**:
+
+    ```
+    Crie um app de diário com IA com:
+    - Página inicial com CTA "Começar"
+    - App principal com sidebar para visualizar/editar logs
+    - Página de chat para fazer perguntas baseadas em entradas passadas
+    ```
+  </Step>
+  <Step title="Conecte o Backend (Supabase)">
+    **Por quê**: Armazenar e recuperar dados do usuário com segurança.
+
+    **Como**:
+
+    - Pressione o botão Supabase no editor Lovable
+    - Crie um projeto Supabase e conecte-o
+    - Desabilite a verificação de email no modo dev para velocidade
+    - Defina o schema do banco de dados para logs, usuários, refeições, etc.
+
+    <Info>
+      Você é dono dos seus dados e schema. Lovable apenas simplifica a configuração.
+    </Info>
+  </Step>
+  <Step title="Adicione Autenticação">
+    Lovable adiciona login por email/senha por padrão. Você pode:
+
+    - Redirecionar para cadastro quando usuários clicarem no CTA
+    - Vincular entradas/refeições a usuários autenticados
+
+    **Exemplo de Prompt**:
+
+    ```
+    Adicione cadastro e login. Redirecione para cadastro ao clicar em 'Começar'.
+    ```
+  </Step>
+  <Step title="Construa Funcionalidades Principais">
+    Cada funcionalidade do app é construída incrementalmente:
+
+    #### App de Diário:
+
+    - Avaliar humor/energia/produtividade
+    - Salvar e atualizar entradas
+    - Visualizar logs passados na sidebar
+
+    #### Contador de Calorias:
+
+    - Inserir ou fazer upload de refeição
+    - GPT-4 estima nutrição (proteína, gordura, carboidratos, kcal)
+    - Estatísticas visuais com ícones \+ barras de progresso circulares
+
+    <Tip>
+      - Use a ferramenta de seleção para focar seções específicas
+      - Faça upload de screenshots para guiar layout ou lógica
+    </Tip>
+  </Step>
+  <Step title=" Integre IA (OpenAI)">
+    Use GPT-4 para:
+
+    - Análise de diário
+    - Detalhamento de refeições
+    - Insights conversacionais
+
+    **Como**:
+
+    - Configure Edge Functions no Supabase
+    - Adicione a Chave da API OpenAI via prompt seguro do backend Lovable
+    - Confirme que a IA tem acesso a dados dinâmicos do usuário (entradas/refeições)
+
+    **Exemplo de Prompt**:
+
+    ```
+    Crie página de chat usando GPT-4.
+    Inclua entradas do diário no prompt dinamicamente.
+    Use function calling para retornar dados estruturados de nutrição.
+    ```
+  </Step>
+  <Step title="Adicione Pagamentos com Stripe (Opcional)">
+    Lovable suporta **pagamentos de assinatura Stripe** com edge functions.
+
+    **Como**:
+
+    1. Crie um produto Stripe \+ ID de preço
+    2. Adicione a Chave da API Stripe ao Lovable
+    3. Defina a lógica: apenas usuários pagantes podem acessar o app principal
+    4. Adicione um portal do cliente para gerenciar cobrança
+
+    **Exemplo de Prompt**:
+
+    ```
+    Adicione pagamentos recorrentes via Stripe.
+    Se não inscrito, redirecione usuário para checkout.
+    ```
+
+    <Tip>
+      A configuração do Stripe requer uma conta Stripe. Use modo de teste durante o desenvolvimento.
+    </Tip>
+  </Step>
+  <Step title="Deploy e Publicação">
+    - Conecte repositório GitHub do Lovable
+    - Clique em "Publish" para lançar no domínio `.lovable.app`
+    - Use domínio customizado
+
+    📌 Consulte [Lovable Docs → Custom Domains](https://docs.lovable.dev/tips-tricks/custom-domain) para passo a passo completo.
+  </Step>
+  <Step title="Lance e Compartilhe">
+    Submeta para [Lovable Launch](https://docs.lovable.dev/features/launched) para visibilidade.
+
+    **Usuários podem:**
+
+    - Fazer remix do seu projeto
+    - Visualizar seus prompts
+    - Testar seu produto SaaS instantaneamente
+  </Step>
+</Steps>
+
+## Dicas para Construtores de SaaS
+
+### Seja Explícito
+
+- Sempre descreva o que _você quer_ e o que _você vê_.
+- Use capturas de tela para esclarecer bugs ou layouts.
+
+### Trabalhe Passo a Passo
+
+- UI primeiro → banco de dados → autenticação → recursos principais → IA → pagamentos
+
+### Depure Como um Profissional
+
+- Use o modo de chat para corrigir erros de build ou lógica quebrada
+- Reverta mudanças se necessário (não reverte o schema do banco de dados)
+
+### Economize Tokens
+
+- Use conhecimento personalizado para armazenar instruções consistentes (tema, responsividade mobile)
+
+## Recursos avançados
+
+<AccordionGroup>
+  <Accordion title="Autenticação">
+    - Autenticação por email/senha via Supabase
+    - Desativar verificação no desenvolvimento
+  </Accordion>
+  <Accordion title="Chat com IA">
+    - Chats alimentados por GPT-4
+    - Contexto de diário ou contexto de refeições
+    - Formatação Markdown para saídas mais limpas
+  </Accordion>
+  <Accordion title="Dashboards Visuais">
+    - Use ícones e barras de progresso (ex: componentes 21st.dev)
+    - Gráficos semanais e diários
+  </Accordion>
+  <Accordion title="Refatoração de Componentes">
+    - Lovable avisa quando arquivos/componentes ficam muito longos
+    - Aceite "Sim" para refatorar automaticamente em blocos limpos
+  </Accordion>
+  <Accordion title="Edições Manuais de Código (Opcional)">
+    - Conectar repositório GitHub
+    - Usar o editor VS Code integrado do Lovable
+    - Fazer pequenas alterações para otimizar sem usar créditos
+  </Accordion>
+  <Accordion title="Deploy e Hospedagem">
+    ### 1. Lovable Publish
+
+    - Clique em "Publish" para lançar no domínio `.lovable.app`
+
+    ### 2. Netlify \+ GitHub
+
+    - Conectar repositório GitHub do Lovable
+    - Fazer deploy com Netlify
+    - Usar domínio personalizado
+
+    📌 Consulte [Lovable Docs → Custom Domains](https://docs.lovable.dev/tips-tricks/custom-domain) para um passo a passo completo.
+  </Accordion>
+</AccordionGroup>
+
+## Outros tutoriais
+
+- [**App de Diário com IA**](https://www.youtube.com/watch?v=gqsZGxuymTk&ab_channel=Lovable): Usuários escrevem registros diários e conversam com uma IA que dá feedback baseado no humor e atividade deles.
+- [**Contador de Calorias com IA**](https://www.youtube.com/watch?v=c0zhLzcVJRI&ab_channel=Lovable): Usuários descrevem ou fazem upload de refeições, e o GPT-4 estima informações nutricionais e acompanha estatísticas semanais.
+- [Luma Copycat:](https://www.youtube.com/watch?v=-sSOyO0FiPE) Plataforma de eventos estilo Luma usando Lovable e [**Supabase**](https://docs.lovable.dev/integrations/supabase)**.**
+- [**CRM Simples**](https://www.youtube.com/watch?v=5ZL744_Wxjo)\*\*: \*\*Crie um CRM simples mas poderoso usando [**Lovable**](https://docs.lovable.dev/lovable-f9060f1e/lovable-f9060f1e/editor/main#build-a-simple-crm-with-resend) para desenvolvimento, Supabase para armazenamento de dados, e [**Resend**](https://docs.lovable.dev/integrations/resend) para automação de email.
+- [CRM Personalizado:](https://www.youtube.com/watch?v=zv4vcR7VCAk) Crie um **CRM personalizado** (sistema de Gestão de Relacionamento com Cliente) usando [**Lovable**](https://docs.lovable.dev/lovable-f9060f1e/lovable-f9060f1e/editor/main#how-to-build-a-custom-crm-with-lovable-and-make) e [**Make**](https://docs.lovable.dev/integrations/make).
+- [CRM Personalizado:](https://www.youtube.com/watch?v=tyAsNwu_xCI) Crie um **CRM personalizado** (sistema de Gestão de Relacionamento com Cliente) usando [**Lovable**](https://docs.lovable.dev/lovable-f9060f1e/lovable-f9060f1e/editor/main#clerk-authentication-custom-domains-and-waitlists) e [**Clerk**](https://docs.lovable.dev/integrations/clerk).
+- [Ferramenta de feedback:](https://www.youtube.com/watch?v=tYDqBMilHkM) Crie um app de feedback totalmente funcional com IA.
+- [DesignJoy copycat](https://www.youtube.com/watch?v=eZsbfEA-_oI&ab_channel=Lovable): Crie uma plataforma de agência produtizada do zero\!
+- Você também pode assistir nossa [série de vídeos em 4 partes](https://www.youtube.com/playlist?list=PLbVHz4urQBZkfZhwt8rL5PCoU4nyjK0OF) onde a equipe constrói um clone completo do Duolingo—passo a passo, do prompt à produção.

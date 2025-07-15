@@ -1,0 +1,414 @@
+---
+title: "Solução de Problemas"
+description: "Passos práticos para resolver problemas no seu ciclo de vida de desenvolvimento."
+icon: "toolbox"
+---
+
+## Loops de erro "Try to Fix"
+
+Construir com Lovable torna a codificação mais rápida e intuitiva—mas até mesmo as melhores ferramentas de desenvolvimento com IA podem ocasionalmente encontrar problemas. Às vezes seu código não funcionará como esperado, ou você pode notar comportamentos inesperados onde a IA interpreta sua intenção incorretamente.
+
+Aqui está um guia passo a passo para ajudá-lo a navegar pelos problemas e voltar aos trilhos:
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/0W8bsbHh2p8?si=p4kWhkdu0PEbgGXm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+<Steps>
+  <Step title="Use o Botão Try to Fix Primeiro">
+    Clique no botão **Try to Fix** quando um erro aparecer. Lovable irá escanear seus logs, detectar o problema e tentar uma correção rápida. É seu movimento mais rápido primeiro. Se isso não funcionar, é hora de investigar mais profundamente.
+  </Step>
+  <Step title="Diagnostique Comportamento Inesperado">
+    Seu código pode executar sem erros mas não se comportar como pretendido. Isso é **comportamento inesperado**—mais difícil de detectar e mais difícil de corrigir. Tente isto:
+
+    - **Revise seu prompt original** para confirmar suas instruções.
+    - **Divida em partes**: Verifique componentes individuais e lógica.
+    - **Adicione elementos visuais**: Use capturas de tela para esclarecer o que deu errado.
+  </Step>
+  <Step title="Escreva Prompts Mais Eficazes">
+    Prompts claros e estruturados levam a melhores resultados. Use este formato:
+
+    1. **Visão Geral do Projeto** – O que você está construindo?
+    2. **Estrutura da Página** – Liste páginas/componentes principais.
+    3. **Lógica de Navegação** – Descreva o fluxo do usuário.
+    4. **Auxílios Visuais** – Carregue wireframes ou capturas de tela.
+    5. **Etapas de Implementação** – Estabeleça a ordem de construção.
+  </Step>
+  <Step title="Construa em Ordem Lógica">
+    A estrutura importa. Siga este fluxo recomendado:
+
+    1. Crie layout e páginas.
+    2. Conecte Supabase ou seu backend.
+    3. Configure autenticação e funções de usuário.
+    4. Planeje e organize a lógica de recursos.
+    5. Instrua Lovable para implementar recursos.
+  </Step>
+  <Step title="Use o Modo Chat para Clareza">
+    Quando incerto, mude para **Modo Chat**:
+
+    - Peça para Lovable **analisar o estado do seu projeto**.
+    - Solicite um **resumo das soluções tentadas**.
+    - Peça por **novas direções** para resolver problemas persistentes.
+  </Step>
+  <Step title="Se Você Ainda Estiver Travado: Táticas Avançadas">
+    Ainda sem sorte? Tente isto:
+
+    - **Seja exato** – Descreva o bug e suas expectativas claramente.
+    - **Use imagens** – Capturas de tela ou vídeos ajudam a ilustrar problemas.
+    - **Pergunte diretamente** – "O que mais podemos tentar?"
+    - **Reverta** – Restaure para uma versão funcionando e reconstrua incrementalmente.
+  </Step>
+</Steps>
+
+## O Que Está Dando Errado? Áreas Comuns de Solução de Problemas
+
+A solução de problemas geralmente se enquadra nestas categorias:
+
+1. **Falhas de Interface ou Layout**
+2. **Problemas de API ou Backend**
+3. **Interpretações Incorretas de Prompt**
+4. **Falta de Resposta ou Comportamento Inadequado da IA**
+5. **Erros de Plataforma ou Integração**
+
+Use os acordeões abaixo para identificar problemas específicos e ações:
+
+### Problemas gerais
+
+<AccordionGroup>
+  <Accordion title="Precisa de um diagnóstico rápido?">
+    Entre no Modo Somente Chat e digite: "Algo está errado. Você pode me explicar o que está acontecendo e o que você tentou?"
+  </Accordion>
+  <Accordion title="Problemas de Interface ou Layout">
+    - Verifique a hierarquia de componentes e estilos.
+    - Use capturas de tela para explicar bugs visuais.
+    - Prompt para Lovable: "Por que este elemento está desalinhado? Corrija isso."
+  </Accordion>
+  <Accordion title="Quando completamente travado">
+    - Prompt: "Dê um passo para trás. Analise o erro e sugira uma abordagem diferente."
+    - Divida a tarefa em partes menores.
+    - Use o botão reverter se os erros persistirem.
+  </Accordion>
+  <Accordion title="Erro do sandbox de código">
+    Isso não deveria acontecer. Por favor, reporte para a equipe de suporte.
+  </Accordion>
+  <Accordion title="Preview não encontrado ou inicializando sandbox">
+    Tente uma atualização forçada. Se não resolver, entre em contato com o suporte.
+  </Accordion>
+</AccordionGroup>
+
+### Confiabilidade da IA
+
+<AccordionGroup>
+  <Accordion title="Evitando erros da IA na engenharia de prompt">
+    - Mantenha os prompts claros e estruturados.
+    - Use meta prompting reverso.
+    - Teste no Modo Somente Chat antes de aplicar grandes mudanças.
+  </Accordion>
+  <Accordion title="IA não está respondendo">
+    Isso não deveria acontecer. Por favor, reporte para a equipe de suporte.
+  </Accordion>
+  <Accordion title="Loops persistentes de erro de correção">
+    Ajuste seu prompt para ajudar a IA a entender seu objetivo ou peça ajuda de depuração passo a passo.
+  </Accordion>
+  <Accordion title="Refatoração quebrou tudo">
+    Faça mudanças pequenas e incrementais. Se o problema persistir, volte para uma versão estável ou depure no chat.
+  </Accordion>
+  <Accordion title="Loops de erro, alucinações ou lógica quebrada">
+    Reverta para uma versão estável e forneça mais contexto no seu próximo prompt. Use o editor visual ou anexe um arquivo de conhecimento.
+  </Accordion>
+  <Accordion title="IA não está fazendo mudanças">
+    A IA pode estar editando os arquivos errados ou interpretando mal. Seja muito específico ou edite manualmente.
+  </Accordion>
+  <Accordion title="Modo chat não respondendo ou incompleto">
+    Isso foi corrigido pela engenharia. Por favor, reporte se acontecer novamente.
+  </Accordion>
+  <Accordion title="Crashes Inesperados, Erros ou Loops">
+    - Não tente novamente o mesmo prompt. Simplifique ou reformule.
+    - Pergunte: "Que correções já tentamos?"
+    - Reconstrua a partir de um estado anterior funcionando.
+  </Accordion>
+</AccordionGroup>
+
+### Funcionalidades principais
+
+<AccordionGroup>
+  <Accordion title="Preview está branco">
+    - Provavelmente um erro de runtime. Verifique os logs do console do navegador.
+    - Use o chat para solucionar problemas.
+    - Tente uma atualização forçada ou reverta.
+  </Accordion>
+  <Accordion title="Rollback falha">
+    Reporte para a equipe de suporte se você não conseguir reverter seu projeto.
+  </Accordion>
+  <Accordion title="Despublicar ou desativar projetos">
+    Esta ação não é suportada atualmente.
+  </Accordion>
+  <Accordion title="Expulso do projeto">
+    Este problema foi resolvido. Reporte se ocorrer novamente.
+  </Accordion>
+  <Accordion title="Remix não funciona (sem conexão Supabase)">
+    Não deveria acontecer. Entre em contato com o suporte.
+  </Accordion>
+  <Accordion title="Erro ao carregar perfil">
+    Não deveria acontecer. Reporte para a equipe de suporte.
+  </Accordion>
+  <Accordion title="Cancelamento de inscrição de email não funcionando">
+    Este é um problema sério provavelmente relacionado ao nosso provedor de email. Entre em contato com o suporte imediatamente.
+  </Accordion>
+  <Accordion title="Logout inesperado ou perda de acesso">
+    Entre em contato com o suporte diretamente.
+  </Accordion>
+  <Accordion title="Desafios com projetos maiores">
+    - Divida grandes mudanças em passos menores.
+    - Reinicie seu navegador se ele ficar lento.
+    - Se persistir, reporte seu caso de uso para o suporte.
+  </Accordion>
+</AccordionGroup>
+
+### Problemas de Domínio
+
+<AccordionGroup>
+  <Accordion title="Configuração de Domínio Personalizado">
+    Para conectar seu domínio personalizado ao seu app Lovable:
+
+    1. Navegue até Projeto → Configurações → Domínios no Lovable
+    2. Clique em "Adicionar Domínio" e digite o nome do seu domínio
+    3. Atualize suas configurações de DNS conforme instruído
+    4. Aguarde a propagação do DNS (pode levar até 48 horas)
+
+    <Info>
+      A funcionalidade de domínio personalizado requer um plano pago do Lovable.
+    </Info>
+  </Accordion>
+  <Accordion title="Configuração de DNS">
+    Exemplo de configurações de DNS para seu registrador de domínio:
+
+    ```
+    # Para registro A (exemplo.com):
+    Tipo: A
+    Nome: @
+    Valor: 185.158.133.1
+    
+    # Para subdomínio www:
+    Tipo: CNAME
+    Nome: www
+    Valor: yourapp.lovable.app
+    ```
+
+    #### **Explicação das Configurações de DNS:**
+
+    - **Registro A:** Aponta seu domínio raiz para o endereço IP do Lovable
+    - **Registro CNAME:** Cria um alias do www para seu app Lovable
+    - **TTL (Time-to-Live):** Configure para 3600 (1 hora) ou menor para propagação mais rápida
+
+    #### **Verificação de DNS:**
+
+    Para verificar se suas configurações de DNS estão corretas, você pode usar:
+
+    - [**<u>DNSChecker.org</u>**](https://dnschecker.org/)
+    - [**<u>MXToolbox</u>**](https://mxtoolbox.com/)
+    - Linha de comando: `dig exemplo.com` ou `nslookup exemplo.com`
+  </Accordion>
+  <Accordion title="Problemas de Certificado SSL">
+    O Lovable provisiona automaticamente certificados SSL para domínios personalizados. Se você estiver enfrentando problemas de SSL:
+
+    - Certifique-se de que seu DNS está configurado corretamente
+    - Verifique se seu domínio possui registros CAA que podem restringir a emissão de certificados
+    - Aguarde até 24 horas para que o certificado seja emitido
+    - Verifique se seu navegador não está armazenando em cache um certificado antigo
+    - Verifique os logs de transparência de certificados para ver se um certificado foi emitido
+    - Entre em contato com o suporte do Lovable se os problemas persistirem
+
+    #### **Erros Comuns de SSL:**
+
+    - **ERR_CERT_COMMON_NAME_INVALID:** Domínio não corresponde ao certificado
+    - **ERR_CERT_AUTHORITY_INVALID:** Certificado não é confiável pelo navegador
+    - **SEC_ERROR_UNKNOWN_ISSUER:** Emissor do certificado desconhecido
+    - **SSL_ERROR_BAD_CERT_DOMAIN:** Domínio não corresponde ao certificado
+
+    <Info>
+      **Nota de Segurança SSL:** O Lovable usa Let's Encrypt para provisionar certificados SSL. Estes certificados são válidos por 90 dias e são renovados automaticamente.
+    </Info>
+  </Accordion>
+  <Accordion title="Processo de Deploy">
+    Para fazer o deploy do seu app Lovable:
+
+    1. Clique no botão "Publicar" no canto superior direito
+    2. Aguarde o processo de build ser concluído
+    3. Seu app estará disponível em [yourapp.lovable.app](http://yourapp.lovable.app)
+    4. Revise os logs de deploy para identificar possíveis problemas
+
+    #### **Estratégias de Deploy:**
+
+    - **Deploys de Preview:** Teste seu app antes de publicar em produção
+    - **Deploys Automáticos:** Configure seu projeto para fazer deploy automaticamente em mudanças do Git
+    - **Rollbacks:** Reverta para versões anteriores se necessário
+  </Accordion>
+  <Accordion title="Removendo o Badge do Lovable">
+    Para remover o badge do Lovable do seu app publicado:
+
+    1. Vá para Configurações do Projeto
+    2. Encontre a opção "Mostrar Badge do Lovable"
+    3. Desative-a (requer plano pago)
+    4. Faça o redeploy da sua aplicação
+
+    <Info>
+      A opção de remoção do badge está disponível em todos os planos pagos. Se você não vê esta opção, certifique-se de que sua cobrança está em dia.
+    </Info>
+  </Accordion>
+  <Accordion title="Versão publicada não mostra a versão mais recente">
+    A solução atual é o usuário ter que adicionar tanto o domínio quanto a contraparte do domínio [www](http://www) para que as atualizações sejam sincronizadas.
+  </Accordion>
+</AccordionGroup>
+
+### Problemas do Supabase
+
+<AccordionGroup>
+  <Accordion title="Erro com Edge Functions">
+    - **Escopo:** Use o princípio do menor privilégio para todas as credenciais
+
+    Ao usar Lovable com Supabase, sempre armazene chaves de API sensíveis como segredos do Supabase Edge Function em vez de variáveis de ambiente ou no código fonte.
+  </Accordion>
+  <Accordion title="Configurando Variáveis de Ambiente">
+    Verifique novamente a sintaxe e os nomes das variáveis. Consulte a [documentação do Supabase](https://supabase.com/docs).
+  </Accordion>
+  <Accordion title="Conexão com Supabase foi perdida">
+    Desconecte e reconecte. Pode ser causado por uma atualização da integração.
+  </Accordion>
+  <Accordion title="Remix não funciona com Supabase">
+    O remix é bloqueado para projetos conectados ao Supabase por razões de segurança.
+  </Accordion>
+  <Accordion title="Projeto não encontrado">
+    Por favor, reporte ao suporte.
+  </Accordion>
+  <Accordion title="Falhas de HTTP Fetch">
+    Geralmente significa que um servidor backend não está respondendo. Use o modo de chat para depurar.
+  </Accordion>
+  <Accordion title="Conectando Supabase">
+    Para conectar seu projeto Lovable ao Supabase:
+
+    1. Clique no menu Supabase no canto superior direito do editor
+    2. Selecione "Conectar ao Supabase"
+    3. Siga as instruções para conectar ao seu projeto Supabase
+    4. Uma vez conectado, Lovable pode ver suas tabelas, políticas RLS e funções
+  </Accordion>
+</AccordionGroup>
+
+### Problemas com Stripe
+
+<AccordionGroup>
+  <Accordion title="Erro do Stripe">
+    Tente um cartão diferente ou método de pagamento. Entre em contato com o suporte se não for resolvido.
+  </Accordion>
+  <Accordion title="Duas assinaturas ativas">
+    Não se preocupe—o suporte pode facilmente corrigir isso.
+  </Accordion>
+  <Accordion title="Cancelar sua assinatura">
+    Vá para suas configurações e cancele através da conta Stripe.
+  </Accordion>
+</AccordionGroup>
+
+### Problemas com GitHub
+
+<AccordionGroup>
+  <Accordion title="Não consigo fazer push para o GitHub">
+    Você pode ter deletado seu repositório. [Restaure-o aqui](https://docs.github.com/en/repositories/creating-and-managing-repositories/restoring-a-deleted-repository).
+  </Accordion>
+  <Accordion title="Branches estão quebradas">
+    A troca de branches é experimental. Use por sua conta e risco.
+
+    Uma vez conectado ao GitHub, você pode trabalhar com diferentes branches:
+
+    #### **Passos para Trocar de Branch**
+
+    ```
+    # Para trocar de main para dev:
+    1. No Modo Dev, abra o painel Git
+    2. Selecione o dropdown de branch
+    3. Escolha "dev" ou clique em "Criar nova branch" se ela não existir
+    4. Seu workspace será atualizado para refletir a branch selecionada
+    ```
+
+    <Note>
+      Trocar de branches mudará todos os arquivos no seu workspace para corresponder àquela branch.
+    </Note>
+    #### **Gerenciamento de Branches:**
+
+    - **Criar uma nova branch:** Clique em "Criar nova branch" no painel Git
+    - **Deletar uma branch:** Use a interface do GitHub (não disponível diretamente no Lovable)
+    - **Branch padrão:** Configure nas configurações do repositório GitHub
+
+    Se você não conseguir trocar de branches:
+
+    - Faça commit ou stash de quaisquer mudanças não commitadas
+    - Verifique se você tem arquivos não rastreados que seriam sobrescritos
+    - Tente atualizar o editor Lovable
+  </Accordion>
+  <Accordion title="Problemas de sincronização do repositório">
+    - Verifique suas [permissões do GitHub](https://docs.lovable.dev/integrations/git-integration).
+    - Use rollback para desfazer mudanças indesejadas.
+  </Accordion>
+  <Accordion title="Repositório deletado, agora nada funciona">
+    [Restaure seu repositório GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/restoring-a-deleted-repository).
+  </Accordion>
+  <Accordion title="Conectando GitHub">
+    Para conectar seu projeto Lovable ao GitHub:
+
+    1. Clique no botão GitHub no canto superior direito do editor
+    2. Autorize o Lovable a acessar sua conta GitHub
+    3. Escolha se deseja criar um novo repositório ou usar um existente
+    4. Siga as instruções para completar a conexão
+
+    #### **Níveis de Acesso ao Repositório:**
+
+    Ao conectar o Lovable ao GitHub, você pode escolher diferentes níveis de acesso:
+
+    - **Todos os repositórios:** Acesso a todos os seus repositórios GitHub
+    - **Apenas repositórios selecionados:** Escolha repositórios específicos para conectar
+
+    <Info>
+      O Lovable usa o fluxo OAuth do GitHub para autenticação segura. Você pode revogar o acesso a qualquer momento nas configurações da sua conta GitHub.
+    </Info>
+  </Accordion>
+  <Accordion title="Problemas de Autenticação">
+    Se você está tendo problemas com a autenticação do GitHub:
+
+    - Reconecte sua conta GitHub no Lovable
+    - Verifique se seu token de acesso do GitHub expirou
+    - Verifique se você tem as permissões necessárias para o repositório
+    - Certifique-se de que a autenticação de dois fatores não está bloqueando o acesso
+  </Accordion>
+  <Accordion title="Pushes Falharam">
+    Se seu push for rejeitado:
+
+    1. Puxe as últimas mudanças do repositório remoto
+    2. Resolva quaisquer conflitos
+    3. Tente fazer push novamente
+    4. Se ainda estiver falhando, verifique se a branch está protegida
+  </Accordion>
+  <Accordion title="Branches estão quebradas">
+    Esta é uma funcionalidade experimental. Espere instabilidade ocasional.
+  </Accordion>
+  <Accordion title="Deletou seu repositório">
+    [Restaure seu repositório GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/restoring-a-deleted-repository).
+  </Accordion>
+</AccordionGroup>
+
+### Precisa de mais ajuda?
+
+Ainda com dificuldades? Tente isto:
+
+1. Use o [Modo Chat](https://lovable.dev/chat) para ajuda passo a passo.
+2. Envie um bug através do nosso [Portal de Feedback](https://feedback.lovable.dev/).
+3. Se você é um cliente pagante, entre em contato com o [Suporte](https://lovable.dev/support).
+
+## Manual Abrangente de Depuração
+
+[Este documento](https://docs.google.com/document/d/1dfIy5rtkPN9Zi4smX1VAbfbhAiEyBvVw8p7B8kJiEVs/edit?tab=t.0) ou [este site](https://kb-lovable.netlify.app/?tab=errors#errors) foram escritos por um usuário avançado do Lovable em nossa comunidade do Discord.
+
+### Como usar
+
+1. **Baixe** como `Comprehensive_Debugging_Manual.md`.
+2. **Carregue** no seu projeto GitHub.
+3. Instrua o Lovable: "Leia este documento. Me avise se ele ajuda. Então crie um prompt que eu deveria usar para solucionar este problema."
+4. Depois que o Lovable responder, diga: "Antes de prosseguir, explique em detalhes por que você acha que isso funcionará. Aguarde minha aprovação."
+
+Isso garante um entendimento mais profundo antes de implementar qualquer correção.

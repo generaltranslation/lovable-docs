@@ -1,0 +1,142 @@
+---
+title: "Domínio personalizado"
+description: "Adicione seu próprio domínio a qualquer projeto Lovable."
+icon: "earth-europe"
+---
+
+O Lovable facilita a [publicação](/en/features/deploy) do seu projeto na web, seja em um subdomínio gratuito de staging do lovable (ex: seusite.lovable.app) ou no seu próprio domínio personalizado.
+Este guia te orienta sobre como conectar seu domínio, solucionar problemas comuns e entender suas opções entre diferentes provedores de hospedagem.
+
+## Por que usar um domínio personalizado
+
+Conectar um domínio personalizado (ex: seudominio.com) melhora o seu site em:
+
+- **Identidade da marca** - parece mais profissional
+- **Visibilidade nos mecanismos de busca** - melhor SEO
+- **Memorabilidade** - mais fácil de compartilhar e lembrar
+
+## Requisitos para usar um domínio personalizado
+
+Antes de começar:
+
+- Você deve estar em um plano pago do Lovable.
+- Você precisa possuir um nome de domínio. Para uma configuração mais fácil, você pode comprar um de provedores como:
+  - [Namecheap](https://www.namecheap.com)
+  - [GoDaddy](https://www.godaddy.com)
+  - [Lista completa de provedores suportados](https://developers.entri.com/provider-list)
+
+O Lovable usa uma ferramenta chamada Entri para ajudá-lo a conectar seu domínio de forma rápida e segura. Para alguns provedores, ela oferece configuração automática de DNS e redirecionamento www.
+
+## Conecte seu domínio (via Entri)
+
+<Steps>
+  <Step title="Abra as Configurações do seu Projeto">
+    Vá para Projeto > Configurações > Domínios e clique em Conectar Domínio.
+  </Step>
+  <Step title="Continue a Configuração">
+    Clique em Continuar e digite seu domínio (ex: seudominio.com). ![Conecte seu
+    domínio](/assets/features/images/connect-entri.png)
+  </Step>
+  <Step title="Selecione seu Provedor de DNS">
+    Escolha seu provedor de domínio da lista. Se seu provedor não estiver listado,
+    consulte os passos listados mais abaixo nesta página. ![Escolha seu
+    provedor](/assets/features/images/dns-provider.png)
+  </Step>
+  <Step title="Autorize com Entri">
+    Siga as instruções para fazer login no seu provedor e autorizar o acesso para o Entri
+    atualizar suas configurações de DNS.
+  </Step>
+  <Step title="Feche e Complete">
+    Clique em Fechar Janela, retorne ao Lovable e clique em Concluído.
+  </Step>
+</Steps>
+
+<Warning>
+  Mudanças no DNS podem levar até **48 horas para se propagar**, embora a maioria das atualizações
+  fique ativa em algumas horas.
+</Warning>
+
+Tudo pronto! Uma vez verificado, seu app Lovable estará ativo no seu domínio personalizado.
+
+### E se meu provedor não estiver listado?
+
+Se seu provedor não for suportado pelo Entri, você ainda pode conectar seu domínio manualmente.
+
+1. Abra as Configurações do seu Projeto e vá para Projeto > Configurações > Domínios e clique em Conectar Domínio.
+2. Digite seu domínio e continue.
+3. Ao escolher um provedor, role para baixo e escolha uma configuração manual.
+   A partir daí você poderá copiar os registros para inserir diretamente no seu registrador de domínio.
+   ![Configurações de DNS](/assets/features/images/dns-settings.png)
+
+## Hospedagem em Plataformas de Terceiros
+
+Você também pode fazer o deploy da sua aplicação Lovable usando GitHub e hospedá-la em plataformas como Netlify, Vercel, ou usando GitHub Pages com provedores como Namecheap.
+
+### Netlify
+
+1. Transfira seu projeto para o GitHub.
+2. Importe-o no Netlify e faça o deploy.
+3. Adicione um domínio no Netlify indo para Domain Management.
+4. Siga as instruções de DNS no Netlify para conectar seu domínio personalizado.
+5. Pronto! Seu site faz redeploy automaticamente quando mudanças são feitas no Lovable.
+
+### Vercel
+
+1. Crie um repositório GitHub a partir do Lovable.
+2. Importe no Vercel e atribua seu domínio personalizado.
+3. Crie uma branch de desenvolvimento para staging.
+4. Configure o Vercel para fazer deploy apenas da branch main.
+5. Mude no Lovable para a branch de desenvolvimento. Agora você pode fazer mudanças sem que elas vão diretamente para produção.
+6. Faça deploy das mudanças para produção quando estiver pronto fazendo merge dev → main.
+
+### Namecheap + GitHub Pages
+
+Use [este guia](https://custom-domain.lovable.app/) feito por um dos nossos usuários, para obter instruções personalizadas passo a passo sobre como configurá-lo.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Meu domínio personalizado está conectado, mas meu site não está no ar. O que devo fazer?">
+    - Verifique novamente suas configurações de DNS usando, por exemplo,
+    [dnschecker.org](https://dnschecker.org/all-dns-records-of-domain.php).
+    Às vezes, as mudanças de DNS podem levar até 48 horas para se propagar. As
+    configurações corretas de DNS devem ser: - Registro A apontando para 185.158.133.1 para @ como nome do host.
+    - Registro A apontando para 185.158.133.1 para www como nome do host. - CNAME apontando
+    para seu domínio raiz - Limpe o cache do seu navegador ou teste em uma janela
+    anônima. - Tente remover e adicionar novamente o domínio em Projeto > Configurações >
+    Domínios.
+  </Accordion>
+  <Accordion title="Posso comprar um domínio através do Lovable?">
+    O Lovable não vende domínios diretamente, mas fez parceria com a IONOS para
+    facilitar a configuração. Por favor, clique no botão "Comprar Domínio" em Configurações do Projeto
+    > Domínios para comprar um domínio através da IONOS.
+  </Accordion>
+  <Accordion title="Conectar um domínio personalizado afetará meu SEO?">
+    Sim, positivamente. Um domínio personalizado melhora a descoberta do seu site nos
+    mecanismos de busca e o torna mais confiável para os usuários.
+  </Accordion>
+  <Accordion title="O Lovable fornece um certificado SSL para meu domínio personalizado?">
+    Sim! Quando você conecta um domínio personalizado ao seu app Lovable, nós automaticamente
+    geramos e instalamos um certificado SSL para ele. Isso garante que seu site seja
+    servido via HTTPS, mantendo os dados dos seus visitantes seguros e melhorando a
+    classificação SEO do seu site. Se não tiver sido emitido após 48 horas, entre em contato com o suporte.
+  </Accordion>
+  <Accordion title="Posso conectar um subdomínio em vez de um domínio completo?">
+    Sim! Você pode conectar um subdomínio (como blog.seudominio.com ou
+    app.seudominio.com) em vez do domínio raiz. Ao inserir seu domínio no
+    fluxo de configuração, apenas inclua o subdomínio que deseja usar.
+  </Accordion>
+  <Accordion title="Posso conectar múltiplos subdomínios ao meu projeto Lovable?">
+    Você pode conectar múltiplos subdomínios, mas cada um deve ser adicionado e
+    configurado individualmente. Por exemplo, se você quiser usar
+    blog.seudominio.com, loja.seudominio.com e app.seudominio.com, você
+    precisará repetir o processo de conexão para cada subdomínio em Projeto >
+    Configurações > Domínios.
+  </Accordion>
+  <Accordion title="Como removo um domínio personalizado?">
+    1. Vá para Projeto > Configurações > Domínios 2. Clique no ícone da lixeira ao lado do seu
+    domínio 3. Seu domínio será desconectado do projeto. Certifique-se de
+    limpar as configurações de DNS no seu provedor de domínio para limpar completamente a
+    conexão.
+  </Accordion>
+</AccordionGroup>

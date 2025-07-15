@@ -1,0 +1,484 @@
+---
+title: "Protótipo"
+description: "Construa um protótipo de aplicação com Lovable"
+icon: "pager"
+---
+
+## Curso Intensivo do Lovable
+
+<Steps>
+  <Step title="Getting started with Lovable 101">
+    Ao final, você terá uma aplicação simples funcionando com autenticação e funcionalidade CRUD (Criar, Ler, Atualizar, Deletar) para gerenciar notas.
+
+    <AccordionGroup>
+      <Accordion title="Configurando o Supabase">
+        O Supabase é um serviço de banco de dados de código aberto construído sobre PostgreSQL. Ele fornece autenticação, armazenamento de dados e armazenamento de arquivos—perfeito para nossa integração com o Lovable.
+
+        <Steps>
+          <Step title="Criar uma Organização e Projeto">
+            <Steps>
+              <Step title="Passo 1">
+                Faça login no [Supabase](https://supabase.com/).
+              </Step>
+
+              <Step title="Passo 2">
+                Crie uma **organização** (nomeie-a baseada na sua startup ou projeto).
+              </Step>
+
+              <Step title="Passo 3">
+                Crie um **novo projeto** dentro dessa organização.
+
+                <Note>
+                  Anote sua **URL do Supabase** e **chave da API** (você precisará delas mais tarde).
+                </Note>
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Configurar Autenticação">
+            <Steps>
+              <Step title="Passo 1">
+                Navegue para **Authentication > Sign In/Sign Up**.
+              </Step>
+
+              <Step title="Passo 2">
+                Habilite a **autenticação por email**.
+              </Step>
+
+              <Step title="Passo 3">
+                Desative **Confirm Email** (já que ainda não temos um provedor de email configurado).
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Criando um Projeto no Lovable">
+        Agora, vamos configurar um projeto no Lovable.
+
+        <Steps>
+          <Step title="Começar com um Projeto em Branco">
+            <Steps>
+              <Step title="Passo 1">
+                Abra o Lovable e crie um **novo projeto**.
+              </Step>
+
+              <Step title="Passo 2">
+                Mantenha seu primeiro prompt simples: *"Criar um projeto em branco"*.
+              </Step>
+
+              <Step title="Passo 3">
+                O Lovable gerará a estrutura básica para seu aplicativo.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Conectar o Supabase ao Lovable">
+            <Steps>
+              <Step title="Passo 1">
+                No Lovable, navegue para as **configurações do banco de dados**.
+              </Step>
+
+              <Step title="Passo 2">
+                Digite sua **URL do projeto Supabase e chave da API**.
+              </Step>
+
+              <Step title="Passo 3">
+                Clique em **Connect** para vincular seu projeto Lovable ao Supabase.
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Adicionando um Sistema de Login">
+        <Steps>
+          <Step title="Criar uma Barra de Navegação com um Botão de Login">
+            <Steps>
+              <Step title="Passo 1">
+                Adicione uma **barra de navegação** no topo do seu projeto.
+              </Step>
+
+              <Step title="Passo 2">
+                Inclua um botão de **Login** que redireciona os usuários para uma página de login.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Aplicar Mudanças SQL para Autenticação">
+            <Steps>
+              <Step title="Passo 1">
+                O Lovable gerará SQL para o Supabase lidar com a autenticação.
+              </Step>
+
+              <Step title="Passo 2">
+                Clique em **Apply Changes** para executar os comandos SQL.
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Usando a Ferramenta de Edição Visual">
+        Personalize a interface:
+
+        <Steps>
+          <Step title="Passo 1">
+            Abra a **Edit Tool** no Lovable.
+          </Step>
+
+          <Step title="Passo 2">
+            Clique nos elementos da interface (ex: botões) para modificar os estilos.
+          </Step>
+
+          <Step title="Passo 3">
+            Certifique-se de que todo o texto esteja visível (ex: texto preto em fundos brancos).
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Testando o Sistema de Login">
+        <Steps>
+          <Step title="Criar uma Conta de Teste">
+            <Steps>
+              <Step title="Passo 1">
+                Use o formulário de **Sign Up** para criar um novo usuário.
+              </Step>
+
+              <Step title="Passo 2">
+                Verifique se os fluxos de login e logout funcionam corretamente.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Redirecionar Usuários para um Dashboard Após o Login">
+            Modifique o fluxo de autenticação para enviar os usuários para um **dashboard** após o login.
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Adicionando Notas (Funcionalidade CRUD)">
+        <Steps>
+          <Step title="Configurar uma Tabela de Notas no Supabase">
+            <Steps>
+              <Step title="Passo 1">
+                Use o Lovable para gerar SQL para uma tabela de **Notas**.
+              </Step>
+
+              <Step title="Passo 2">
+                Certifique-se de que ela tenha campos de **ID do usuário** e **conteúdo**.
+              </Step>
+
+              <Step title="Passo 3">
+                Clique em **Aplicar Alterações** para criar a tabela.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Construir a Interface das Notas">
+            <Steps>
+              <Step title="Passo 1">
+                Adicione uma **tabela para exibir notas** no painel.
+              </Step>
+
+              <Step title="Passo 2">
+                Inclua um **campo de entrada** e **botões** para operações CRUD.
+
+                <Info>
+                  CRUD criar, ler, atualizar e excluir
+                </Info>
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Testar Operações CRUD">
+            <Steps>
+              <Step title="Passo 1">
+                Adicione uma nova nota.
+              </Step>
+
+              <Step title="Passo 2">
+                Edite uma nota existente.
+              </Step>
+
+              <Step title="Passo 3">
+                Exclua uma nota.
+              </Step>
+
+              <Step title="Passo 4">
+                Verifique se as notas persistem no Supabase.
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Depuração com Modo Chat">
+        <Info>
+          Para habilitar o [Chat Mode](https://docs.lovable.dev/features/labs), vá para **Configurações > Configurações da Conta**.
+        </Info>
+
+        <Steps>
+          <Step title="Identificar Erros">
+            * Se surgir um problema, habilite o **Modo Chat**.
+            * O Lovable analisará **logs do Supabase** e **erros do TypeScript**.
+          </Step>
+
+          <Step title="Aplicar Correções">
+            <Steps>
+              <Step title="Passo 1">
+                Revise as sugestões de depuração do Lovable.
+              </Step>
+
+              <Step title="Passo 2">
+                Aplique as correções conforme necessário.
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Parabéns 🎉">
+        Você:
+
+        * Configurou o **Supabase** e o **Lovable**.
+        * Implementou **autenticação**.
+        * Construiu um **painel** com **funcionalidade CRUD** para notas.
+        * Aprendeu como depurar problemas efetivamente.
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+
+  <Step title="Building Interactive UIs">
+    Neste módulo, abordaremos componentes, elementos de UI reutilizáveis, melhorias de design e melhores práticas de depuração.
+
+    <AccordionGroup>
+      <Accordion title="Entendendo Componentes">
+        Componentes no Lovable ajudam a organizar elementos de UI em partes modulares e reutilizáveis. Em vez de ter todos os elementos de UI em uma única página (por exemplo, um dashboard de 400 linhas), nós os dividimos em componentes como:
+
+        * **Sidebar**
+        * **Welcome Card**
+        * **Quote Card**
+        * **Notes Section**
+
+        Esta estrutura melhora a eficiência ao fazer edições, já que as mudanças se aplicam apenas a componentes específicos em vez de toda a página.
+
+        ### Criando e Usando Componentes:
+
+        <Steps>
+          <Step title="Identifique Seções Grandes de UI">
+            Procure por partes de UI que se repetem ou são muito grandes.
+          </Step>
+
+          <Step title="Refatore em Componentes">
+            Use o modo de chat do Lovable para escanear o código e sugerir uma estrutura otimizada.
+          </Step>
+
+          <Step title="Reutilize Componentes">
+            Copie e cole componentes entre páginas para consistência.
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Editando UI de Forma Eficiente">
+        <Steps>
+          <Step title="Modifique Componentes Individuais">
+            Em vez de modificar o dashboard completo, edite componentes menores como o **Welcome Card**.
+
+            <Info>
+              Execute um prompt:
+
+              *"Atualize o texto no Welcome Card para torná-lo mais envolvente."*
+            </Info>
+          </Step>
+
+          <Step title="Use o Modo de Chat para Refatoração">
+            Peça ao Lovable para refatorar seções grandes de UI em componentes menores.
+
+            <Info>
+              Exemplo:
+
+              *"Refatore o dashboard em componentes menores e mais limpos."*
+            </Info>
+
+            * Exemplo: *"Refatore o dashboard em componentes menores e mais limpos."*
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Melhorando UI com Componentes Pré-Construídos">
+        Se você não é um designer, aproveitar estilos pré-construídos pode melhorar a aparência do seu app.
+
+        <Steps>
+          <Step title="Usando 21st.dev para Inspiração de UI">
+            <Steps>
+              <Step title="Passo 1">
+                Visite [21st.dev](https://21st.dev/?tab=components\&sort=recommended) para explorar componentes de UI pré-construídos.
+              </Step>
+
+              <Step title="Passo 2">
+                Escolha um design, copie seu prompt para o Lovable e integre-o ao seu projeto.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Criando Estilos Globais">
+            <Steps>
+              <Step title="Passo 1">
+                Modifique um elemento no projeto
+
+                <Info>
+                  por exemplo: *"Defina um botão como Rainbow Button".*
+                </Info>
+              </Step>
+
+              <Step title="Passo 2">
+                Adicione este prompt de sistema no conhecimento das configurações do projeto para garantir que todos os novos botões sigam este estilo:
+
+                <Info>
+                  "Ao criar componentes, certifique-se de sempre usar nosso botão rainbow global".
+                </Info>
+              </Step>
+
+              <Step title="Passo 3">
+                Toda vez que você adicionar um botão, este estilo pré-definido será respeitado.
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Redesenhando o Dashboard">
+        Para atualizar o layout do dashboard:
+
+        <Steps>
+          <Step title="Passo 1">
+            Encontre um **design que você goste** (por exemplo, no [Dribbble](https://dribbble.com/)).
+          </Step>
+
+          <Step title="Passo 2">
+            **Capture a seção relevante** e faça upload para o Lovable.
+          </Step>
+
+          <Step title="Passo 3">
+            **Forneça instruções claras**, como:
+
+            <Info>
+              *"Refatore o layout do dashboard baseado neste design."*
+            </Info>
+
+            <Info>
+              "*Coloque as notas em uma sidebar à esquerda e abra-as em uma visualização editável lado a lado."*
+            </Info>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Implementando Atualizações em Tempo Real">
+        <Steps>
+          <Step title="Habilite Sincronização em Tempo Real para Notas">
+            <Steps>
+              <Step title="Passo 1">
+                Execute um prompt
+
+                <Info>
+                  *"Habilite atualizações em tempo real para notas para que as mudanças sejam refletidas instantaneamente."*
+                </Info>
+              </Step>
+
+              <Step title="Passo 2">
+                Garanta que os dados sejam atualizados tanto na **sidebar** quanto no **painel de edição**.
+              </Step>
+            </Steps>
+          </Step>
+
+          <Step title="Depurando Problemas de UI">
+            Use o modo de chat para escanear a implementação e corrigir atualizações ausentes.
+
+            <Info>
+              Exemplo:
+
+              *"Ao editar o título na visualização lado a lado, ele não salva. Corrija este problema."*
+            </Info>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Refinando a Experiência de Edição de Notas">
+        <Steps>
+          <Step title="Use o Mobbin para Exemplos de UI do Mundo Real">
+            Pesquise por "note-taking UI" para ver como aplicativos populares projetam suas interfaces.
+
+            <Info>
+              Exemplo:
+
+              Um editor de notas limpo e minimalista com títulos grandes e um dropdown para tags.
+            </Info>
+          </Step>
+
+          <Step title="Aplicando Melhorias na UI">
+            <Steps>
+              <Step title="Passo 1">
+                Certifique-se de que o título seja **grande e proeminente**.
+              </Step>
+
+              <Step title="Passo 2">
+                Adicione **tags via dropdown**, similar à UI de referência.
+
+                <Info>
+                  Exemplo de prompt:
+
+                  *"Redesenhe o editor de notas para corresponder a esta captura de tela. Use um título grande, espaço em branco para o conteúdo e tags baseadas em dropdown."*
+                </Info>
+              </Step>
+            </Steps>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Depuração e Toques Finais">
+        <Steps>
+          <Step title="Corrigir Bugs da UI">
+            Certifique-se de que todos os elementos da UI sejam atualizados corretamente quando modificados.
+
+            <Info>
+              Execute um prompt:
+
+              *"Corrija o problema onde as tags das notas não salvam após a edição."*
+            </Info>
+          </Step>
+
+          <Step title="Otimizar Estilo dos Botões">
+            Ajuste o estilo dos botões e inputs para corresponder ao design pretendido.
+
+            <Info>
+              Exemplo:
+
+              *"Certifique-se de que todos os botões usem o estilo global Rainbow Button."*
+            </Info>
+          </Step>
+        </Steps>
+      </Accordion>
+
+      <Accordion title="Parabéns 🎉">
+        Ao final deste módulo, você deve ter:
+
+        * Refatorado grandes seções de UI em componentes reutilizáveis.
+        * Implementado um dashboard de anotações polido.
+        * Usado atualizações em tempo real para uma melhor experiência do usuário.
+        * Refinado o design usando inspirações externas e melhores práticas.
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+
+  <Step title="O que vem a seguir?">
+    Se você gostou dos dois primeiros módulos, continue seu curso intensivo com Harry [aqui](https://aclasswithharry.com/dashboard)! Nas próximas lições, você explorará:
+
+    * **Bônus**: Efeitos P5.js & Funções de Administrador
+    * Funções Avançadas de Usuário & RLS
+    * Conectando a APIs & IA
+    * Configurando Pagamentos Stripe
+    * Recursos Avançados
+    * Lançamento no Product Hunt
+  </Step>
+</Steps>
